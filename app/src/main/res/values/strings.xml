@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Love 2 Laundry</string>
+    <string name="action_settings">Settings</string>
+    <string name="uk">United Kingdom</string>
+    <string name="uae">United Arab Emirates</string>
+    <string name="country">Country</string>
+    <string name="title_activity_uk">United Kingdom</string>
+    <string name="address">Address</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_enter_postcode">Enter Your Postcode</string>
+    <string name="prompt_check_price">Check Price</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="register">Register</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone">Phone</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="post_code">Post Code</string>
+    <string name="building_name_number">Building Name or Number</string>
+    <string name="street_name">Street Name</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="title_activity_uae">UAE</string>
+    <string name="title_activity_listing">Listing</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Love2laundry</string>
+    <string name="nav_header_subtitle">Love2laundry</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="title_activity_checkout">Checkout</string>
+    <string name="checkout_button">Checkout</string>
+    <string name="action_check_out">Checkout</string>
+    <string name="town">Town</string>
+    <string name="pick_up_date">Pick up date</string>
+    <string name="pick_up_time">Pick up Time</string>
+    <string name="delivery_date">Delivery Date</string>
+    <string name="delivery_time">Delivery Time</string>
+    <string name="my_cart">My Cart</string>
+    <string name="credit_card">Credit Card</string>
+
+</resources>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.love2laundry.project.myapplication"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="28" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+     To auto-complete the email text field in the login form with the user's emails
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    -->
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name="com.love2laundry.project.myapplication.CheckoutActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.love2laundry.project.myapplication.PickCountryActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.UKActivity"
+            android:label="@string/title_activity_uk" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.UAEActivity"
+            android:label="@string/title_activity_uae" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.ListingActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.DashboardActivity"
+            android:label="@string/title_activity_dashboard"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.NavigationActivity"
+            android:label="@string/title_activity_navigation"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.SplashActivity"
+            android:label="@string/title_activity_checkout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.DatesActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.TimeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.CreditCardsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        -->
+
+        <provider
+            android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="com.love2laundry.project.myapplication.lifecycle-trojan"
+            android:exported="false"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>
