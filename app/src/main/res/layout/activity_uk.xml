@@ -43,7 +43,7 @@
                     android:maxLines="1"
                     android:text="E12pe"
                     android:singleLine="true"
-                    android:inputType="text"/>
+                    android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
 
