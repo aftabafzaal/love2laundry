@@ -6,19 +6,23 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".CheckoutActivity"
-    tools:showIn="@layout/app_bar_navigation">
+    tools:showIn="@layout/app_bar_navigation"
 
-
+    >
     <ScrollView
         android:id="@+id/checkout_scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        >
 
         <RelativeLayout
             android:id="@+id/checkout_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+
+            >
 
             <EditText
                 android:id="@+id/my_address"
@@ -27,8 +31,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/address"
                 android:inputType="none"
-                android:text="My Address"
-            />
+                android:text="My Address" />
 
             <EditText
                 android:id="@+id/post_code"
@@ -36,8 +39,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/post_code"
                 android:padding="10dp"
-                android:layout_below="@+id/my_address"
-                />
+                android:layout_below="@+id/my_address" />
 
             <EditText
                 android:id="@+id/building"
@@ -45,8 +47,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/building_name_number"
                 android:padding="10dp"
-                android:layout_below="@+id/post_code"
-                />
+                android:layout_below="@+id/post_code" />
 
             <EditText
                 android:id="@+id/street"
@@ -54,8 +55,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/street_name"
                 android:padding="10dp"
-                android:layout_below="@+id/building"
-                />
+                android:layout_below="@+id/building" />
 
             <EditText
                 android:id="@+id/town"
@@ -63,8 +63,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/town"
                 android:padding="10dp"
-                android:layout_below="@+id/street"
-                />
+                android:layout_below="@+id/street" />
 
 
             <Button
@@ -75,8 +74,7 @@
                 android:layout_marginTop="52dp"
                 android:text="@string/pick_up_date"
                 android:textStyle="bold"
-                android:layout_below="@+id/street"
-                />
+                android:layout_below="@+id/street" />
 
             <Button
                 android:id="@+id/pick_up_time"
@@ -86,8 +84,7 @@
                 android:layout_marginTop="52dp"
                 android:text="@string/pick_up_time"
                 android:textStyle="bold"
-                android:layout_below="@+id/pick_up_date"
-                />
+                android:layout_below="@+id/pick_up_date" />
 
             <Button
                 android:id="@+id/delivery_date"
@@ -97,8 +94,7 @@
                 android:layout_marginTop="52dp"
                 android:text="@string/delivery_date"
                 android:textStyle="bold"
-                android:layout_below="@+id/pick_up_time"
-                />
+                android:layout_below="@+id/pick_up_time" />
 
             <Button
                 android:id="@+id/delivery_time"
@@ -108,8 +104,7 @@
                 android:layout_marginTop="52dp"
                 android:text="@string/delivery_time"
                 android:textStyle="bold"
-                android:layout_below="@+id/delivery_date"
-                />
+                android:layout_below="@+id/delivery_date" />
 
             <TextView
                 android:id="@+id/my_cart"
@@ -118,15 +113,13 @@
                 android:textColor="#5d5d5d"
                 android:text="@string/my_cart"
                 android:textStyle="bold"
-                android:layout_below="@+id/delivery_time"
-                />
+                android:layout_below="@+id/delivery_time" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/my_cart"
-            />
+                android:layout_below="@+id/my_cart" />
 
             <TextView
                 android:id="@+id/head_preferences"
@@ -135,16 +128,46 @@
                 android:textColor="#5d5d5d"
                 android:text="Preferences"
                 android:textStyle="bold"
-                android:layout_below="@+id/list"
-                />
+                android:layout_below="@+id/list" />
 
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/preferences_listing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/head_preferences"
-                />
+                android:layout_below="@+id/head_preferences" />
+
+            <TextView
+                android:id="@+id/account_notes_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/account_notes_message"
+                android:textStyle="bold"
+                android:layout_below="@+id/preferences_listing" />
+
+            <EditText
+                android:id="@+id/account_notes"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:inputType="text|textMultiLine"
+                android:gravity="top"
+                android:layout_below="@+id/account_notes_message" />
+
+            <TextView
+                android:id="@+id/additional_instruction_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/additional_instruction_message"
+                android:textStyle="bold"
+                android:layout_below="@+id/account_notes" />
+
+            <EditText
+                android:id="@+id/additional_instruction"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:inputType="text|textMultiLine"
+                android:gravity="top"
+                android:layout_below="@+id/additional_instruction_message" />
 
 
             <TextView
@@ -153,8 +176,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/credit_card"
                 android:textStyle="bold"
-                android:layout_below="@+id/preferences_listing"
-                />
+                android:layout_below="@+id/additional_instruction" />
 
             <Button
                 android:id="@+id/checkout_button"
@@ -164,8 +186,7 @@
                 android:layout_marginTop="52dp"
                 android:text="@string/action_check_out"
                 android:textStyle="bold"
-                android:layout_below="@+id/credit_card"
-                />
+                android:layout_below="@+id/credit_card" />
         </RelativeLayout>
     </ScrollView>
 

@@ -4,14 +4,43 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+
         <item
             android:id="@+id/dashboard"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Dashboard" />
+
+        <item
+            android:id="@+id/account"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Account" />
+
+        <item
+            android:id="@+id/place_order"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Place Order" />
+
+        <item
+            android:id="@+id/loyalties"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Loyalties" />
+
+        <item
+            android:id="@+id/laundry_settings"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Laundry Settings" />
+
+        <item
+            android:id="@+id/orders"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Orders" />
+
+        <!--
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Import" />
+
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -19,9 +48,10 @@
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Tools" /> -->
     </group>
 
+    <!--
     <item android:title="Communicate">
         <menu>
             <item
@@ -34,5 +64,6 @@
                 android:title="Send" />
         </menu>
     </item>
+    -->
 
 </menu>

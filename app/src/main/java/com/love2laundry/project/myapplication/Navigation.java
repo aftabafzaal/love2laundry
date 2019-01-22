@@ -75,9 +75,12 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
             }
         } else if (id == R.id.loyalties) {
             intent = new Intent(this, LoyaltyActivity.class);
-
-
+        } else if (id == R.id.account) {
+            intent = new Intent(this, AccountActivity.class);
+        } else if (id == R.id.laundry_settings) {
+            intent = new Intent(this, LaundrySettingsActivity.class);
         }
+
         startActivityForResult(intent, 10);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

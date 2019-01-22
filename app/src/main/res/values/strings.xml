@@ -48,6 +48,51 @@
     <string name="delivery_date">Delivery Date</string>
     <string name="delivery_time">Delivery Time</string>
     <string name="my_cart">My Cart</string>
+    <string name="account_notes_message">Account Notes Message</string>
+    <string name="additional_instruction_message">Additional Instruction Message</string>
     <string name="credit_card">Credit Card</string>
+    <string name="invoice_no">Invoice #</string>
+    <string name="status">Status</string>
+    <string name="created_time">Created Time</string>
+    <string name="pickup_time_heading">Pickup Time</string>
+    <string name="delivery_time_heading">Delivery Time</string>
+    <string name="services">Services</string>
+    <string name="service">Service</string>
+    <string name="quantity">Quantity</string>
+    <string name="price">price</string>
+    <string name="title">Title</string>
+    <string name="qty">Qty</string>
+    <string name="total">Total</string>
+    <string name="preferences">Preferences</string>
+    <string name="pending_invoices">Pending Invoices</string>
+    <string name="processed_invoices">Processed Invoices</string>
+    <string name="canceled_invoices">Canceled Invoices</string>
+    <string name="completed_invoices">Completed Invoices</string>
+    <string name="title_activity_invoices">Invoices</string>
+    <string name="title_activity_invoice">Invoice</string>
+    <string name="copy">Copy</string>
+    <string name="edit">Edit</string>
+    <string name="title_activity_edit_invoice">Edit Invoice</string>
+    <string name="title_activity_loyalty">Loyalty</string>
+    <string name="title_activity_loyalties">Loyalties</string>
+    <string name="title_activity_account">Account Settings</string>
+    <string name="title_activity_laundry_settings">Laundry Settings</string>
+    <string name="available_codes">Available Codes</string>
+    <string name="history">History</string>
+    <string name="date">Date</string>
+    <string name="invoice">Invoice</string>
+    <string name="points">Points</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="address_information">Address Information</string>
+    <string name="email">Email</string>
+    <string name="referral_code">Referral Code</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+
+
+
+
 
 </resources>

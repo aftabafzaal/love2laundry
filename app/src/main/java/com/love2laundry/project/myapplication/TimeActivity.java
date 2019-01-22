@@ -26,6 +26,7 @@ public class TimeActivity extends Config {
     public static interface ResultCallbackIF {
 
         public void resultOk(String resultString, Bundle resultMap);
+
         public void resultCancel(String resultString, Bundle resultMap);
 
     }
@@ -33,9 +34,9 @@ public class TimeActivity extends Config {
     private String TAG = TimeActivity.class.getSimpleName();
     ArrayList<HashMap<String, String>> timeList;
     private ListView lv;
-    String franchise_id,action,title,type;
+    String franchise_id, action, title, type;
     String time;
-    String timeSelected,hour;
+    String timeSelected, hour;
 
 
     @Override
@@ -48,7 +49,7 @@ public class TimeActivity extends Config {
         type = getIntent().getStringExtra("type");
 
         timeList = new ArrayList<>();
-        Log.e(TAG,action);
+        Log.e(TAG, action);
         new GetDates().execute();
     }
 
@@ -57,7 +58,7 @@ public class TimeActivity extends Config {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-           // Toast.makeText(DatesActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
+            // Toast.makeText(DatesActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
 
         }
 
@@ -70,11 +71,11 @@ public class TimeActivity extends Config {
             // Making a request to url and getting response
 
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
-            String server = sharedpreferences.getString("server",null);
+            String server = sharedpreferences.getString("server", null);
 
-            String url = server+action;
+            String url = server + action;
             String jsonStr = sh.makeServiceCall(url);
-            Log.e(TAG,jsonStr);
+            Log.e(TAG, jsonStr);
             if (jsonStr != null) {
 
                 try {
@@ -82,7 +83,7 @@ public class TimeActivity extends Config {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     JSONArray timeArray = jsonObj.getJSONArray("data");
-                    Log.e(TAG,"Time Array - > "+timeArray.length());
+                    Log.e(TAG, "Time Array - > " + timeArray.length());
 
                     // looping through All Contacts
 
@@ -92,7 +93,7 @@ public class TimeActivity extends Config {
                         String availableTime = c.getString("Time");
                         Integer hour = c.getInt("Hour");
 
-                        if(status.equals("Available")){
+                        if (status.equals("Available")) {
                             HashMap<String, String> contact = new HashMap<>();
                             contact.put("status", status);
                             contact.put("availableTime", availableTime);
@@ -102,7 +103,7 @@ public class TimeActivity extends Config {
                     }
 
 
-                }catch (final JSONException e) {
+                } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
                         @Override
@@ -116,8 +117,7 @@ public class TimeActivity extends Config {
                 }
 
 
-
-            }else {
+            } else {
                 Log.e(TAG, "Couldn't get json from server.");
                 runOnUiThread(new Runnable() {
                     @Override
@@ -135,12 +135,12 @@ public class TimeActivity extends Config {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
 
-            lv=(ListView)findViewById(R.id.list);
-            Log.e(TAG,timeList.toString());
+            lv = (ListView) findViewById(R.id.list);
+            Log.e(TAG, timeList.toString());
 
 
             ListAdapter adapter = new SimpleAdapter(TimeActivity.this, timeList,
-                    R.layout.time_list, new String[]{ "availableTime","status","hour"},
+                    R.layout.time_list, new String[]{"availableTime", "status", "hour"},
                     new int[]{R.id.time});
             lv.setAdapter(adapter);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -162,7 +162,7 @@ public class TimeActivity extends Config {
         Intent data = new Intent();
         data.putExtra("timeSelected", timeSelected);
         data.putExtra("hour", hour);
-        data.putExtra("returnType", type+"Time");
+        data.putExtra("returnType", type + "Time");
         setResult(RESULT_OK, data);
         super.finish();
     }

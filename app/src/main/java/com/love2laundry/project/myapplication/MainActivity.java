@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(MainActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Json Data is downloading", Toast.LENGTH_LONG).show();
 
         }
 
@@ -86,35 +86,36 @@ public class MainActivity extends AppCompatActivity {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.e(TAG,response);
+                            Log.e(TAG, response);
                             // Hiding the progress dialog after all task complete.
                             // Response from the server is in the form if a JSON, so we need a JSON Object
-                            try{
+                            try {
                                 JSONObject jsonObject = new JSONObject(response);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                Toast.makeText(getApplicationContext(), "Something went wrong!",Toast.LENGTH_LONG).show();
-                                Log.e(TAG,response);
+                                Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
+                                Log.e(TAG, response);
                             }
                         }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(),"Error: "+error.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     Log.e(TAG + ":Volley", error.getMessage());
                 }
-            }){
+            }) {
                 @Override
                 protected Map<String, String> getParams() {
-                    Map<String,String> params = new HashMap<String, String>();
+                    Map<String, String> params = new HashMap<String, String>();
 
                     return params;
                 }
+
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String,String> params = new HashMap<String, String>();
-                    params.put("Content-Type","application/x-www-form-urlencoded");
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Content-Type", "application/x-www-form-urlencoded");
                     return params;
                 }
             };
@@ -129,10 +130,10 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             ListAdapter adapter = new SimpleAdapter(MainActivity.this, contactList,
-                    R.layout.list_item, new String[]{ "name","email","mobile","id"},
-                    new int[]{R.id.email, R.id.mobile,R.id.name});
+                    R.layout.list_item, new String[]{"name", "email", "mobile", "id"},
+                    new int[]{R.id.email, R.id.mobile, R.id.name});
             int s = contactList.size();
-            Log.e(TAG,"Aftab Khan"+s);
+            Log.e(TAG, "Aftab Khan" + s);
             Toast.makeText(getApplicationContext(),
                     "asdadasdasd",
                     Toast.LENGTH_LONG).show();

@@ -37,6 +37,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -73,6 +74,19 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         super.Config();
+
+
+        SharedPreferences sharedpreferencesMember;
+        sharedpreferencesMember = getSharedPreferences("member", MODE_PRIVATE);
+        String member_id = sharedpreferencesMember.getString("member_id", null);
+
+        /*
+        if(member_id!=null){
+            startActivity(new Intent(LoginActivity.this,
+                    CheckoutActivity.class));
+
+        }
+        */
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -213,7 +227,6 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
         }
 
 
-
     }
 
 
@@ -260,14 +273,13 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
             // TODO: attempt authentication against a network service.
 
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
-            String server = sharedpreferences.getString("server",null);
-            String action = sharedpreferences.getString("apiLogin",null);
-            String url= server+action;
-            Log.e(TAG,"Login url "+url);
+            String server = sharedpreferences.getString("server", null);
+            String action = sharedpreferences.getString("apiLogin", null);
+            String url = server + action;
+            //Log.e(TAG, "Login url " + url);
             RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>()
-                    {
+                    new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
 
@@ -277,19 +289,20 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
                                 jsonObj = new JSONObject(response);
                                 String result = jsonObj.getString("result");
 
-                                if(result.equals("Error")){
+                                if (result.equals("Error")) {
                                     String message = jsonObj.getString("message");
-                                    Toast toast= Toast.makeText(getApplicationContext(),
-                                            "Error: "+message, Toast.LENGTH_SHORT);
-                                    toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                                    Toast toast = Toast.makeText(getApplicationContext(),
+                                            "Error: " + message, Toast.LENGTH_SHORT);
+                                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
                                     toast.show();
-                                }else{
+                                } else {
 
                                     JSONObject memberJson = jsonObj.getJSONObject("member");
-                                    Log.e(TAG,"test "+memberJson.toString());
-                                    JSONObject categories = jsonObj.getJSONObject("member");
+                                    Log.e(TAG, "test " + memberJson.toString());
+                                    JSONArray preferences = jsonObj.getJSONArray("preferences");
+
                                     //JSONArray data = categories.getJSONArray("data");
-                                    Log.e(TAG,"test "+memberJson.getString("FirstName"));
+                                    Log.e(TAG, "test " + memberJson.getString("FirstName"));
 
                                     String member_id = memberJson.getString("ID");
                                     String firstName = memberJson.getString("FirstName");
@@ -300,12 +313,14 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
                                     String streetName = memberJson.getString("StreetName");
                                     String town = memberJson.getString("Town");
 
-                                   // Log.e(TAG,"member_id "+member_id+""+memberJson.toString());
+                                    //Log.e(TAG, "member_id " + member_id + "" + memberJson.toString());
 
                                     sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
 
                                     SharedPreferences.Editor member = sharedpreferences.edit();
 
+                                    member.putString("member_data", memberJson.toString());
+                                    member.putString("member_preferences", preferences.toString());
                                     member.putString("member_id", member_id);
                                     member.putString("email", mEmail);
                                     member.putString("firstName", firstName);
@@ -321,15 +336,14 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
                                 }
 
                             } catch (JSONException e) {
-                                Log.e(TAG,"Aftab Khan ->"+e.getMessage());
+                                Log.e(TAG, "Aftab Khan ->" + e.getMessage());
                                 e.printStackTrace();
                             }
                             // response
                             // Log.e("Response", response);
                         }
                     },
-                    new Response.ErrorListener()
-                    {
+                    new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             // error
@@ -338,17 +352,16 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
                     }
             ) {
                 @Override
-                protected Map<String, String> getParams()
-                {
+                protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("email_address", mEmail);
                     params.put("password", mPassword);
                     params.put("device_id", androidId);
                     return params;
                 }
+
                 @Override
-                public Map<String, String> getHeaders() throws AuthFailureError
-                {
+                public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> headers = new HashMap<String, String>();
                     headers.put("Content-Type", "application/x-www-form-urlencoded");
                     return headers;

@@ -3,6 +3,7 @@
     package="com.love2laundry.project.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <!--
      To auto-complete the email text field in the login form with the user's emails
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -18,7 +19,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".CheckoutActivity"
+
+            android:name=".LaundrySettingsActivity"
+
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,8 +30,56 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".CheckoutActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".LoyaltyActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_laundry_settings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".DashboardActivity"
+            android:label="@string/title_activity_account"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".NavigationActivity"
+            android:label="@string/title_activity_loyalty"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
         <activity
             android:name=".PickCountryActivity"
+            android:label="@string/title_activity_loyalty"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".InvoicesActivity"
+            android:label="@string/title_activity_invoices"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditInvoiceActivity"
+            android:label="@string/title_activity_edit_invoice"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CopyInvoiceActivity"
+            android:label="@string/title_activity_invoices"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/title_activity_checkout"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".AccountActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -40,36 +91,33 @@
         <activity
             android:name=".ListingActivity"
             android:label="@string/app_name" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme" />
+
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".DashboardActivity"
+            android:name=".InvoiceActivity"
             android:label="@string/title_activity_dashboard"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
-            android:name=".NavigationActivity"
-            android:label="@string/title_activity_navigation"
+            android:name=".DatesActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SplashActivity"
-            android:label="@string/title_activity_checkout"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".TimeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CreditCardsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".DatesActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".TimeActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".CreditCardsActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         -->
+
 
     </application>
 

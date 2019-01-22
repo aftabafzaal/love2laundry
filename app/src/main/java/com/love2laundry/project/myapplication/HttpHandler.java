@@ -1,28 +1,32 @@
 package com.love2laundry.project.myapplication;
 
+import android.app.Activity;
 import android.util.Log;
 
-import com.android.volley.toolbox.HttpResponse;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Iterator;
-
-import javax.net.ssl.HttpsURLConnection;
+import java.util.Map;
 
 public class HttpHandler {
 
@@ -47,71 +51,58 @@ public class HttpHandler {
         } catch (IOException e) {
             Log.e(TAG, "IOExceptionaaa: " + e.getMessage());
         } catch (Exception e) {
-            Log.e(TAG, "Exception: " + e.getMessage());
+            Log.e(TAG, "Exception 3: " + e.getMessage());
         }
         return response;
     }
 
-    protected String makePostCall(String reqUrl,JSONObject postDataParams) {
+    protected JSONObject makePostCall(final Activity activity, String reqUrl, final Map<String, String> postDataParams) {
 
+        //final Map<String, String>  params = postDataParams;
+        final JSONObject response = new JSONObject();
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        StringRequest postRequest = new StringRequest(Request.Method.POST, reqUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String result) {
 
+                        JSONObject jsonObj = null;
 
+                        try {
 
+                            jsonObj = new JSONObject(result);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
-
-        try {
-            URL url = new URL(reqUrl); // here is your URL path
-           // postDataParams.put("Content-Type","application/x-www-form-urlencoded");
-
-            //JSONObject postDataParams = new JSONObject();
-            Log.e("params", postDataParams.toString());
-
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(15000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
-            conn.setRequestProperty("Content-Type", "text/html");
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
-            conn.setDoOutput(true);
-
-            OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
-            writer.write(getPostDataString(postDataParams));
-
-            writer.flush();
-            writer.close();
-            os.close();
-
-            int responseCode=conn.getResponseCode();
-
-            if (responseCode == HttpsURLConnection.HTTP_OK) {
-
-                BufferedReader in=new BufferedReader(
-                        new InputStreamReader(
-                                conn.getInputStream()));
-                StringBuffer sb = new StringBuffer("");
-                String line="";
-
-                while((line = in.readLine()) != null) {
-
-                    sb.append(line);
-                    break;
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.e("Error.Response", error.toString());
+                    }
                 }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
 
-                in.close();
-                return sb.toString();
-
+                Map<String, String> params = postDataParams;
+                Log.e("params ->", params.toString());
+                return params;
             }
-            else {
-                return new String("false : "+responseCode);
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
+                return headers;
             }
-        }
-        catch(Exception e){
-            return new String("Exception: " + e.getMessage());
-        }
+        };
+        queue.add(postRequest);
 
-
+        return response;
     }
 
     public String getPostDataString(JSONObject params) throws Exception {
@@ -121,9 +112,9 @@ public class HttpHandler {
 
         Iterator<String> itr = params.keys();
 
-        while(itr.hasNext()){
+        while (itr.hasNext()) {
 
-            String key= itr.next();
+            String key = itr.next();
             Object value = params.get(key);
 
             if (first)
@@ -138,7 +129,6 @@ public class HttpHandler {
         }
         return result.toString();
     }
-
 
 
     private String convertStreamToString(InputStream is) {

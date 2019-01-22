@@ -68,17 +68,17 @@ public class UKActivity extends Config {
         } else {
 
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
-            String server = sharedpreferences.getString("server",null);
-            String action = sharedpreferences.getString("loadData",null);
+            String server = sharedpreferences.getString("server", null);
+            String action = sharedpreferences.getString("loadData", null);
 
-            String q="?type=load&device_id="+androidId+"&post_code="+postCode.getText().toString()+"&versions=1|2|3&more_info=1";
-            String url= server+action+q;
+            String q = "?type=load&device_id=" + androidId + "&post_code=" + postCode.getText().toString() + "&versions=1|2|3&more_info=1";
+            String url = server + action + q;
 
             SharedPreferences.Editor sp = sharedpreferences.edit();
             sp.putString("postCode", postCode.getText().toString());
             sp.commit();
 
-            Intent intent=new Intent(UKActivity.this,ListingActivity.class);
+            Intent intent = new Intent(UKActivity.this, ListingActivity.class);
 
             intent.putExtra("request", url);
             startActivity(intent);

@@ -345,4 +345,3 @@ public class UAEActivity extends AppCompatActivity implements LoaderCallbacks<Cu
         }
     }
 }
-

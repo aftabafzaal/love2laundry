@@ -34,6 +34,7 @@ public class DatesActivity extends Config {
     public static interface ResultCallbackIF {
 
         public void resultOk(String resultString, Bundle resultMap);
+
         public void resultCancel(String resultString, Bundle resultMap);
 
     }
@@ -41,7 +42,7 @@ public class DatesActivity extends Config {
     private String TAG = DatesActivity.class.getSimpleName();
     ArrayList<HashMap<String, String>> dateList;
     private ListView lv;
-    String franchise_id,action,title,type;
+    String franchise_id, action, title, type;
     String pickUpDate;
     String dateSelected;
 
@@ -61,14 +62,12 @@ public class DatesActivity extends Config {
     }
 
 
-
-
     private class GetDates extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-           // Toast.makeText(DatesActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
+            // Toast.makeText(DatesActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
 
         }
 
@@ -80,8 +79,8 @@ public class DatesActivity extends Config {
             HttpHandler sh = new HttpHandler();
             // Making a request to url and getting response
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
-            String server = sharedpreferences.getString("server",null);
-            String url = server+action;
+            String server = sharedpreferences.getString("server", null);
+            String url = server + action;
             String jsonStr = sh.makeServiceCall(url);
             if (jsonStr != null) {
 
@@ -90,10 +89,10 @@ public class DatesActivity extends Config {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     JSONArray dates;
-                    if(type.equals("delivery")) {
+                    if (type.equals("delivery")) {
                         //Log.e(TAG,"Dates - > "+type);
                         dates = jsonObj.getJSONArray("delivery");
-                    }else{
+                    } else {
                         dates = jsonObj.getJSONArray("pick");
                     }
 
@@ -104,7 +103,7 @@ public class DatesActivity extends Config {
                         String dateClass = c.getString("Date_Class");
                         String dateSelected = c.getString("Date_Selected");
 
-                        if(dateClass.equals("Available")) {
+                        if (dateClass.equals("Available")) {
                             HashMap<String, String> contact = new HashMap<>();
                             contact.put("date", date);
                             contact.put("dateNumber", dateNumber);
@@ -114,7 +113,7 @@ public class DatesActivity extends Config {
                         }
                     }
 
-                }catch (final JSONException e) {
+                } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
                         @Override
@@ -125,7 +124,7 @@ public class DatesActivity extends Config {
                         }
                     });
                 }
-            }else {
+            } else {
                 Log.e(TAG, "Couldn't get json from server.");
                 runOnUiThread(new Runnable() {
                     @Override
@@ -143,14 +142,14 @@ public class DatesActivity extends Config {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
 
-            lv=(ListView)findViewById(R.id.list);
-            Log.e("Dates",""+dateList);
+            lv = (ListView) findViewById(R.id.list);
+            Log.e("Dates", "" + dateList);
             ListAdapter adapter = new SimpleAdapter(DatesActivity.this, dateList,
-                    R.layout.date_list, new String[]{ "date","dateNumber","dateClass","dateSelected"},
+                    R.layout.date_list, new String[]{"date", "dateNumber", "dateClass", "dateSelected"},
                     new int[]{R.id.date});
 
             int s = dateList.size();
-            Log.e("dateList ->",""+dateList);
+            Log.e("dateList ->", "" + dateList);
             lv.setAdapter(adapter);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -172,7 +171,7 @@ public class DatesActivity extends Config {
         Intent data = new Intent();
         data.putExtra("pickUpDate", pickUpDate);
         data.putExtra("dateSelected", dateSelected);
-        data.putExtra("returnType", type+"Date");
+        data.putExtra("returnType", type + "Date");
         setResult(RESULT_OK, data);
         super.finish();
     }

@@ -129,7 +129,7 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
     }
 
     private void populateAutoComplete() {
-    
+
         getLoaderManager().initLoader(0, null, this);
     }
 
@@ -183,13 +183,13 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
 
         boolean cancel = false;
         View focusView = null;
-       // Log.e("Error.cancel", ""+cancel);
+        // Log.e("Error.cancel", ""+cancel);
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
-        }else if (TextUtils.isEmpty(email)) {
+        } else if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
@@ -236,8 +236,8 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             //showProgress(true);
-           mAuthTask = new UserLoginTask(email,password,firstName,lastName,phone,postCode,building,street,town);
-           mAuthTask.execute((Void) null);
+            mAuthTask = new UserLoginTask(email, password, firstName, lastName, phone, postCode, building, street, town);
+            mAuthTask.execute((Void) null);
         }
     }
 
@@ -357,7 +357,7 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
         private final String mStreet;
         private final String mTown;
 
-        UserLoginTask(String email, String password,String firstName,String lastName,String phone,String postCode,String building,String street,String town) {
+        UserLoginTask(String email, String password, String firstName, String lastName, String phone, String postCode, String building, String street, String town) {
             mEmail = email;
             mPassword = password;
             mFirstName = firstName;
@@ -373,17 +373,16 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
         protected Boolean doInBackground(Void... params) {
 
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
-            String server = sharedpreferences.getString("server",null);
-            String action = sharedpreferences.getString("apiRegister",null);
+            String server = sharedpreferences.getString("server", null);
+            String action = sharedpreferences.getString("apiRegister", null);
             //String q="?type=load&device_id="+androidId+"&post_code="+postCode.getText().toString()+"&versions=1|2|3";
-            String url= server+action;
+            String url = server + action;
             //String url = Con;
             //Log.e("Error.url", url);
 
             RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>()
-                    {
+                    new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             // response
@@ -393,13 +392,13 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
                                 jsonObj = new JSONObject(response);
                                 String result = jsonObj.getString("result");
                                 // Log.e("result --> ",result);
-                                if(result.equals("Error")){
+                                if (result.equals("Error")) {
                                     String message = jsonObj.getString("message");
-                                    Toast toast= Toast.makeText(getApplicationContext(),
-                                            "Error: "+message, Toast.LENGTH_SHORT);
-                                    toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                                    Toast toast = Toast.makeText(getApplicationContext(),
+                                            "Error: " + message, Toast.LENGTH_SHORT);
+                                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
                                     toast.show();
-                                }else{
+                                } else {
 
                                     sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
                                     String member_id = jsonObj.getString("MemberID");
@@ -425,8 +424,7 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
 
                         }
                     },
-                    new Response.ErrorListener()
-                    {
+                    new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             // error
@@ -435,8 +433,7 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
                     }
             ) {
                 @Override
-                protected Map<String, String> getParams()
-                {
+                protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("email_address", mEmail);
                     params.put("password", mPassword);
@@ -450,9 +447,9 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
                     params.put("device_id", androidId);
                     return params;
                 }
+
                 @Override
-                public Map<String, String> getHeaders() throws AuthFailureError
-                {
+                public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> headers = new HashMap<String, String>();
                     headers.put("Content-Type", "application/x-www-form-urlencoded");
                     return headers;
@@ -470,7 +467,7 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
             showProgress(false);
 
             if (success) {
-              //  finish();
+                //  finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

@@ -13,6 +13,10 @@ tools:openDrawer="start">
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 
+
+<include layout="@layout/content_dashboard" />
+
+
 <android.support.design.widget.NavigationView
     android:id="@+id/nav_view"
     android:layout_width="wrap_content"
@@ -21,8 +25,5 @@ tools:openDrawer="start">
     android:fitsSystemWindows="true"
     app:headerLayout="@layout/nav_header_navigation"
     app:menu="@menu/activity_navigation_drawer" />
-
-    <include layout="@layout/content_dashboard" />
-
 
 </android.support.v4.widget.DrawerLayout>

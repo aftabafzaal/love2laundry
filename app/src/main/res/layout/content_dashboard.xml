@@ -8,4 +8,62 @@
     tools:context=".DashboardActivity"
     tools:showIn="@layout/activity_dashboard">
 
+    <RelativeLayout
+        android:id="@+id/content_dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_below="@+id/my_address"
+        android:layout_marginTop="50dip"
+        >
+
+
+    <Button
+        android:id="@+id/pending_invoices"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/pending_invoices"
+        android:onClick="getInvoices"
+        android:textStyle="bold"
+         />
+
+
+        <Button
+        android:id="@+id/processed_invoices"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/processed_invoices"
+        android:textStyle="bold"
+            android:onClick="getInvoices"
+        android:layout_below="@+id/pending_invoices" />
+
+        <Button
+            android:id="@+id/canceled_invoices"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="@string/canceled_invoices"
+            android:textStyle="bold"
+            android:onClick="getInvoices"
+            android:layout_below="@+id/processed_invoices" />
+
+
+        <Button
+            android:id="@+id/completed_invoices"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="@string/completed_invoices"
+            android:textStyle="bold"
+            android:onClick="getInvoices"
+            android:layout_below="@+id/canceled_invoices" />
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

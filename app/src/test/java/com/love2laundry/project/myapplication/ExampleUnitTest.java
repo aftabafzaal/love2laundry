@@ -1,17 +1,11 @@
-package com.love2laundry.project.myapplication;
-
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
-public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-    }
-}
+<application>
+<component name="ActionsCollector">
+<counts>
+<entry action="$Copy"count="47"/>
+<entry action="$Delete"count="28"/>
+<entry action="$Paste"count="35"/>
+<entry action="$Redo"count="984"/>
+<entry action="$SelectAll"count="57"/>
+<entry action="$Undo"count="5100"/>
+<entry action="About"count="1"/>
+<entry action="ActivateDeviceFileExplore

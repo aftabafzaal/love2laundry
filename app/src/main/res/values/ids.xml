@@ -3,4 +3,6 @@
     <item name="email" type="id" />
     <item name="mobile" type="id" />
     <item name="name" type="id" />
+    <item name="additional_instruction" type="id" />
+    <item name="account_notes" type="id" />
 </resources>
