@@ -1,288 +1,358 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:1-76:12
-MERGED from [com.android.support:design:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\347a068ea3e69c6fb262e0c9bf6e8864\AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\5c688798ed96a6b6270c2a75da25f3ae\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c16d997725332308bac68155403ccc55\AndroidManifest.xml:2:1-11:12
-MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:17:1-30:12
-MERGED from [com.android.support:support-v4:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\12ad9d863694469dff388d00417a56fc\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.volley:volley:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5838e40aa65b2c683a405953259a81ee\AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\92c8d07eeefb908788153f3f127952be\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\d37ef9f7959c1a24d3fd021f5358bdd1\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\3d65ccfdbe466a39e456b0aa5b42be4f\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\49d052e5087669e29392e7fa24b9b0ab\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\03fd699e649eac3b816afcfbaeb4f165\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\7014cd184924afee0ef4f5dd0991d43a\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:transition:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\5e6ff6fea2f6d1ba22f474dd70f9b4a5\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\5e1c09bebfb4a65fda2033659cbed639\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:loader:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\742a02df590b7d173eee5c42e42634d8\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:viewpager:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\0df5e1945c2a83c666032f9a5f2f84f6\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\b8e56a3eb7a437e0801858cc7fb43324\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\90ae1c783812b4ed0a78e8770f3082e9\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\8be981c8bd87c9aa562e63b8c1bc9156\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:customview:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\cede2b481917129c0892c6096a63ff2c\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\6b730caffbe1ca630d7864bf442f75d4\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\ede69d057c75b8d5a33365940e33782b\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\02c6f24617c151b751eceef1667ee248\AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\e634a340d7f7c73f5f6c0e6b5fef4d23\AndroidManifest.xml:17:1-25:12
-MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\8b143005eae32e63ef2c84be98dcde38\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\9f34714a1f7b3414f59108847d130934\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\689c29b54fd922692c2c245f3bd1ad63\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\81c2afde4530445991e32e40187df0a0\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\ed1aa702cb36d6ac6ea3fd9418143299\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\877c7cdd127e471553ae6f8a4c2cafdc\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\c32c5e306f94c5a8a3bc8773e1855510\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:documentfile:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\eda549a0c0abe3a316d5da931c7649c0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\61e9e53a4f70e9a16ebb9e789ec2cf36\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:print:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\a0bcd876b74dd8edf351e4791884073f\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f0c0dd0a3ef868a70768a9261552459a\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:1-76:12
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:1-133:12
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:1-133:12
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:1-133:12
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:1-133:12
+MERGED from [com.android.support:design:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/e8fc56ea68f919078cbbd4c9d56c0d5a/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/239b7a3bd7c35ad4b72d7b3ac6c462cc/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/macbook/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/adaa42fc4491d3a28daa9f1f6ebc3048/AndroidManifest.xml:2:1-11:12
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:17:1-30:12
+MERGED from [com.android.support:support-v4:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0.aar/988c8c39c87c462c9712523988f08b86/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.volley:volley:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/volley-1.1.1.aar/42753fa7c4b4bb3d07b33db472fa0126/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/f54381a2562987f62f545aa219272a5e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/ca55afb80d7d806ddeca83b37879cc6f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/6fe1c91c0d63ab2a13bc748826d9a99f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/0aee43952bbd743812be31d39a05b3dd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/a37ae913bede6ca056a33c419b3d677f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/e0fe66bf64adb9105cd480c67ea9bfc4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/4c42f282bf59882132eca64b080dfbc8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0.aar/11e59b54fffb9614333f0d9c58e39b04/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/d08f24711648ea8fd58a45c15423afd3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/7a6eb4f6e1d521e0dbe2dba9cb58f5e2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/b107a465379bca52ded62ca52f7eb9a4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/c478a48c1f24e61944bd4d91bd471c01/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/ba69117d87c783c282a3f70a9c191526/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/04c7a229e8409abb1a3e4e107cb0d5b3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/47c5d6af91dfc521a18dad150cb5f338/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/2f92cd3b81be066cca59b9789df7d7dd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/9bb178a719051db016ff613757986dcb/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/9771aea2c97152a3352bd63a21343b34/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/5c6c82ad80dac3d24ded583705912f90/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/3ddf2eee973f16e378cfefb2d77ce628/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/a5b9b99ad890665e366a48baca83a7c3/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/6a91f1add14b1c1787b2c6bc306944b7/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/30ecae0c16ea6770d86699c280944394/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/25d49d3af98969bdd4fe295d17a2ed89/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/9ef90eb671cd694026955022ae8a6166/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/055c4d52ff4436af4bf08a5580aee3ac/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/8321b0061a6799f8c63ad73828cc523f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/ef62f46616d4544fe772f2f6dafa8ccd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d9aaac37c92c55a7ca328485f38db9a9/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:1-133:12
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:1-133:12
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:1-133:12
 	package
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:3:5-53
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:3:5-53
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:1-76:12
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:1-133:12
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:1-76:12
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:1-133:12
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:5:5-67
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:5:5-67
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:5:22-64
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:12:5-74:19
-MERGED from [com.android.support:design:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\347a068ea3e69c6fb262e0c9bf6e8864\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:design:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\347a068ea3e69c6fb262e0c9bf6e8864\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c16d997725332308bac68155403ccc55\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c16d997725332308bac68155403ccc55\AndroidManifest.xml:9:5-20
-MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:22:5-28:19
-MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:22:5-28:19
-MERGED from [com.android.volley:volley:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5838e40aa65b2c683a405953259a81ee\AndroidManifest.xml:9:5-20
-MERGED from [com.android.volley:volley:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5838e40aa65b2c683a405953259a81ee\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\02c6f24617c151b751eceef1667ee248\AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\02c6f24617c151b751eceef1667ee248\AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\e634a340d7f7c73f5f6c0e6b5fef4d23\AndroidManifest.xml:22:5-23:19
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\e634a340d7f7c73f5f6c0e6b5fef4d23\AndroidManifest.xml:22:5-23:19
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:13:5-131:19
+MERGED from [com.android.support:design:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/e8fc56ea68f919078cbbd4c9d56c0d5a/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/e8fc56ea68f919078cbbd4c9d56c0d5a/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/macbook/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/adaa42fc4491d3a28daa9f1f6ebc3048/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/macbook/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/adaa42fc4491d3a28daa9f1f6ebc3048/AndroidManifest.xml:9:5-20
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:22:5-28:19
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:22:5-28:19
+MERGED from [com.android.volley:volley:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/volley-1.1.1.aar/42753fa7c4b4bb3d07b33db472fa0126/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/volley-1.1.1.aar/42753fa7c4b4bb3d07b33db472fa0126/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/9bb178a719051db016ff613757986dcb/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/9bb178a719051db016ff613757986dcb/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/9771aea2c97152a3352bd63a21343b34/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/9771aea2c97152a3352bd63a21343b34/AndroidManifest.xml:22:5-23:19
 	android:appComponentFactory
-		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\02c6f24617c151b751eceef1667ee248\AndroidManifest.xml:22:18-91
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/9bb178a719051db016ff613757986dcb/AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:17:9-35
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:18:9-35
 	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:15:9-41
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:16:9-41
 	android:roundIcon
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:16:9-54
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:17:9-54
 	android:icon
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:14:9-43
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:15:9-43
 	android:allowBackup
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:14:9-35
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:18:9-40
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:19:9-40
 	android:usesCleartextTraffic
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:19:9-44
-activity#com.love2laundry.project.myapplication.CheckoutActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:20:9-29:20
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:20:9-44
+activity#com.love2laundry.project.myapplication.PaymentCardsActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:21:9-32:20
 	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:22:13-45
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:25:13-45
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:23:13-56
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:26:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:21:13-45
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:23:13-49
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:24:13-28:29
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:27:13-31:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:25:17-69
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:28:17-69
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:25:25-66
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:28:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:27:17-77
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:27:27-74
-activity#com.love2laundry.project.myapplication.PickCountryActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:30:9-33:59
-	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:32:13-45
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:30:27-74
+activity#com.love2laundry.project.myapplication.CheckoutActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:34:9-37:15
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:33:13-56
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:36:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:31:13-48
-activity#com.love2laundry.project.myapplication.UKActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:34:9-36:57
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:35:13-45
+activity#com.love2laundry.project.myapplication.DiscountsActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:39:9-42:59
 	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:36:13-54
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:41:13-65
+	android:theme
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:42:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:35:13-39
-activity#com.love2laundry.project.myapplication.UAEActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:37:9-39:58
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:40:13-46
+activity#com.love2laundry.project.myapplication.LaundrySettingsActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:44:9-47:59
 	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:39:13-55
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:46:13-66
+	android:theme
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:47:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:38:13-40
-activity#com.love2laundry.project.myapplication.ListingActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:40:9-42:48
-	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:42:13-45
-	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:41:13-44
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:45:13-52
 activity#com.love2laundry.project.myapplication.LoginActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:43:9-46:47
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:49:9-52:47
 	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:45:13-57
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:51:13-57
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:46:13-44
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:52:13-44
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:44:13-42
-activity#com.love2laundry.project.myapplication.RegisterActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:47:9-50:47
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:50:13-42
+activity#com.love2laundry.project.myapplication.LoyaltyActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:54:9-57:68
 	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:49:13-60
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:56:13-68
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:50:13-44
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:57:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:48:13-45
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:55:13-44
 activity#com.love2laundry.project.myapplication.DashboardActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:51:9-54:59
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:59:9-62:68
 	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:53:13-61
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:61:13-59
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:54:13-56
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:62:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:52:13-46
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:60:13-46
 activity#com.love2laundry.project.myapplication.NavigationActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:55:9-58:59
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:64:9-67:68
 	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:57:13-62
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:66:13-59
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:58:13-56
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:67:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:56:13-47
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:65:13-47
+activity#com.love2laundry.project.myapplication.PickCountryActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:68:9-71:68
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:70:13-59
+	android:theme
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:71:13-56
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:69:13-48
+activity#com.love2laundry.project.myapplication.InvoicesActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:73:9-76:59
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:75:13-60
+	android:theme
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:76:13-56
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:74:13-45
+activity#com.love2laundry.project.myapplication.EditInvoiceActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:77:9-80:59
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:79:13-64
+	android:theme
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:80:13-56
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:78:13-48
+activity#com.love2laundry.project.myapplication.CopyInvoiceActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:81:9-84:59
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:83:13-60
+	android:theme
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:84:13-56
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:82:13-48
 activity#com.love2laundry.project.myapplication.SplashActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:59:9-62:68
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:85:9-88:59
 	android:label
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:61:13-60
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:87:13-60
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:62:13-56
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:88:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:60:13-43
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:86:13-43
+activity#com.love2laundry.project.myapplication.AccountActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:90:9-93:59
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:92:13-45
+	android:theme
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:93:13-56
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:91:13-44
+activity#com.love2laundry.project.myapplication.UKActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:94:9-96:57
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:96:13-54
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:95:13-39
+activity#com.love2laundry.project.myapplication.UAEActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:97:9-99:58
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:99:13-55
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:98:13-40
+activity#com.love2laundry.project.myapplication.ListingActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:100:9-102:48
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:102:13-45
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:101:13-44
+activity#com.love2laundry.project.myapplication.RegisterActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:104:9-107:47
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:106:13-60
+	android:theme
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:107:13-44
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:105:13-45
+activity#com.love2laundry.project.myapplication.InvoiceActivity
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:108:9-111:59
+	android:label
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:110:13-61
+	android:theme
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:111:13-56
+	android:name
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:109:13-44
 activity#com.love2laundry.project.myapplication.DatesActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:64:9-104
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:113:9-115:59
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:64:49-92
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:115:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:64:19-48
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:114:13-42
 activity#com.love2laundry.project.myapplication.TimeActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:65:9-103
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:116:9-118:59
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:65:48-91
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:118:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:65:19-47
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:117:13-41
 activity#com.love2laundry.project.myapplication.CreditCardsActivity
-ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:66:9-110
+ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:119:9-121:59
 	android:theme
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:66:55-98
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:121:13-56
 	android:name
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml:66:19-54
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml:120:13-48
 uses-sdk
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-MERGED from [com.android.support:design:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\347a068ea3e69c6fb262e0c9bf6e8864\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:design:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\347a068ea3e69c6fb262e0c9bf6e8864\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\5c688798ed96a6b6270c2a75da25f3ae\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\5c688798ed96a6b6270c2a75da25f3ae\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c16d997725332308bac68155403ccc55\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\c16d997725332308bac68155403ccc55\AndroidManifest.xml:5:5-7:41
-MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\12ad9d863694469dff388d00417a56fc\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\12ad9d863694469dff388d00417a56fc\AndroidManifest.xml:20:5-44
-MERGED from [com.android.volley:volley:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5838e40aa65b2c683a405953259a81ee\AndroidManifest.xml:7:5-43
-MERGED from [com.android.volley:volley:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\5838e40aa65b2c683a405953259a81ee\AndroidManifest.xml:7:5-43
-MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\92c8d07eeefb908788153f3f127952be\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\92c8d07eeefb908788153f3f127952be\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\d37ef9f7959c1a24d3fd021f5358bdd1\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\d37ef9f7959c1a24d3fd021f5358bdd1\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\3d65ccfdbe466a39e456b0aa5b42be4f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\3d65ccfdbe466a39e456b0aa5b42be4f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\49d052e5087669e29392e7fa24b9b0ab\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\49d052e5087669e29392e7fa24b9b0ab\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\03fd699e649eac3b816afcfbaeb4f165\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\03fd699e649eac3b816afcfbaeb4f165\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\7014cd184924afee0ef4f5dd0991d43a\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\7014cd184924afee0ef4f5dd0991d43a\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\5e6ff6fea2f6d1ba22f474dd70f9b4a5\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\5e6ff6fea2f6d1ba22f474dd70f9b4a5\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\5e1c09bebfb4a65fda2033659cbed639\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\5e1c09bebfb4a65fda2033659cbed639\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:loader:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\742a02df590b7d173eee5c42e42634d8\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:loader:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\742a02df590b7d173eee5c42e42634d8\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:viewpager:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\0df5e1945c2a83c666032f9a5f2f84f6\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:viewpager:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\0df5e1945c2a83c666032f9a5f2f84f6\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\b8e56a3eb7a437e0801858cc7fb43324\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\b8e56a3eb7a437e0801858cc7fb43324\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\90ae1c783812b4ed0a78e8770f3082e9\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\90ae1c783812b4ed0a78e8770f3082e9\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\8be981c8bd87c9aa562e63b8c1bc9156\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\8be981c8bd87c9aa562e63b8c1bc9156\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customview:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\cede2b481917129c0892c6096a63ff2c\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customview:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\cede2b481917129c0892c6096a63ff2c\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\6b730caffbe1ca630d7864bf442f75d4\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\6b730caffbe1ca630d7864bf442f75d4\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\ede69d057c75b8d5a33365940e33782b\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\ede69d057c75b8d5a33365940e33782b\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\02c6f24617c151b751eceef1667ee248\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\02c6f24617c151b751eceef1667ee248\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\e634a340d7f7c73f5f6c0e6b5fef4d23\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\e634a340d7f7c73f5f6c0e6b5fef4d23\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\8b143005eae32e63ef2c84be98dcde38\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\8b143005eae32e63ef2c84be98dcde38\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\9f34714a1f7b3414f59108847d130934\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\9f34714a1f7b3414f59108847d130934\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\689c29b54fd922692c2c245f3bd1ad63\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\689c29b54fd922692c2c245f3bd1ad63\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\81c2afde4530445991e32e40187df0a0\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\81c2afde4530445991e32e40187df0a0\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\ed1aa702cb36d6ac6ea3fd9418143299\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\ed1aa702cb36d6ac6ea3fd9418143299\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\877c7cdd127e471553ae6f8a4c2cafdc\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\877c7cdd127e471553ae6f8a4c2cafdc\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\c32c5e306f94c5a8a3bc8773e1855510\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\c32c5e306f94c5a8a3bc8773e1855510\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:documentfile:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\eda549a0c0abe3a316d5da931c7649c0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:documentfile:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\eda549a0c0abe3a316d5da931c7649c0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\61e9e53a4f70e9a16ebb9e789ec2cf36\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\61e9e53a4f70e9a16ebb9e789ec2cf36\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:print:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\a0bcd876b74dd8edf351e4791884073f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:print:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\a0bcd876b74dd8edf351e4791884073f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f0c0dd0a3ef868a70768a9261552459a\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\f0c0dd0a3ef868a70768a9261552459a\AndroidManifest.xml:20:5-44
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/e8fc56ea68f919078cbbd4c9d56c0d5a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/e8fc56ea68f919078cbbd4c9d56c0d5a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/239b7a3bd7c35ad4b72d7b3ac6c462cc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/239b7a3bd7c35ad4b72d7b3ac6c462cc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/macbook/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/adaa42fc4491d3a28daa9f1f6ebc3048/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/macbook/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/adaa42fc4491d3a28daa9f1f6ebc3048/AndroidManifest.xml:5:5-7:41
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0.aar/988c8c39c87c462c9712523988f08b86/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0.aar/988c8c39c87c462c9712523988f08b86/AndroidManifest.xml:20:5-44
+MERGED from [com.android.volley:volley:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/volley-1.1.1.aar/42753fa7c4b4bb3d07b33db472fa0126/AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/volley-1.1.1.aar/42753fa7c4b4bb3d07b33db472fa0126/AndroidManifest.xml:7:5-43
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/f54381a2562987f62f545aa219272a5e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/f54381a2562987f62f545aa219272a5e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/ca55afb80d7d806ddeca83b37879cc6f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/ca55afb80d7d806ddeca83b37879cc6f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/6fe1c91c0d63ab2a13bc748826d9a99f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/6fe1c91c0d63ab2a13bc748826d9a99f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/0aee43952bbd743812be31d39a05b3dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/0aee43952bbd743812be31d39a05b3dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/a37ae913bede6ca056a33c419b3d677f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/a37ae913bede6ca056a33c419b3d677f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/e0fe66bf64adb9105cd480c67ea9bfc4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/e0fe66bf64adb9105cd480c67ea9bfc4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/4c42f282bf59882132eca64b080dfbc8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/transition-28.0.0.aar/4c42f282bf59882132eca64b080dfbc8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0.aar/11e59b54fffb9614333f0d9c58e39b04/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0.aar/11e59b54fffb9614333f0d9c58e39b04/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/d08f24711648ea8fd58a45c15423afd3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/d08f24711648ea8fd58a45c15423afd3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/7a6eb4f6e1d521e0dbe2dba9cb58f5e2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/7a6eb4f6e1d521e0dbe2dba9cb58f5e2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/b107a465379bca52ded62ca52f7eb9a4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/b107a465379bca52ded62ca52f7eb9a4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/c478a48c1f24e61944bd4d91bd471c01/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/c478a48c1f24e61944bd4d91bd471c01/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/ba69117d87c783c282a3f70a9c191526/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/ba69117d87c783c282a3f70a9c191526/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/04c7a229e8409abb1a3e4e107cb0d5b3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/04c7a229e8409abb1a3e4e107cb0d5b3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/47c5d6af91dfc521a18dad150cb5f338/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/47c5d6af91dfc521a18dad150cb5f338/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/2f92cd3b81be066cca59b9789df7d7dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/2f92cd3b81be066cca59b9789df7d7dd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/9bb178a719051db016ff613757986dcb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/9bb178a719051db016ff613757986dcb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/9771aea2c97152a3352bd63a21343b34/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/9771aea2c97152a3352bd63a21343b34/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/5c6c82ad80dac3d24ded583705912f90/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/5c6c82ad80dac3d24ded583705912f90/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/3ddf2eee973f16e378cfefb2d77ce628/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/3ddf2eee973f16e378cfefb2d77ce628/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/a5b9b99ad890665e366a48baca83a7c3/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/a5b9b99ad890665e366a48baca83a7c3/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/6a91f1add14b1c1787b2c6bc306944b7/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/6a91f1add14b1c1787b2c6bc306944b7/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/30ecae0c16ea6770d86699c280944394/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/30ecae0c16ea6770d86699c280944394/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/25d49d3af98969bdd4fe295d17a2ed89/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/25d49d3af98969bdd4fe295d17a2ed89/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/9ef90eb671cd694026955022ae8a6166/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/9ef90eb671cd694026955022ae8a6166/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/055c4d52ff4436af4bf08a5580aee3ac/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/055c4d52ff4436af4bf08a5580aee3ac/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/8321b0061a6799f8c63ad73828cc523f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/8321b0061a6799f8c63ad73828cc523f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/ef62f46616d4544fe772f2f6dafa8ccd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/ef62f46616d4544fe772f2f6dafa8ccd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d9aaac37c92c55a7ca328485f38db9a9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/macbook/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/d9aaac37c92c55a7ca328485f38db9a9/AndroidManifest.xml:20:5-44
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\aftab\AndroidStudioProjects\MyApplication2\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+		ADDED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/AndroidManifest.xml
 provider#android.arch.lifecycle.ProcessLifecycleOwnerInitializer
-ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:23:9-27:43
+ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:23:9-27:43
 	android:authorities
-		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:25:13-68
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:25:13-68
 	android:multiprocess
-		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:27:13-40
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:27:13-40
 	android:exported
-		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:26:13-37
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:26:13-37
 	android:name
-		ADDED from [android.arch.lifecycle:extensions:1.1.1] C:\Users\aftab\.gradle\caches\transforms-1\files-1.1\extensions-1.1.1.aar\4144deda61c471c7fb42b132ed206443\AndroidManifest.xml:24:13-83
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/macbook/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/138be0fc10449e9bbb42843df936d670/AndroidManifest.xml:24:13-83

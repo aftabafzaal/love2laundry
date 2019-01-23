@@ -1,23 +1,23 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\aftab\\AndroidStudioProjects\\MyApplication2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+            "outputFile": "/Users/macbook/AndroidStudioProjects/love2laundry/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\aftab\\AndroidStudioProjects\\MyApplication2\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "source": "/Users/macbook/AndroidStudioProjects/love2laundry/app/src/main/res/values-w820dp/dimens.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "4",
-                        "startOffsets": "295",
-                        "endColumns": "57",
-                        "endOffsets": "348"
+                        "startLines": "3,4,5,1,7,6",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "130,188,244,16,351,293",
+                        "endColumns": "57,55,48,41,49,57",
+                        "endOffsets": "183,239,288,53,396,346"
                     },
                     "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "57",
-                        "endOffsets": "108"
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,113,169,218,260,310",
+                        "endColumns": "57,55,48,41,49,57",
+                        "endOffsets": "108,164,213,255,305,363"
                     }
                 }
             ]

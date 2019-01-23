@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\aftab\\AndroidStudioProjects\\MyApplication2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
+            "outputFile": "/Users/macbook/AndroidStudioProjects/love2laundry/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\aftab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\5c688798ed96a6b6270c2a75da25f3ae\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "source": "/Users/macbook/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/239b7a3bd7c35ad4b72d7b3ac6c462cc/res/values-ldltr-v21/values-ldltr-v21.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

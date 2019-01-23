@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/discount_worth_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/discount_worth"
+        android:textColor="#000" />
+
+
+    <TextView
+        android:id="@+id/discount_worth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Demo"
+        android:layout_toRightOf="@+id/discount_worth_text"
+        android:textColor="#000" />
+
+
+    <TextView
+        android:id="@+id/invoice_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/invoice"
+        android:textColor="#000"
+        android:layout_below="@+id/discount_worth_text"
+
+        />
+
+    <TextView
+        android:id="@+id/invoice_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Demo"
+        android:textColor="#000"
+        android:layout_below="@+id/discount_worth"
+        android:layout_toRightOf="@+id/invoice_text"
+        />
+
+    <TextView
+        android:id="@+id/date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:textColor="#000"
+        android:layout_below="@+id/invoice_text" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:layout_below="@+id/invoice_no"
+        android:layout_toRightOf="@+id/date_text" />
+
+    <TextView
+        android:id="@+id/code_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/code"
+        android:textColor="#000"
+        android:layout_below="@+id/date_text" />
+
+    <TextView
+        android:id="@+id/code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="adsdasd"
+        android:textColor="#000"
+        android:layout_below="@+id/date"
+        android:layout_toRightOf="@+id/code_text" />
+
+
+
+    <TextView
+        android:id="@+id/price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:textColor="#000"
+        android:layout_below="@+id/code_text" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Demo"
+        android:textColor="#000"
+        android:layout_toRightOf="@+id/price_text"
+        android:layout_below="@+id/code"
+        />
+
+    <View
+        android:layout_below="@+id/price"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#FF0000FF" />
+
+
+
+
+</RelativeLayout>

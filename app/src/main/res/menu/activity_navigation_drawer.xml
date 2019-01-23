@@ -31,6 +31,16 @@
             android:title="Laundry Settings" />
 
         <item
+            android:id="@+id/discount_codes"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Discount Codes" />
+
+        <item
+            android:id="@+id/payment_cards"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Payments Cards" />
+
+        <item
             android:id="@+id/orders"
             android:icon="@drawable/ic_menu_manage"
             android:title="Orders" />

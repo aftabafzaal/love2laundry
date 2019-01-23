@@ -77,6 +77,8 @@
     <string name="title_activity_loyalties">Loyalties</string>
     <string name="title_activity_account">Account Settings</string>
     <string name="title_activity_laundry_settings">Laundry Settings</string>
+    <string name="title_activity_discount_codes">Discount Codes</string>
+    <string name="title_activity_payment_cards">Payment Cards</string>
     <string name="available_codes">Available Codes</string>
     <string name="history">History</string>
     <string name="date">Date</string>
@@ -90,9 +92,8 @@
     <string name="change_password">Change Password</string>
     <string name="save">Save</string>
     <string name="update">Update</string>
-
-
-
+    <string name="discount_worth">Discount Worth</string>
+    <string name="code">Code</string>
 
 
 </resources>

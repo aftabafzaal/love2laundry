@@ -28,7 +28,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.love2laundry.project.myapplication.CheckoutActivity"
+            android:name="com.love2laundry.project.myapplication.PaymentCardsActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -38,7 +38,54 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.love2laundry.project.myapplication.CheckoutActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.DiscountsActivity"
+            android:label="@string/title_activity_payment_cards"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.LaundrySettingsActivity"
+            android:label="@string/title_activity_discount_codes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.LoyaltyActivity"
+            android:label="@string/title_activity_laundry_settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.DashboardActivity"
+            android:label="@string/title_activity_account"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.NavigationActivity"
+            android:label="@string/title_activity_loyalty"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name="com.love2laundry.project.myapplication.PickCountryActivity"
+            android:label="@string/title_activity_loyalty"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.InvoicesActivity"
+            android:label="@string/title_activity_invoices"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.EditInvoiceActivity"
+            android:label="@string/title_activity_edit_invoice"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.CopyInvoiceActivity"
+            android:label="@string/title_activity_invoices"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.SplashActivity"
+            android:label="@string/title_activity_checkout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.love2laundry.project.myapplication.AccountActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -51,24 +98,12 @@
             android:name="com.love2laundry.project.myapplication.ListingActivity"
             android:label="@string/app_name" />
         <activity
-            android:name="com.love2laundry.project.myapplication.LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name="com.love2laundry.project.myapplication.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.love2laundry.project.myapplication.DashboardActivity"
+            android:name="com.love2laundry.project.myapplication.InvoiceActivity"
             android:label="@string/title_activity_dashboard"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.love2laundry.project.myapplication.NavigationActivity"
-            android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.love2laundry.project.myapplication.SplashActivity"
-            android:label="@string/title_activity_checkout"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.love2laundry.project.myapplication.DatesActivity"
@@ -79,6 +114,7 @@
         <activity
             android:name="com.love2laundry.project.myapplication.CreditCardsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <!--
         <activity
             android:name=".MainActivity"

@@ -45,6 +45,12 @@ public class Config extends AppCompatActivity {
             editor.putString("apiInvoice", UK.API_INVOICE);
             editor.putString("apiDashboard", UK.API_DASHBOARD);
             editor.putString("apiInvoices", UK.API_INVOICES);
+            editor.putString("apiLoyalties", UK.API_LOYALTIES);
+            editor.putString("apiDiscounts", UK.API_DISCOUNTS);
+
+
+
+
 
         } else if (country.equals("uae")) {
             UAE location = new UAE();
@@ -66,6 +72,8 @@ public class Config extends AppCompatActivity {
             editor.putString("apiInvoice", UAE.API_INVOICE);
             editor.putString("apiDashboard", UAE.API_DASHBOARD);
             editor.putString("apiInvoices", UAE.API_INVOICES);
+            editor.putString("apiLoyalties", UK.API_LOYALTIES);
+            editor.putString("apiDiscounts", UK.API_DISCOUNTS);
 
         } else if (country == null) {
             Log.e("Pick Country", "Error in country");
