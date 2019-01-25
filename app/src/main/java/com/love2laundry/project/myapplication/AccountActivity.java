@@ -47,13 +47,7 @@ public class AccountActivity extends Navigation {
         final String member_id = sharedpreferences.getString("member_id", null);
         //String firstName = sharedpreferences.getString("firstName", null);
         //String lastName = sharedpreferences.getString("lastName", null);
-
-
-
-
         String memberJson = sharedpreferences.getString("member_data", null);
-
-
 
         JSONObject member= null;
         try {
@@ -205,15 +199,11 @@ public class AccountActivity extends Navigation {
 
                                             String result= jsonObj.getString("result");
                                             if(result.equals("Success")) {
-                                                //String invoiceId= jsonObj.getString("InvoiceID");
                                                 String message= jsonObj.getString("message");
-                                                //String type= jsonObj.getString("type");
-
 
                                                 Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
 
                                                 String memberData = jsonObj.getString("data");
-                                                Log.e(TAG+" memberData -> ", ""+memberData);
 
                                                 SharedPreferences.Editor member = sharedpreferences.edit();
 

@@ -13,8 +13,8 @@ tools:openDrawer="start">
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        >
 
-        tools:context=".PaymentCardsActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -23,60 +23,80 @@ tools:openDrawer="start">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/AppTheme.PopupOverlay" >
 
+                <!--
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="gravity"
-                android:id="@+id/add"
-                android:textSize="12sp"
+                android:id="@+id/showevents"
+                android:textSize="8sp"
                 android:layout_gravity="right"
                 android:background="@null"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:textColor="#FFF"
-                android:text="ADD"/>
+                android:text="UPCOMING"/>
+                -->
+
+            </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.AppBarLayout>
 
 
-            <RelativeLayout
-                android:id="@+id/content_account"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_below="@+id/drawer_layout"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                >
-
-                <ListView
-                    android:id="@+id/list"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-
-            </RelativeLayout>
+        <ScrollView
+            android:id="@+id/checkout_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="55dip"
+            >
+            <include layout="@layout/form_payment_card" />
 
 
 
 
 
 
+        </ScrollView>
     </android.support.design.widget.CoordinatorLayout>
 
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="gravity"
+        >
+        <LinearLayout
+            android:id="@+id/content_account"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_below="@+id/drawer_layout"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+    <Button
 
+        android:id="@+id/delete_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        android:textColor="#FFF"
+        android:background="#FF0000"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center_vertical|bottom"
+        android:textStyle="bold"
 
+        />
 
+        </LinearLayout >
 
-
-
-
-
-
+    </android.support.design.widget.CoordinatorLayout>
 
 <android.support.design.widget.NavigationView
     android:id="@+id/nav_view"

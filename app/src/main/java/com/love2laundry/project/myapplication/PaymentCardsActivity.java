@@ -1,5 +1,6 @@
 package com.love2laundry.project.myapplication;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -65,6 +66,25 @@ public class PaymentCardsActivity extends Navigation {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         cardList = new ArrayList<>();
+
+
+        Button addButton = (Button) findViewById(R.id.add);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(PaymentCardsActivity.this, AddPaymentCardActivity.class);
+
+                startActivityForResult(intent, 10);
+                finish();
+
+
+            }
+        });
+
+
+
+
         new GetCards().execute();
     }
 
@@ -155,8 +175,8 @@ public class PaymentCardsActivity extends Navigation {
             lv = (ListView) findViewById(R.id.list);
 
             ListAdapter adapter = new SimpleAdapter(PaymentCardsActivity.this, cardList,
-                    R.layout.list_card, new String[]{"id", "title", "name", "MaskedNumber"},
-                    new int[]{R.id.title, R.id.name, R.id.maskedNumber});
+                    R.layout.list_card, new String[]{"name"},
+                    new int[]{R.id.name});
 
             int s = cardList.size();
             lv.setAdapter(adapter);
@@ -166,6 +186,20 @@ public class PaymentCardsActivity extends Navigation {
 
 
                     Log.e("cardList ", "" + cardList.get(i));
+
+
+                    Intent intent = new Intent(PaymentCardsActivity.this, EditPaymentCardActivity.class);
+
+                    intent.putExtra("id", cardList.get(i).get("id"));
+                    intent.putExtra("name", cardList.get(i).get("name"));
+                    intent.putExtra("title", cardList.get(i).get("title"));
+                    intent.putExtra("maskedNumber", cardList.get(i).get("maskedNumber"));
+                    intent.putExtra("expireMonth", cardList.get(i).get("expireMonth"));
+                    intent.putExtra("maskedCode", cardList.get(i).get("maskedCode"));
+                    intent.putExtra("expireYear", cardList.get(i).get("expireYear"));
+                    startActivityForResult(intent, 10);
+                    finish();
+
 
 
                     //selectedCardId = cardList.get(i).get("id");

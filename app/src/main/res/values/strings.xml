@@ -94,6 +94,13 @@
     <string name="update">Update</string>
     <string name="discount_worth">Discount Worth</string>
     <string name="code">Code</string>
+    <string name="name">Name</string>
+    <string name="number">Number</string>
+    <string name="year">Year</string>
+    <string name="month">Month</string>
+    <string name="cvv_code">CVV Code</string>
+    <string name="delete">Delete</string>
+
 
 
 </resources>

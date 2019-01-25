@@ -6,8 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import android.view.View;
@@ -39,7 +43,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class ListingActivity extends Config {
+public class ListingActivity extends Navigation {
 
     private ViewPager mViewPager;
 
@@ -70,6 +74,18 @@ public class ListingActivity extends Config {
         super.Config();
 
         setContentView(R.layout.activity_listing);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
         currencyCode = sharedpreferences.getString("currencyCode", null);
@@ -138,16 +154,22 @@ public class ListingActivity extends Config {
 
                                     int number = host.getCurrentTab();
                                     activity.setTitle(tabId);
+                                    Log.e(number+"---> ",tabId);
                                     getServicesView(number, service_records[number], tabId);
+
                                 }
                             });
+
 
                             for (int i = 0; i < cats.length; i++) {
                                 TabHost.TabSpec spec = host.newTabSpec(cats[i]);
                                 spec.setIndicator(cats[i]);
                                 spec.setContent(R.id.tab1);
+                                //getServicesView(0, service_records[0], "LAUNDRY");
                                 host.addTab(spec);
                             }
+                            host.setCurrentTab(1);
+                            //getServicesView(0, service_records[0], "LAUNDRY");
 
                         } catch (JSONException e) {
                             Log.e(TAG, "JSONException " + e.getMessage());
@@ -162,9 +184,10 @@ public class ListingActivity extends Config {
                 Log.e(TAG, "VolleyError " + error.getMessage());
             }
         });
-        stringRequest.setShouldCache(false);
-        queue.getCache().clear();
+        stringRequest.setShouldCache(true);
+        //queue.getCache().clear();
         queue.add(stringRequest);
+
     }
 
     protected void getServicesView(int number, JSONArray service_records, String categoryName) {
@@ -326,5 +349,6 @@ public class ListingActivity extends Config {
 
         };
         lv.setAdapter(adapter);
+
     }
 }

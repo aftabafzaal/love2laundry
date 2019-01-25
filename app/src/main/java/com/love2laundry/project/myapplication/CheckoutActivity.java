@@ -74,21 +74,8 @@ public class CheckoutActivity extends Navigation
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
-
-
         super.Navigation();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
 
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
@@ -135,6 +122,7 @@ public class CheckoutActivity extends Navigation
         additionalInstruction = (EditText) findViewById(R.id.additional_instruction);
 
         showPreferences = cartDb.showPreferences(androidId, countryCode);
+
         if(showPreferences==true) {
             new GetPreferences().execute();
         }
@@ -230,8 +218,6 @@ public class CheckoutActivity extends Navigation
             }
         });
 
-
-
         services = cartDb.getServices(androidId, countryCode);
         cartAdapter = new MyCartAdapter(services);
 
@@ -268,9 +254,7 @@ public class CheckoutActivity extends Navigation
             public boolean onTouch(View arg0, MotionEvent arg1) {
 
                 Intent intent = new Intent(CheckoutActivity.this, CreditCardsActivity.class);
-                intent.putExtra("type", "credit_card");
-                intent.putExtra("title", "Credit Card");
-                intent.putExtra("action", sharedPreferencesCountry.getString("apiCreditCards", null) + "/" + member_id);
+
                 startActivityForResult(intent, 10);
                 return false;
             }
@@ -430,6 +414,18 @@ public class CheckoutActivity extends Navigation
                 }
             }
         });
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -457,8 +453,15 @@ public class CheckoutActivity extends Navigation
                 deliveryTimeButton.setText(deliveryTimeSelected);
 
             } else if (returnType.equals("credit_card")) {
-                cardId = data.getExtras().getString("selectedCardId");
-                creditCardField.setText(data.getExtras().getString("selectedCardTitle"));
+
+
+                String selectCardName=data.getExtras().getString("selectedCardName");
+                if(selectCardName != null && !selectCardName.equals("")) {
+                    cardId = data.getExtras().getString("selectedCardId");
+                    creditCardField.setText(data.getExtras().getString("selectedCardName"));
+                }
+
+
             }
         }
     }
@@ -567,9 +570,4 @@ public class CheckoutActivity extends Navigation
 
         }
     }
-
-
-
-
-
 }

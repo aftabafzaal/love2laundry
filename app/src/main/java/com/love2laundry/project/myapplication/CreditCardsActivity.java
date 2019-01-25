@@ -2,11 +2,13 @@ package com.love2laundry.project.myapplication;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -38,12 +40,29 @@ public class CreditCardsActivity extends Config {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dates);
-        title = getIntent().getStringExtra("title");
-        type = getIntent().getStringExtra("type");
-        action = getIntent().getStringExtra("action");
-        cardList = new ArrayList<>();
+        setContentView(R.layout.activity_credit_cards);
+        //title = getIntent().getStringExtra("title");
+        //type = getIntent().getStringExtra("type");
+        //action = getIntent().getStringExtra("action");
 
+
+
+        Button addButton = (Button) findViewById(R.id.add);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(CreditCardsActivity.this, AddCardSubActivity.class);
+
+                startActivityForResult(intent, 10);
+                finish();
+
+
+            }
+        });
+
+
+        cardList = new ArrayList<>();
         new GetDates().execute();
     }
 
@@ -61,10 +80,18 @@ public class CreditCardsActivity extends Config {
         protected Void doInBackground(Void... arg0) {
 
 
+            //String action=sharedPreferencesCountry.getString("apiCreditCards", null) + "/" + member_id);
+
+
             HttpHandler sh = new HttpHandler();
             // Making a request to url and getting response
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
             String server = sharedpreferences.getString("server", null);
+            SharedPreferences member = getSharedPreferences("member", MODE_PRIVATE);
+            String member_id = member.getString("member_id", null);
+
+            String action = sharedpreferences.getString("apiCreditCards", null) + "/" + member_id;
+
             String url = server + action;
             String jsonStr = sh.makeServiceCall(url);
             Log.e(TAG, url);
@@ -132,8 +159,8 @@ public class CreditCardsActivity extends Config {
             lv = (ListView) findViewById(R.id.list);
             Log.e("cardList ", "" + cardList);
             ListAdapter adapter = new SimpleAdapter(CreditCardsActivity.this, cardList,
-                    R.layout.list_card, new String[]{"id", "title", "name", "MaskedNumber"},
-                    new int[]{R.id.title, R.id.name, R.id.maskedNumber});
+                    R.layout.list_card, new String[]{"name"},
+                    new int[]{R.id.name});
 
             int s = cardList.size();
             lv.setAdapter(adapter);
@@ -159,7 +186,7 @@ public class CreditCardsActivity extends Config {
         data.putExtra("selectedCardName", selectedCardName);
         data.putExtra("selectedCardTitle", selectedCardTitle);
         data.putExtra("selectedCardMaskedNumber", selectedCardMaskedNumber);
-        data.putExtra("returnType", type);
+        data.putExtra("returnType", "credit_card");
         setResult(RESULT_OK, data);
         super.finish();
     }
