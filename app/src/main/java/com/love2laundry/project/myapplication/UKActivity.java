@@ -18,7 +18,7 @@ public class UKActivity extends Config {
     private String TAG = UKActivity.class.getSimpleName();
     private EditText postCode;
     private View mProgressView;
-    private View mUKFormView;
+    ///private View mUKFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class UKActivity extends Config {
                 attemptLogin();
             }
         });
-        mUKFormView = findViewById(R.id.uk_form);
+        ///mUKFormView = findViewById(R.id.uk_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 

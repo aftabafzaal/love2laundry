@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -154,7 +155,7 @@ public class ListingActivity extends Navigation {
 
                                     int number = host.getCurrentTab();
                                     activity.setTitle(tabId);
-                                    Log.e(number+"---> ",tabId);
+                                   // Log.e(number+"---> ",tabId);
                                     getServicesView(number, service_records[number], tabId);
 
                                 }
@@ -262,12 +263,12 @@ public class ListingActivity extends Navigation {
         }
 
         ListAdapter adapter = new SimpleAdapter(ListingActivity.this, services,
-                R.layout.tabs_data, new String[]{"title", "mobileImagePath", "total", "id", "price", "discount", "offerPrice"},
-                new int[]{R.id.title, R.id.mobileImagePath, R.id.quantity, R.id.id, R.id.price, R.id.discount, R.id.offerPrice}) {
+                R.layout.tabs_data, new String[]{"title", "total", "id", "price", "discount", "offerPrice"},
+                new int[]{R.id.title, R.id.quantity, R.id.id, R.id.price, R.id.discount, R.id.offerPrice}) {
             @Override
             public View getView(final int position, View convertView, ViewGroup parent) {
                 final View v = super.getView(position, convertView, parent);
-                Button add = v.findViewById(R.id.add);
+                ImageButton add = v.findViewById(R.id.add);
 
                 ImageView ivBasicImage = (ImageView) findViewById(R.id.mobileImagePath);
 
@@ -316,7 +317,7 @@ public class ListingActivity extends Navigation {
                         }
                     }
                 });
-                Button minus = v.findViewById(R.id.minus);
+                ImageButton minus = v.findViewById(R.id.minus);
                 minus.setOnClickListener(new View.OnClickListener() {
 
                     @Override
