@@ -30,7 +30,7 @@ class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHolder> {
         // Log.e("onCreateViewHolder view","view");
         View viewHolder = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_cart_checkout, parent, false);
-
+        // Log.e("onCreateViewHolder view","view");
         return new MyViewHolder(viewHolder);
     }
 
@@ -44,6 +44,7 @@ class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHolder> {
 
         for (int i = 0; i < size; i++) {
 
+            // HashMap<String, String> service = new HashMap<>();
             JSONObject service = new JSONObject();
             service.put("ID", services.get(i).get("service_id"));
             service.put("Title", services.get(i).get("serviceName"));
@@ -59,12 +60,14 @@ class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHolder> {
             service.put("CategoryName", services.get(i).get("categoryName"));
             service.put("IsPackage", services.get(i).get("isPackage"));
 
+            Log.e("test -> ",services.get(i).get("isPackage"));
             service.put("PreferencesShow", services.get(i).get("preferencesShow"));
 
             service.put("Quantity", services.get(i).get("quantity"));
             service.put("Price", services.get(i).get("unitPrice"));
             service.put("Total", services.get(i).get("price"));
             service.put("OfferPrice", services.get(i).get("unitPrice"));
+
 
             Double price = Double.parseDouble(services.get(i).get("price"));
             servicesTotal += price;
@@ -75,32 +78,20 @@ class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHolder> {
             jsonArray.put(service);
 
         }
-
         return jsonArray;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
 
-
-        Log.e(" ->--- ",services.get(i).get("serviceName"));
-
-
-        for (int j=0;i<=services.size();j++) {
-            myViewHolder.serviceName.setText(services.get(j).get("serviceName"));
-            myViewHolder.quantity.setText(services.get(j).get("quantity"));
-            myViewHolder.unitPrice.setText(services.get(j).get("unitPrice"));
-        }
-
-
+        myViewHolder.serviceName.setText(services.get(i).get("serviceName"));
+        myViewHolder.quantity.setText(services.get(i).get("quantity"));
+        myViewHolder.unitPrice.setText(services.get(i).get("unitPrice"));
         //myViewHolder.price.setText(services.get(i).get("price"));
     }
 
     @Override
     public int getItemCount() {
-
-        Log.e("services.size() -> ",""+services.size());
-
         return services.size();
     }
 
@@ -112,6 +103,7 @@ class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHolder> {
             serviceName = (TextView) view.findViewById(R.id.serviceName);
             quantity = (TextView) view.findViewById(R.id.quantity);
             unitPrice = (TextView) view.findViewById(R.id.unitPrice);
+            // price = (TextView) view.findViewById(R.id.price);
         }
     }
 }

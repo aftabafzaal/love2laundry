@@ -53,7 +53,6 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
         currency=currencyCode;
         deviceId=androidId;
         country=countryCode;
-        Log.e("->  ",country);
     }
 
     @NonNull
@@ -188,22 +187,12 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
-
-
-
-
                 }
             });
-
-
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
