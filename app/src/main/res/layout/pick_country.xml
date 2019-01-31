@@ -86,6 +86,7 @@
             android:layout_toRightOf="@+id/image_uk"
             android:fontFamily="@font/oxygen_regular"
             android:text="@string/uk"
+
             android:textSize="20sp" />
 
         <RadioButton
@@ -95,6 +96,7 @@
             android:layout_height="35dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:checked="true"
             android:layout_alignParentRight="true"
             android:onClick="onRadioButtonClicked" />
 

@@ -49,9 +49,6 @@ public class Config extends AppCompatActivity {
             editor.putString("apiDiscounts", UK.API_DISCOUNTS);
 
 
-
-
-
         } else if (country.equals("uae")) {
             UAE location = new UAE();
             editor.putString("currencyCode", UAE.CURRENCY_CODE);

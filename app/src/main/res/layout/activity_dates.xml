@@ -12,8 +12,6 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
 
-
-
     </android.support.design.widget.AppBarLayout>
 
     <ListView

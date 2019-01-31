@@ -42,6 +42,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -93,7 +94,9 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         super.Config();
-        populateAutoComplete();
+        //getActionBar().setDisplayHomeAsUpEnabled(false);
+
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mFirstNameView = (EditText) findViewById(R.id.firstName);
@@ -128,24 +131,12 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
         mProgressView = findViewById(R.id.login_progress);
     }
 
-    private void populateAutoComplete() {
-
-        getLoaderManager().initLoader(0, null, this);
-    }
 
 
     /**
      * Callback received when a permissions request has been completed.
      */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
-            }
-        }
-    }
+
 
 
     /**
@@ -232,7 +223,7 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
             // form field with an error.
             focusView.requestFocus();
         } else {
-            Log.e("Error.firstName", firstName);
+            //Log.e("Error.firstName", firstName);
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             //showProgress(true);
@@ -289,31 +280,15 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
-
-                // Select only email addresses.
-                ContactsContract.Contacts.Data.MIMETYPE +
-                        " = ?", new String[]{ContactsContract.CommonDataKinds.Email
-                .CONTENT_ITEM_TYPE},
-
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
+        return null;
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
 
-        addEmailsToAutoComplete(emails);
+
+
+
     }
 
     @Override
@@ -321,25 +296,10 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
 
     }
 
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(RegisterActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
-    }
 
 
-    private interface ProfileQuery {
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
 
-        int ADDRESS = 0;
-        int IS_PRIMARY = 1;
-    }
+
 
     /**
      * Represents an asynchronous login/registration task used to authenticate
@@ -375,10 +335,8 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
             String server = sharedpreferences.getString("server", null);
             String action = sharedpreferences.getString("apiRegister", null);
-            //String q="?type=load&device_id="+androidId+"&post_code="+postCode.getText().toString()+"&versions=1|2|3";
             String url = server + action;
-            //String url = Con;
-            //Log.e("Error.url", url);
+
 
             RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -391,7 +349,6 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
                             try {
                                 jsonObj = new JSONObject(response);
                                 String result = jsonObj.getString("result");
-                                // Log.e("result --> ",result);
                                 if (result.equals("Error")) {
                                     String message = jsonObj.getString("message");
                                     Toast toast = Toast.makeText(getApplicationContext(),
@@ -402,6 +359,10 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
 
                                     sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
                                     String member_id = jsonObj.getString("MemberID");
+                                    JSONObject memberJson = jsonObj.getJSONObject("data");
+                                    Log.e("member ", "test " + memberJson.toString());
+                                    JSONArray preferences = jsonObj.getJSONArray("preferences");
+                                    Log.e("preferences ", "preferences " + preferences.toString());
                                     SharedPreferences.Editor member = sharedpreferences.edit();
 
                                     member.putString("member_id", member_id);

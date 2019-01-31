@@ -3,19 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:padding="5dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp" />
 
     <TextView
+        android:drawableLeft="@drawable/ic_correct"
+        android:visibility="gone"
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="50dp"
-        android:text="Demo"
-        android:textColor="#000" />
+        android:layout_marginLeft="8dp"
+        android:textColor="#000"
+        android:gravity="center|center_vertical"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        />
+
+    <TextView
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:visibility="gone"
+        android:gravity="center|center_vertical"
+        android:drawableLeft="@drawable/ic_close"
+        android:id="@+id/disable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:textColor="#000"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+
+        />
+
+
 </RelativeLayout>

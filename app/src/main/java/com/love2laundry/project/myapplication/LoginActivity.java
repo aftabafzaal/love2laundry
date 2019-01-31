@@ -80,13 +80,12 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
         sharedpreferencesMember = getSharedPreferences("member", MODE_PRIVATE);
         String member_id = sharedpreferencesMember.getString("member_id", null);
 
-        /*
         if(member_id!=null){
             startActivity(new Intent(LoginActivity.this,
                     CheckoutActivity.class));
 
         }
-        */
+
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -276,7 +275,6 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
             String server = sharedpreferences.getString("server", null);
             String action = sharedpreferences.getString("apiLogin", null);
             String url = server + action;
-            //Log.e(TAG, "Login url " + url);
             RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                     new Response.Listener<String>() {
@@ -302,7 +300,7 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
                                     JSONArray preferences = jsonObj.getJSONArray("preferences");
 
                                     //JSONArray data = categories.getJSONArray("data");
-                                    Log.e(TAG, "test " + memberJson.getString("FirstName"));
+
 
                                     String member_id = memberJson.getString("ID");
                                     String firstName = memberJson.getString("FirstName");

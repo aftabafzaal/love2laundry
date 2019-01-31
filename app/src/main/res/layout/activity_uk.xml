@@ -46,6 +46,7 @@
             android:layout_height="60dp"
             android:drawableEnd="@drawable/ic_location_arrow"
             android:drawablePadding="8dp"
+            android:text="e12pe"
             android:maxLines="1"
             android:singleLine="true"
             android:inputType="text"/>

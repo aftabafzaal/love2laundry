@@ -14,56 +14,101 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        >
+        tools:ignore="MissingConstraints">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/checkout_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp">
 
 
-            >
+            <TextView
 
-            <EditText
-                android:id="@+id/my_address"
                 android:layout_width="match_parent"
-                android:layout_marginTop="52dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/address"
-                android:inputType="none"
-                android:text="My Address" />
+                android:text="@string/address"
+                style="@style/SubTitleHeading"
+                />
 
-            <EditText
+
+
+            <TextView
+                android:id="@+id/zipcode_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/post_code"
+                style="@style/label"
+                />
+
+            <TextView
                 android:id="@+id/post_code"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:hint="@string/post_code"
-                android:padding="10dp"
-                android:layout_below="@+id/my_address" />
+                style="@style/TextInputEditText"
+                />
+
+            <TextView
+                android:id="@+id/building_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/building_name_number"
+                style="@style/label"
+                />
 
             <EditText
                 android:id="@+id/building"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:hint="@string/building_name_number"
-                android:padding="10dp"
-                android:layout_below="@+id/post_code" />
+                style="@style/TextInputEditText"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/street_name"
+                style="@style/label"
+                />
 
             <EditText
                 android:id="@+id/street"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:hint="@string/street_name"
-                android:padding="10dp"
-                android:layout_below="@+id/building" />
+                style="@style/TextInputEditText"
+
+                />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/town"
+                style="@style/label"
+                />
+
 
             <EditText
                 android:id="@+id/town"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:hint="@string/town"
-                android:padding="10dp"
-                android:layout_below="@+id/street" />
+                style="@style/TextInputEditText"
+                 />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose Pick up date and Time"
+                style="@style/SubTitleHeading"
+                />
 
 
             <Button
@@ -71,49 +116,67 @@
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="2dp"
                 android:text="@string/pick_up_date"
                 android:textStyle="bold"
-                android:layout_below="@+id/street" />
+                android:drawableLeft="@drawable/ic_calendar"
+                android:gravity="left|center"
+                android:background="@android:color/transparent"
+                 />
 
             <Button
                 android:id="@+id/pick_up_time"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/pick_up_time"
                 android:textStyle="bold"
-                android:layout_below="@+id/pick_up_date" />
+                android:drawableLeft="@drawable/ic_time"
+                android:gravity="left|center"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose Dekivery date and Time"
+                style="@style/SubTitleHeading"
+                />
 
             <Button
                 android:id="@+id/delivery_date"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/delivery_date"
                 android:textStyle="bold"
-                android:layout_below="@+id/pick_up_time" />
+                android:drawableLeft="@drawable/ic_calendar"
+                android:gravity="left|center"
+                android:background="@android:color/transparent" />
 
             <Button
                 android:id="@+id/delivery_time"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/delivery_time"
                 android:textStyle="bold"
-                android:layout_below="@+id/delivery_date" />
+                android:drawableLeft="@drawable/ic_time"
+                android:gravity="left|center"
+                android:background="@android:color/transparent" />
+
 
             <TextView
-                android:id="@+id/my_cart"
-                android:layout_width="wrap_content"
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#5d5d5d"
                 android:text="@string/my_cart"
-                android:textStyle="bold"
-                android:layout_below="@+id/delivery_time" />
+                style="@style/SubTitleHeading"
+                />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/list"
@@ -187,7 +250,7 @@
                 android:text="@string/action_check_out"
                 android:textStyle="bold"
                 android:layout_below="@+id/credit_card" />
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

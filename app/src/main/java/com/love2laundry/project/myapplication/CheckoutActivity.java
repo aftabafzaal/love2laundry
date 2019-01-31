@@ -50,9 +50,11 @@ public class CheckoutActivity extends Navigation
     private RecyclerView.Adapter cartAdapter, preferencesAdapter;
     private String TAG = CreditCardsActivity.class.getSimpleName();
 
-    String franchise_id, pickUpTimeSelected, pickUpDate, pickUpTime, deliveryDate, deliveryTimeSelected, deliveryTime, cardId;
+    String franchise_id, cardId;
     Button pickUpDateButton, pickUpTimeButton, deliveryDateButton, deliveryTimeButton, checkout_button;
-    EditText postCodeField, streetField, buildingField, townField, accountNotes, additionalInstruction;
+    EditText streetField, buildingField, townField, accountNotes, additionalInstruction;
+
+    TextView postCodeField;
 
     private Cart cartDb;
     String countryCode, currencyCode;
@@ -69,14 +71,14 @@ public class CheckoutActivity extends Navigation
     Boolean showPreferences=false;
     String selectedP = "";
     String memberPreferences;
+    String pickUpDate,pickUpTime,deliveryDate,deliveryTime,deliveryDateSelected,dateSelected,
+            pickUpTimeSelected,deliveryTimeSelected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
         super.Navigation();
-
-
 
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
         memberPreferences = sharedpreferences.getString("member_preferences", null);
@@ -102,7 +104,7 @@ public class CheckoutActivity extends Navigation
             franchise_id = sharedpreferences.getString("franchise_id", null);
         }
 
-        postCodeField = (EditText) findViewById(R.id.post_code);
+        postCodeField = (TextView) findViewById(R.id.post_code);
         postCodeField.setText(postCode);
 
         streetField = (EditText) findViewById(R.id.street);
@@ -219,6 +221,7 @@ public class CheckoutActivity extends Navigation
         });
 
         services = cartDb.getServices(androidId, countryCode);
+        Log.e("Log e services ", services.toString());
         cartAdapter = new MyCartAdapter(services);
 
         JSONArray servicesData = null;
@@ -436,21 +439,64 @@ public class CheckoutActivity extends Navigation
             String returnType = data.getExtras().getString("returnType");
 
             if (returnType.equals("PickupDate")) {
-                pickUpDate = data.getExtras().getString("pickUpDate");
-                String dateSelected = data.getExtras().getString("dateSelected");
-                pickUpDateButton.setText(dateSelected);
+
+
+                if(data.getExtras().getString("pickUpDate") != null && !data.getExtras().getString("pickUpDate").equals("")) {
+
+
+                    pickUpTime=null;
+                    pickUpTimeSelected=null;
+                    pickUpTimeButton.setText("Select Pick Up Time");
+
+                    deliveryDate=null;
+                    deliveryDateSelected=null;
+                    deliveryDateButton.setText("Select Delivery Date");
+
+                    deliveryTime=null;
+                    deliveryTimeSelected=null;
+                    deliveryTimeButton.setText("Select Delivery Time");
+
+                    pickUpDate = data.getExtras().getString("pickUpDate");
+                    dateSelected = data.getExtras().getString("dateSelected");
+                    pickUpDateButton.setText(dateSelected);
+                }
+
+
             } else if (returnType.equals("PickupTime")) {
-                pickUpTime = data.getExtras().getString("hour");
-                pickUpTimeSelected = data.getExtras().getString("timeSelected");
-                pickUpTimeButton.setText(pickUpTimeSelected);
+
+
+
+                if(data.getExtras().getString("hour") != null && !data.getExtras().getString("hour").equals("")) {
+
+                    deliveryDate=null;
+                    deliveryDateSelected=null;
+                    deliveryDateButton.setText("Select Delivery Date");
+
+                    pickUpTime = data.getExtras().getString("hour");
+                    pickUpTimeSelected = data.getExtras().getString("timeSelected");
+                    pickUpTimeButton.setText(pickUpTimeSelected);
+                }
             } else if (returnType.equals("deliveryDate")) {
-                deliveryDate = data.getExtras().getString("pickUpDate");
-                String deliveryDateSelected = data.getExtras().getString("dateSelected");
-                deliveryDateButton.setText(deliveryDateSelected);
+
+
+                if(data.getExtras().getString("pickUpDate") != null && !data.getExtras().getString("pickUpDate").equals("")) {
+
+                    deliveryTime=null;
+                    deliveryTimeSelected=null;
+                    deliveryTimeButton.setText("Select Delivery Time");
+
+                    deliveryDate = data.getExtras().getString("pickUpDate");
+                    deliveryDateSelected = data.getExtras().getString("dateSelected");
+                    deliveryDateButton.setText(deliveryDateSelected);
+                }
             } else if (returnType.equals("deliveryTime")) {
-                deliveryTime = data.getExtras().getString("hour");
-                deliveryTimeSelected = data.getExtras().getString("timeSelected");
-                deliveryTimeButton.setText(deliveryTimeSelected);
+
+
+                if(data.getExtras().getString("hour") != null && !data.getExtras().getString("hour").equals("")) {
+                    deliveryTime = data.getExtras().getString("hour");
+                    deliveryTimeSelected = data.getExtras().getString("timeSelected");
+                    deliveryTimeButton.setText(deliveryTimeSelected);
+                }
 
             } else if (returnType.equals("credit_card")) {
 

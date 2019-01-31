@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".RegisterActivity">
+    android:background="@color/colorLightGray"
+    android:gravity="center"
+    tools:context=".LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -25,11 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
         <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
 
 
             <android.support.design.widget.TextInputLayout
@@ -38,13 +39,18 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/firstName"
+                    style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="@string/first_name"
                     android:inputType="text"
+                    android:drawablePadding="5dp"
                     android:maxLines="1"
                     android:text="test"
+
                     android:singleLine="true" />
+
+
 
             </android.support.design.widget.TextInputLayout>
 
@@ -55,12 +61,14 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/lastName"
+                    style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="@string/last_name"
                     android:inputType="text"
                     android:text="Alfred"
                     android:maxLines="1"
+                    android:textColorHint="#FF00"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
@@ -71,8 +79,9 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/phone"
+                    style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="@string/phone_number"
                     android:inputType="text"
                     android:maxLines="1"
@@ -87,8 +96,9 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/postCode"
+                    style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="@string/post_code"
                     android:inputType="text"
                     android:maxLines="1"
@@ -104,8 +114,9 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/building"
+                    style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="@string/building_name_number"
                     android:inputType="text"
                     android:maxLines="1"
@@ -120,8 +131,9 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/street"
+                    style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="@string/street_name"
                     android:inputType="text"
                     android:maxLines="1"
@@ -136,8 +148,9 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/town"
+                    style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="Town"
                     android:inputType="text"
                     android:maxLines="1"
@@ -152,8 +165,9 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/email"
+                    style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
@@ -168,8 +182,9 @@
 
                 <EditText
                     android:id="@+id/password"
+                    style="@style/TextInputEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
@@ -183,13 +198,13 @@
 
             <Button
                 android:id="@+id/register"
-                style="?android:textAppearanceSmall"
+                style="@style/ButtonGreen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="@string/register"
+                android:layout_marginBottom="5dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+</RelativeLayout>

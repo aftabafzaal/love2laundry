@@ -1,6 +1,7 @@
 package com.love2laundry.project.myapplication;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -37,7 +39,7 @@ public class TimeActivity extends Config {
     String franchise_id, action, title, type;
     String time;
     String timeSelected, hour;
-
+    final Activity activity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,7 @@ public class TimeActivity extends Config {
         action = getIntent().getStringExtra("action");
         title = getIntent().getStringExtra("title");
         type = getIntent().getStringExtra("type");
-
+        activity.setTitle(title);
         timeList = new ArrayList<>();
         Log.e(TAG, action);
         new GetDates().execute();
@@ -93,13 +95,16 @@ public class TimeActivity extends Config {
                         String availableTime = c.getString("Time");
                         Integer hour = c.getInt("Hour");
 
-                        if (status.equals("Available")) {
+
                             HashMap<String, String> contact = new HashMap<>();
                             contact.put("status", status);
+
                             contact.put("availableTime", availableTime);
+                            contact.put("disable", availableTime);
+
                             contact.put("hour", hour.toString());
                             timeList.add(contact);
-                        }
+
                     }
 
 
@@ -136,23 +141,44 @@ public class TimeActivity extends Config {
             super.onPostExecute(result);
 
             lv = (ListView) findViewById(R.id.list);
-            Log.e(TAG, timeList.toString());
-
-
             ListAdapter adapter = new SimpleAdapter(TimeActivity.this, timeList,
                     R.layout.time_list, new String[]{"availableTime", "status", "hour"},
-                    new int[]{R.id.time});
-            lv.setAdapter(adapter);
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    new int[]{R.id.time}){
+
+                //@SuppressLint("WrongConstant")
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public View getView(final int position, View convertView, ViewGroup parent) {
+                    final View v = super.getView(position, convertView, parent);
 
-                    timeSelected = timeList.get(i).get("availableTime");
-                    hour = timeList.get(i).get("hour");
-                    finish();
+                    if (timeList.get(position).get("status").equals("Available")) {
+
+                        TextView tv = v.findViewById(R.id.time);
+                        tv.setVisibility(View.VISIBLE);
+
+                        tv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                timeSelected = timeList.get(position).get("availableTime");
+                                hour = timeList.get(position).get("hour");
+                                finish();
+
+                            }
+                        });
+
+                    }else{
+
+
+                        TextView tv = v.findViewById(R.id.disable);
+                        tv.setVisibility(View.VISIBLE);
+                        tv.setEnabled(false);
+                        tv.setClickable(false);
+
+                    }
+                    return v;
                 }
-            });
-
+            };
+            lv.setAdapter(adapter);
         }
     }
 

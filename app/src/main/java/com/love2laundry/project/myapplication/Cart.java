@@ -170,9 +170,9 @@ public class Cart extends SQLiteOpenHelper {
     public HashMap<String, String> getService(String androidId, Integer service_id, String country) {
 
         HashMap<String, String> service = new HashMap<>();
-        //hp = new HashMap();
         SQLiteDatabase db = this.getReadableDatabase();
-        //onUpgrade(db,1,2);
+
+
         Cursor res = db.rawQuery("select * from cart where service_id=? and androidId=? and country=? limit 1", new String[]{service_id.toString(), androidId, country});
         res.moveToFirst();
         int i = 0;

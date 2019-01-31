@@ -105,11 +105,8 @@ class MyPreferencesAdapter extends RecyclerView.Adapter<MyPreferencesAdapter.MyV
 
         myViewHolder.title.setText(preferencesList.get(i).get("title"));
 
-        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(p,
-        // preferencesList.get(i).get("childs"), android.R.layout.simple_spinner_item);
         String list = preferencesList.get(i).get("children");
 
-        ///Log.e("i->",i+"");
 
         String id = preferencesList.get(i).get("id");
         String title = preferencesList.get(i).get("title");
@@ -133,7 +130,6 @@ class MyPreferencesAdapter extends RecyclerView.Adapter<MyPreferencesAdapter.MyV
 
                 if(l==r){
                     selectedTitle=json.getString("Title");
-                   /// Log.e(selectedTitle+"equals pid"+pid,selectedPreference.get(id).trim());
                 }
             }
             ArrayAdapter<String> spinnerMenu = new ArrayAdapter<String>(p, android.R.layout.simple_list_item_1, stringArray);

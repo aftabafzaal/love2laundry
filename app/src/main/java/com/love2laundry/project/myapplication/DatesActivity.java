@@ -1,6 +1,7 @@
 package com.love2laundry.project.myapplication;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +47,7 @@ public class DatesActivity extends Config {
     String franchise_id, action, title, type;
     String pickUpDate;
     String dateSelected;
-
+    final Activity activity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,8 @@ public class DatesActivity extends Config {
         title = getIntent().getStringExtra("title");
         type = getIntent().getStringExtra("type");
 
+
+        activity.setTitle(title);
         dateList = new ArrayList<>();
 
         new GetDates().execute();
@@ -103,14 +107,14 @@ public class DatesActivity extends Config {
                         String dateClass = c.getString("Date_Class");
                         String dateSelected = c.getString("Date_Selected");
 
-                        if (dateClass.equals("Available")) {
                             HashMap<String, String> contact = new HashMap<>();
                             contact.put("date", date);
+                            contact.put("disable", date);
                             contact.put("dateNumber", dateNumber);
                             contact.put("dateClass", dateClass);
                             contact.put("dateSelected", dateSelected);
+                            contact.put("Available", dateClass);
                             dateList.add(contact);
-                        }
                     }
 
                 } catch (final JSONException e) {
@@ -143,25 +147,45 @@ public class DatesActivity extends Config {
             super.onPostExecute(result);
 
             lv = (ListView) findViewById(R.id.list);
-            Log.e("Dates", "" + dateList);
             ListAdapter adapter = new SimpleAdapter(DatesActivity.this, dateList,
-                    R.layout.date_list, new String[]{"date", "dateNumber", "dateClass", "dateSelected"},
-                    new int[]{R.id.date});
+                    R.layout.date_list, new String[]{"date","disable", "dateNumber", "dateClass", "dateSelected"},
+                    new int[]{R.id.date,R.id.disable}){
 
-            int s = dateList.size();
-            Log.e("dateList ->", "" + dateList);
-            lv.setAdapter(adapter);
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                //@SuppressLint("WrongConstant")
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public View getView(final int position, View convertView, ViewGroup parent) {
+                    final View v = super.getView(position, convertView, parent);
+                    Log.e(TAG,""+dateList.get(position));
+                    if (dateList.get(position).get("dateClass").equals("Available")) {
 
-                    pickUpDate = dateList.get(i).get("dateNumber");
-                    dateSelected = dateList.get(i).get("dateSelected");
+                        TextView tv = v.findViewById(R.id.date);
+                        tv.setVisibility(View.VISIBLE);
 
-                    finish();
+                        tv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                pickUpDate = dateList.get(position).get("dateNumber");
+                                dateSelected = dateList.get(position).get("dateSelected");
+
+                                finish();
+
+                            }
+                        });
+
+                    }else{
+
+
+                        TextView tv = v.findViewById(R.id.disable);
+                        tv.setVisibility(View.VISIBLE);
+                        tv.setEnabled(false);
+                        tv.setClickable(false);
+
+                    }
+                    return v;
                 }
-            });
-
+            };
+            lv.setAdapter(adapter);
         }
     }
 

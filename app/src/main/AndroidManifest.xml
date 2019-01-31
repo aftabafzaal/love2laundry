@@ -119,22 +119,27 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme" />
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".LoginActivity" />
+        </activity>
+
         <activity
             android:name=".InvoiceActivity"
-            android:label="@string/title_activity_dashboard"
+            android:label="@string/title_activity_invoice"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".DatesActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/pick_up_date" />
         <activity
             android:name=".TimeActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/pick_up_time"  />
         <activity
             android:name=".CreditCardsActivity"
             android:label="@string/credit_card"
-            android:theme="@style/AppTheme.NoActionBar"
             />
 
         <activity
