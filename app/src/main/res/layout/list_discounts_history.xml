@@ -1,106 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <RelativeLayout
+        android:id="@+id/points_box"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/card_border_blue"
+        >
+        <TextView
+            android:id="@+id/discount_worth_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:padding="2dp"
+            android:background="#0590dc"
+            android:text="@string/discount_worth"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite" />
 
-    <TextView
-        android:id="@+id/discount_worth_text"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/discount_worth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/points_text"
+            android:gravity="center"
+            android:text="Demo"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/text_box"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/discount_worth"
-        android:textColor="#000" />
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/points_box"
+        android:layout_toRightOf="@id/points_box"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/invoice_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invoice"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textAllCaps="true"
+                />
+            <TextView
+                android:id="@+id/invoice_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Demo"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="20sp"
+                android:layout_toRightOf="@+id/invoice_text"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_colon"
+                android:textSize="14sp"
+                android:textColor="@color/colorGreyHeading" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorGreyHeading"
+                android:layout_toRightOf="@+id/date_text" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/code_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/code_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/code_colon"
+                android:textSize="14sp"
+                android:textColor="@color/colorGreyHeading" />
+
+            <TextView
+                android:id="@+id/code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorGreyHeading"
+                android:layout_toRightOf="@+id/code_text" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp"
+                android:text=""
+                android:textColor="@color/colorPrimaryDark"
+                />
+        </RelativeLayout>
 
 
-    <TextView
-        android:id="@+id/discount_worth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Demo"
-        android:layout_toRightOf="@+id/discount_worth_text"
-        android:textColor="#000" />
-
-
-    <TextView
-        android:id="@+id/invoice_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/invoice"
-        android:textColor="#000"
-        android:layout_below="@+id/discount_worth_text"
-
-        />
-
-    <TextView
-        android:id="@+id/invoice_no"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Demo"
-        android:textColor="#000"
-        android:layout_below="@+id/discount_worth"
-        android:layout_toRightOf="@+id/invoice_text"
-        />
-
-    <TextView
-        android:id="@+id/date_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/date"
-        android:textColor="#000"
-        android:layout_below="@+id/invoice_text" />
-
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:layout_below="@+id/invoice_no"
-        android:layout_toRightOf="@+id/date_text" />
-
-    <TextView
-        android:id="@+id/code_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/code"
-        android:textColor="#000"
-        android:layout_below="@+id/date_text" />
-
-    <TextView
-        android:id="@+id/code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="adsdasd"
-        android:textColor="#000"
-        android:layout_below="@+id/date"
-        android:layout_toRightOf="@+id/code_text" />
-
-
-
-    <TextView
-        android:id="@+id/price_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/price"
-        android:textColor="#000"
-        android:layout_below="@+id/code_text" />
-
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Demo"
-        android:textColor="#000"
-        android:layout_toRightOf="@+id/price_text"
-        android:layout_below="@+id/code"
-        />
-
+    </LinearLayout>
     <View
-        android:layout_below="@+id/price"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FF0000FF" />
-
-
-
+        android:layout_below="@+id/points_box"
+        android:background="@color/colorLightGray"/>
 
 </RelativeLayout>

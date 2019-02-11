@@ -322,5 +322,7 @@ public class EditPaymentCardActivity extends Navigation {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        Navigation navigation =new Navigation();
+        navigation.initView(navigationView,member_id);
     }
 }

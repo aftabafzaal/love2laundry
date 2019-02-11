@@ -14,12 +14,20 @@ public class Config extends AppCompatActivity {
     public String currencyCode;
     public String currencySymbol;
     public String currency;
+    public String country;
     String androidId;
-    private Context context;
+    //private Context context;
 
     public void Config() {
         androidId = Settings.Secure.getString(getContentResolver(),
                 Settings.Secure.ANDROID_ID);
+        sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
+        country=sharedpreferences.getString("country",null);
+
+    }
+
+    public String getCurrencySymbol(String country) {
+        return UK.CURRENCY_SYMBOL;
     }
 
     protected void setCountry(String country) {
@@ -47,7 +55,9 @@ public class Config extends AppCompatActivity {
             editor.putString("apiInvoices", UK.API_INVOICES);
             editor.putString("apiLoyalties", UK.API_LOYALTIES);
             editor.putString("apiDiscounts", UK.API_DISCOUNTS);
-
+            editor.putString("apiPostDiscount", UK.API_POST_DISCOUNT);
+            editor.putString("apiPostReferral", UK.API_POST_REFERRAL);
+            editor.putString("apiForgotPassword", UK.API_FORGOT_PASSWORD);
 
         } else if (country.equals("uae")) {
             UAE location = new UAE();
@@ -71,6 +81,9 @@ public class Config extends AppCompatActivity {
             editor.putString("apiInvoices", UAE.API_INVOICES);
             editor.putString("apiLoyalties", UK.API_LOYALTIES);
             editor.putString("apiDiscounts", UK.API_DISCOUNTS);
+            editor.putString("apiPostDiscount", UK.API_POST_DISCOUNT);
+            editor.putString("apiPostReferral", UK.API_POST_REFERRAL);
+            editor.putString("apiForgotPassword", UK.API_FORGOT_PASSWORD);
 
         } else if (country == null) {
             Log.e("Pick Country", "Error in country");

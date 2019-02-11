@@ -82,6 +82,7 @@ public class ListingActivity extends Navigation {
     final Activity activity = this;
     private Cart cartDb;
     String countryCode, currencyCode, request;
+    SharedPreferences spMember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +90,7 @@ public class ListingActivity extends Navigation {
         cartDb = new Cart(this);
 
         super.onCreate(savedInstanceState);
-        super.Config();
+
 
         setContentView(R.layout.activity_listing);
 
@@ -104,6 +105,14 @@ public class ListingActivity extends Navigation {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().findItem(R.id.login).setVisible(false);
+        Navigation navigation = new Navigation();
+
+        spMember = getSharedPreferences("member", MODE_PRIVATE);
+        navigation.initView(navigationView,spMember.getString("member_id",null));
+
+        super.Navigation();
+
 
         sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
         currencySymbol= sharedpreferences.getString("currencySymbol", null);
@@ -111,8 +120,6 @@ public class ListingActivity extends Navigation {
         request = getIntent().getStringExtra("request");
         RequestQueue queue = Volley.newRequestQueue(this);
 
-
-        //cartDb.deleteAll(androidId,countryCode);
         FloatingActionButton floatingActionButton =
                 (FloatingActionButton) findViewById(R.id.checkout);
 
@@ -120,7 +127,6 @@ public class ListingActivity extends Navigation {
             @Override
             public void onClick(View view) {
                 long count = cartDb.getCount(androidId, countryCode);
-
 
                 sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
 
@@ -146,12 +152,15 @@ public class ListingActivity extends Navigation {
                             JSONArray data = categories.getJSONArray("data");
 
                             JSONObject franchise = jsonObj.getJSONObject("franchise_detail");
+                            JSONObject settings = jsonObj.getJSONObject("settings");
+
 
                             SharedPreferences.Editor sp = sharedpreferences.edit();
                             sp.putString("franchise_id", franchise.getString("ID"));
-                            sp.putString("franchise", franchise.toString());
+                            sp.putString("minimumOrderAmount", franchise.getString("MinimumOrderAmount"));
+                            sp.putString("settings", settings.toString());
                             sp.commit();
-
+                            Log.e(franchise.getString("MinimumOrderAmount")+"franchise --> ",franchise.toString());
 
                             cats = new String[data.length()];
                             service_records = new JSONArray[data.length()];
@@ -211,8 +220,6 @@ public class ListingActivity extends Navigation {
     protected void getServicesView(int number, final JSONArray service_records, String categoryName) {
 
 
-
-
         listing = findViewById(R.id.listing);
         currencySymbol=sharedpreferences.getString("currencySymbol",null);
         myServicesAdapter = new MyServicesAdapter(ListingActivity.this,number,service_records,categoryName,currencySymbol,countryCode,androidId);
@@ -223,124 +230,13 @@ public class ListingActivity extends Navigation {
         listing.setAdapter(myServicesAdapter);
 
 
+    }
 
-
-        //services = new ArrayList<>();
-        //lv = findViewById(R.id.list);
-        //Log.e(TAG, "service_records " + service_records);
-
-
-        /*
-        ListAdapter adapter = new SimpleAdapter(ListingActivity.this, services,
-                R.layout.tabs_data, new String[]{"title","content", "total", "id", "price", "discount", "offerPrice"},
-                new int[]{R.id.title,R.id.content, R.id.quantity, R.id.id, R.id.price, R.id.discount, R.id.offerPrice}) {
-            @SuppressLint("WrongConstant")
-            @Override
-            public View getView(final int position, View convertView, ViewGroup parent) {
-                final View v = super.getView(position, convertView, parent);
-
-
-                TextView discount = v.findViewById(R.id.discount);
-                TextView price = v.findViewById(R.id.price);
-                TextView offerPrice = v.findViewById(R.id.offerPrice);
-                Double discountAmount=Double.parseDouble(discount.getText().toString());
-
-                price.setText(currencySymbol+price.getText().toString());
-                offerPrice.setText(currencySymbol+offerPrice.getText().toString());
-
-
-                if(discountAmount>0){
-                    discount.setText(discount.getText().toString() + "%");
-
-
-                }else {
-                    discount.setVisibility(View.GONE);
-                    price.setVisibility(View.GONE);
-                }
-
-                ImageView ivBasicImage = (ImageView) findViewById(R.id.mobileImagePath);
-                //new RetrieveFeedTask(ivBasicImage).execute(services.get(position).get("mobileImagePath"));
-
-                ImageButton add = v.findViewById(R.id.add);
-
-                final Set<String> set = new HashSet<String>();
-                add.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View arg0) {
-
-                        TextView tv = v.findViewById(R.id.quantity);
-                        String total = tv.getText().toString();
-                        quantity = Integer.parseInt(total);
-                        quantity++;
-                        totalServices.put(Integer.parseInt(services.get(position).get("id")), quantity);
-                        set.add(services.get(position).get("title"));
-                        set.add(quantity.toString());
-
-                        tv.setText(quantity.toString());
-                        Set<String> fetch = sharedpreferences.getStringSet(services.get(position).get("id"), null);
-                        Integer service_id = Integer.parseInt(services.get(position).get("id"));
-                        String serviceName = services.get(position).get("title");
-                        String content = services.get(position).get("content");
-
-                        String unitPrice = services.get(position).get("offerPrice");
-                        Integer category_id = Integer.parseInt(services.get(position).get("category_id"));
-                        String categoryName = services.get(position).get("categoryName");
-
-                        String mobileImage = services.get(position).get("mobileImagePath");
-                        String desktopImage = services.get(position).get("desktopImage");
-                        String isPackage = services.get(position).get("isPackage");
-                        String preferencesShow = services.get(position).get("preferencesShow");
-                        String discountAmount = services.get(position).get("discountAmount");
-
-
-                        HashMap<String, String> item = new HashMap<>();
-                        item = cartDb.getService(androidId, service_id, countryCode);
-
-                        if (item.isEmpty() == true) {
-
-                            cartDb.insertCart(androidId, service_id, content, serviceName, Double.parseDouble(unitPrice), Double.parseDouble(unitPrice) * quantity, quantity,
-                                    category_id, categoryName, countryCode, services.get(position).get("mobileImagePath"), desktopImage, isPackage, preferencesShow, Double.parseDouble(discountAmount) * quantity);
-
-                        } else {
-                            cartDb.updateCart(androidId, service_id, quantity, Double.parseDouble(unitPrice), Double.parseDouble(discountAmount), countryCode);
-                        }
-                    }
-                });
-                ImageButton minus = v.findViewById(R.id.minus);
-                minus.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View arg0) {
-                        Integer service_id = Integer.parseInt(services.get(position).get("id"));
-                        String unitPrice = services.get(position).get("offerPrice");
-                        String discountAmount = services.get(position).get("discountAmount");
-                        TextView tv = v.findViewById(R.id.quantity);
-                        String total = tv.getText().toString();
-                        quantity = Integer.parseInt(total);
-
-                        HashMap<String, String> item = new HashMap<>();
-                        item = cartDb.getService(androidId, service_id, countryCode);
-
-                        if (quantity > 0) {
-                            quantity--;
-                            set.add(services.get(position).get("title"));
-                            set.add(quantity.toString());
-                            cartDb.updateCart(androidId, service_id, quantity, Double.parseDouble(unitPrice), Double.parseDouble(discountAmount), countryCode);
-                        } else {
-                            cartDb.deleteCartItem(androidId, service_id, countryCode);
-                        }
-                        tv.setText(quantity.toString());
-                    }
-                });
-
-                return v;
-            }
-
-
-        };
-        lv.setAdapter(adapter);
-        */
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ListingActivity.this, UKActivity.class);
+        startActivityForResult(intent, 10);
+        startActivity(intent);
     }
 
 }

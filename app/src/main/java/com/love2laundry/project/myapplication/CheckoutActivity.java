@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,14 +38,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.security.auth.login.LoginException;
 
 public class CheckoutActivity extends Navigation
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements MyCartAdapter.PersonModifier,MyPreferencesAdapter.Modifier {
 
     private RecyclerView recyclerView, prefrencesListView;
     private RecyclerView.Adapter cartAdapter, preferencesAdapter;
@@ -55,24 +58,47 @@ public class CheckoutActivity extends Navigation
     EditText streetField, buildingField, townField, accountNotes, additionalInstruction;
 
     TextView postCodeField;
+    TextView preferencesHeadView;
+
+    TextView preferenceTotalView,preferenceTotalTextView,servicesTotalView,grandTotalView;
 
     private Cart cartDb;
-    String countryCode, currencyCode;
+    String countryCode, currencyCode,currencySymbol;
     ArrayList<HashMap<String, String>> preferencesList;
     HashMap<String, String> selectedPreference = new HashMap<>();
-    public SharedPreferences sharedPreferencesCountry;
+    public SharedPreferences sharedPreferencesCountry,sharedPreferencesDiscount;
 
-    TextView creditCardField;
+    TextView creditCardField,discountAmountText;
+
+    RelativeLayout discountsView,discountForm,discountButtons;
+
 
     private DrawerLayout mDrawerLayout;
     public ArrayList<HashMap<String, String>>  services = new ArrayList<>();
 
-    double servicesTotal = 0, preferenceTotal = 0, subTotal = 0, grandTotal = 0;
+
+    Button discountCodeButton,referralCodeButton,applyButton;
+    EditText codeField;
+    String discountCodeType;
+    boolean validDiscount;
+
+
+    double servicesTotal = 0.00, preferenceTotal = 0.00, subTotal = 0.00, grandTotal = 0.00;
     Boolean showPreferences=false;
     String selectedP = "";
     String memberPreferences;
     String pickUpDate,pickUpTime,deliveryDate,deliveryTime,deliveryDateSelected,dateSelected,
             pickUpTimeSelected,deliveryTimeSelected;
+    public HashMap<String, String> checkoutPreferences,checkoutPreferencesCopy;
+    TextView cartAmount;
+
+    TextView minimumOrderMessage;
+
+    Double discountAmount = 0.0;
+    String member_id;
+    String member = null;
+    String minimumOrderAmount;
+    Double discountedPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -81,16 +107,27 @@ public class CheckoutActivity extends Navigation
         super.Navigation();
 
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
-        memberPreferences = sharedpreferences.getString("member_preferences", null);
+        sharedPreferencesDiscount = getSharedPreferences("discount", MODE_PRIVATE);
 
-        final String member_id = sharedpreferences.getString("member_id", null);
-        String firstName = sharedpreferences.getString("firstName", null);
+        Config config= new Config();
+
+        member_id = sharedpreferences.getString("member_id", null);
+        final String firstName = sharedpreferences.getString("firstName", null);
         String lastName = sharedpreferences.getString("lastName", null);
         String phone = sharedpreferences.getString("phone", null);
         String street = sharedpreferences.getString("streetName", null);
         String building = sharedpreferences.getString("buildingName", null);
         String town = sharedpreferences.getString("town", null);
-        final String member = sharedpreferences.getString("member_data", null);
+        member = sharedpreferences.getString("member_data", null);
+
+        discountForm=(RelativeLayout) findViewById(R.id.discounts_form);
+        discountsView=(RelativeLayout) findViewById(R.id.discounts);
+
+        preferenceTotalView=findViewById(R.id.preferences_total);
+        preferenceTotalTextView=findViewById(R.id.preferences_total_text);
+        minimumOrderMessage=findViewById(R.id.minimum_order_message);
+        preferencesHeadView=findViewById(R.id.preferences_heading);
+
 
         sharedPreferencesCountry = getSharedPreferences("country", MODE_PRIVATE);
 
@@ -99,10 +136,15 @@ public class CheckoutActivity extends Navigation
         franchise_id = sharedPreferencesCountry.getString("franchise_id", null);
         String postCode = sharedPreferencesCountry.getString("postCode", null);
 
+        currencySymbol=config.getCurrencySymbol(currencyCode);
+
+        String franchiseData=null;
+
         if (postCode == null) {
             postCode = sharedpreferences.getString("postCode", null);
-            franchise_id = sharedpreferences.getString("franchise_id", null);
         }
+
+        minimumOrderAmount = sharedPreferencesCountry.getString("minimumOrderAmount", null);
 
         postCodeField = (TextView) findViewById(R.id.post_code);
         postCodeField.setText(postCode);
@@ -120,15 +162,59 @@ public class CheckoutActivity extends Navigation
 
         accountNotes = (EditText) findViewById(R.id.account_notes);
 
-
         additionalInstruction = (EditText) findViewById(R.id.additional_instruction);
+
+        services = cartDb.getServices(androidId, countryCode);
+        cartAdapter = new MyCartAdapter(services,this,country,androidId);
+        ((MyCartAdapter) cartAdapter).setPersonModifier(this);
+
+
+        JSONArray servicesData = null;
+
+        try {
+            servicesData = ((MyCartAdapter) cartAdapter).getServices();
+            servicesTotal = cartDb.getServicesTotal(androidId,country);
+        } catch (JSONException e) {
+            Log.e("Log e ", e.getMessage());
+        }
+
+        if (services.size() > 0) {
+
+            recyclerView = findViewById(R.id.list);
+            LinearLayoutManager manager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(manager);
+            recyclerView.setAdapter(cartAdapter);
+            //cartAdapter.notifyDataSetChanged();
+        }
+
+        discountAmountText= (TextView) findViewById(R.id.discount_amount);
+        cartAmount= (TextView) findViewById(R.id.cart_amount);
+
+        if(servicesData.length()>0) {
+
+            cartAmount.setText(currencySymbol+displayPrice(servicesTotal));
+
+            subTotal = servicesTotal + preferenceTotal;
+            grandTotal = subTotal;
+
+        }else{
+            grandTotal =Double.parseDouble(minimumOrderAmount);
+            preferenceTotalView.setVisibility(View.GONE);
+            preferenceTotalTextView.setVisibility(View.GONE);
+            cartAmount.setText(currencySymbol+"00:00");
+
+        }
+        minimumOrderMessage.setText(minimumOrderMessage.getText().toString()+" "+currencySymbol+minimumOrderAmount+".");
 
         showPreferences = cartDb.showPreferences(androidId, countryCode);
 
+
         if(showPreferences==true) {
             new GetPreferences().execute();
+        }else{
+            preferenceTotalTextView.setVisibility(View.GONE);
+            preferenceTotalView.setVisibility(View.GONE);
         }
-
 
         pickUpDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +235,6 @@ public class CheckoutActivity extends Navigation
         pickUpTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 if (pickUpDate == null) {
                     Toast.makeText(getApplicationContext(),
@@ -184,7 +269,6 @@ public class CheckoutActivity extends Navigation
                 } else {
 
                     Intent intent = new Intent(CheckoutActivity.this, DatesActivity.class);
-                    // Log.e("apiDeliveryDate",sharedPreferencesCountry.getString("apiDeliveryDate",null));
                     intent.putExtra("franchise_id", franchise_id);
                     intent.putExtra("type", "delivery");
                     intent.putExtra("title", "Delivery Date");
@@ -220,35 +304,81 @@ public class CheckoutActivity extends Navigation
             }
         });
 
-        services = cartDb.getServices(androidId, countryCode);
-        Log.e("Log e services ", services.toString());
-        cartAdapter = new MyCartAdapter(services);
+        grandTotalView=(TextView) findViewById(R.id.grand_total_amount);
 
-        JSONArray servicesData = null;
+        grandTotalView.setText(currencySymbol+grandTotal);
 
-        try {
-            servicesData = ((MyCartAdapter) cartAdapter).getServices();
-            servicesTotal = ((MyCartAdapter) cartAdapter).getServicesTotal();
-        } catch (JSONException e) {
-            Log.e("Log e ", e.getMessage());
-            e.printStackTrace();
-        }
 
-        if (services.size() > 0) {
+        discountCodeButton = (Button) findViewById(R.id.discount_code);
 
-            int i = 0;
+        codeField=findViewById(R.id.code);
+        applyButton=findViewById(R.id.apply);
 
-            recyclerView = findViewById(R.id.list);
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-            recyclerView.setLayoutManager(mLayoutManager);
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(cartAdapter);
-        } else {
-            Log.e("Item", "Empty");
-        }
+        discountCodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                discountCodeType="discount";
+                codeField.setHint("Discount Code");
+                codeField.setText("");
+                discountForm.setVisibility(View.VISIBLE);
+            }
+        });
 
-        //preferencesListingView = (RecyclerView) findViewById(R.id.preferences_listing);
+        referralCodeButton = (Button) findViewById(R.id.referral_code);
 
+        referralCodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                discountCodeType="referral";
+                codeField.setHint("Referral Code");
+                codeField.setText("");
+                discountForm.setVisibility(View.VISIBLE);
+               // applyButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        applyButton = (Button) findViewById(R.id.apply);
+
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if (codeField.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter valid code!",
+                            Toast.LENGTH_LONG).show();
+
+                }else{
+                    String device_id = sharedPreferencesCountry.getString("deviceId", null);
+                    postCode(codeField.getText().toString(),member_id,device_id);
+                }
+
+            }
+        });
+
+
+
+        Button addMoreServices;
+        addMoreServices = (Button) findViewById(R.id.add_more_services);
+
+        addMoreServices.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+
+                SharedPreferences.Editor mp= sharedpreferences.edit();
+
+                mp.putString("streetName",streetField.getText().toString());
+                mp.putString("buildingName",buildingField.getText().toString());
+                mp.putString("town",townField.getText().toString());
+                mp.commit();
+
+
+                moveToListingActivity();
+            }
+        });
 
         creditCardField = (TextView) findViewById(R.id.credit_card);
         creditCardField.setOnTouchListener(new View.OnTouchListener() {
@@ -263,10 +393,8 @@ public class CheckoutActivity extends Navigation
             }
         });
 
-        Button checkoutButton = (Button) findViewById(R.id.checkout_button);
-
-        final ArrayList<HashMap<String, String>> finalServices = services;
         final JSONArray finalServicesData = servicesData;
+        Button checkoutButton = (Button) findViewById(R.id.checkout_button);
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -274,10 +402,16 @@ public class CheckoutActivity extends Navigation
 
                 String franchise = sharedPreferencesCountry.getString("franchise", null);
                 String device_id = sharedPreferencesCountry.getString("deviceId", null);
+
                 final Map<String, String> postDataParams = new HashMap<String, String>();
 
+                if(servicesTotal < Double.parseDouble(minimumOrderAmount) && grandTotal < Double.parseDouble(minimumOrderAmount) ) {
 
-                if (pickUpDate == null) {
+                    Toast.makeText(getApplicationContext(),
+                            getString(R.string.minimum_order_message)+"  "+currencySymbol+minimumOrderAmount,
+                            Toast.LENGTH_LONG).show();
+
+                }else if (pickUpDate == null) {
                     Toast.makeText(getApplicationContext(),
                             "Please choose pick up date first!",
                             Toast.LENGTH_LONG).show();
@@ -298,27 +432,6 @@ public class CheckoutActivity extends Navigation
                             Toast.LENGTH_LONG).show();
 
                 }else {
-
-                    if(showPreferences==true) {
-
-
-                        try {
-                            selectedP = ((MyPreferencesAdapter) preferencesAdapter).getSelected();
-                            preferenceTotal = ((MyPreferencesAdapter) preferencesAdapter).getTotal();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        selectedP = (selectedP == null || selectedP.length() == 0) ? "" : (selectedP.substring(0, selectedP.length() - 1));
-                    }
-
-
-                    if(finalServicesData.length()>0) {
-                        subTotal = servicesTotal + preferenceTotal;
-                        grandTotal = subTotal;
-                    }else{
-                        grandTotal =15.00;
-                    }
-
 
                     String ip = Utils.getIPAddress(true);
 
@@ -349,6 +462,12 @@ public class CheckoutActivity extends Navigation
                         postDataParams.put("services_data", finalServicesData.toString());
                         postDataParams.put("device_id", device_id);
 
+
+                        if(sharedPreferencesDiscount.getBoolean("validDiscount",false)==true){
+                            postDataParams.put("discount_referral_data",sharedPreferencesDiscount.getString("codeString",null));
+                            postDataParams.put("discount_total", discountAmount.toString());
+                        }
+
                         String server = sharedPreferencesCountry.getString("server", null);
                         String url = server + sharedPreferencesCountry.getString("apiCheckout", null);
                         RequestQueue queue = Volley.newRequestQueue(CheckoutActivity.this);
@@ -358,7 +477,6 @@ public class CheckoutActivity extends Navigation
                                     public void onResponse(String response) {
 
                                         JSONObject jsonObj = null;
-                                        Log.e(TAG, response);
                                         try {
 
                                             jsonObj = new JSONObject(response);
@@ -375,8 +493,10 @@ public class CheckoutActivity extends Navigation
                                                 intent.putExtra("type", type);
                                                 intent.putExtra("invoiceId", invoiceId);
                                                 startActivityForResult(intent, 10);
-                                            }
 
+                                            }else{
+
+                                            }
                                         } catch (JSONException e) {
                                             Log.e(TAG+" JSONException ", e.getMessage());
                                             e.printStackTrace();
@@ -408,16 +528,19 @@ public class CheckoutActivity extends Navigation
                                 10000,
                                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+
                         queue.add(postRequest);
 
                     } catch (Exception e) {
                         Log.e(TAG + " JSONException ", e.getMessage());
-                        //e.printStackTrace();
                     }
                 }
             }
         });
 
+
+        discountedPrice=cartDb.getTotalForDiscount(androidId,country);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -429,7 +552,11 @@ public class CheckoutActivity extends Navigation
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Navigation navigation =new Navigation();
+        navigation.initView(navigationView,member_id);
+        applyDiscount();
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -458,6 +585,12 @@ public class CheckoutActivity extends Navigation
 
                     pickUpDate = data.getExtras().getString("pickUpDate");
                     dateSelected = data.getExtras().getString("dateSelected");
+
+                    SharedPreferences.Editor sd= sharedpreferences.edit();
+                    sd.putString("pickUpDate",pickUpDate);
+                    sd.putString("dateSelected",dateSelected);
+                    sd.commit();
+
                     pickUpDateButton.setText(dateSelected);
                 }
 
@@ -487,6 +620,12 @@ public class CheckoutActivity extends Navigation
 
                     deliveryDate = data.getExtras().getString("pickUpDate");
                     deliveryDateSelected = data.getExtras().getString("dateSelected");
+
+                    SharedPreferences.Editor sd= sharedpreferences.edit();
+                    sd.putString("deliveryDate",deliveryDate);
+                    sd.putString("deliveryDateSelected",deliveryDateSelected);
+                    sd.commit();
+
                     deliveryDateButton.setText(deliveryDateSelected);
                 }
             } else if (returnType.equals("deliveryTime")) {
@@ -500,17 +639,39 @@ public class CheckoutActivity extends Navigation
 
             } else if (returnType.equals("credit_card")) {
 
-
                 String selectCardName=data.getExtras().getString("selectedCardName");
                 if(selectCardName != null && !selectCardName.equals("")) {
                     cardId = data.getExtras().getString("selectedCardId");
                     creditCardField.setText(data.getExtras().getString("selectedCardName"));
                 }
 
-
             }
         }
+
+        //getDiscount();
+
     }
+
+    @Override
+    public void onPersonSelected() {
+
+        servicesTotal = cartDb.getServicesTotal(androidId, country);
+
+        cartAmount.setText(currencySymbol+servicesTotal);
+        applyDiscount();
+        showPreferences = cartDb.showPreferences(androidId, countryCode);
+
+        if(showPreferences==false) {
+
+            preferenceTotal=0.00;
+            preferenceTotalView.setVisibility(View.GONE);
+            preferencesHeadView.setVisibility(View.GONE);
+            prefrencesListView.setVisibility(View.GONE);
+            preferenceTotalTextView.setVisibility(View.GONE);
+        }
+
+    }
+
 
     public class GetPreferences extends AsyncTask<Void, Void, Void> {
 
@@ -526,8 +687,9 @@ public class CheckoutActivity extends Navigation
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
             String server = sharedpreferences.getString("server", null);
             String url = server + sharedpreferences.getString("apiPreferences", null);
-            String jsonStr = sh.makeServiceCall(url);
 
+            String jsonStr = sh.makeServiceCall(url+"?member_id="+member_id);
+            //Log.e("member_id",url+"?member_id="+member_id);
             if (jsonStr != null) {
 
                 try {
@@ -537,34 +699,37 @@ public class CheckoutActivity extends Navigation
                     preferencesList = new ArrayList<>();
                     JSONObject preferences = jsonObj.getJSONObject("preferences");
                     JSONArray data = preferences.getJSONArray("data");
-                    JSONArray memberArray = new JSONArray(memberPreferences);
+
+                    JSONObject memberPreferences = preferences.getJSONObject("member_preferences");
+                    preferenceTotal=preferences.getDouble("total");
                     String memberSelected=null;
                     int d=0;
                     for (int i = 0; i < data.length(); i++) {
 
-
                         memberSelected=null;
-                        if(memberArray.get(i).toString()!=null) {
-                            JSONObject m = new JSONObject(memberArray.get(i).toString());
-                            memberSelected=m.getString("ID");
-                            d++;
-                        }
 
                         JSONObject c = data.getJSONObject(i);
                         String id = c.getString("ID");
                         String title = c.getString("Title");
                         JSONArray children = c.getJSONArray("child_records");
-                        //Log.e(TAG,"+ children "+children.get(0));
-                        JSONObject defaultP=new JSONObject(children.get(0).toString());
 
+                        JSONObject defaultP;
 
-                            Double price=0.0;
+                        Double price=0.00;
 
-                            if(defaultP.get("PriceForPackage").equals("Yes")){
-                                price=Double.parseDouble(defaultP.get("PriceForPackage").toString());
-                            }
-                            selectedP+=defaultP.get("ID").toString()+","+title+","+defaultP.get("Title").toString()+","+price+","+price+"|";
+                        if(memberPreferences.get(id)!=null) {
+                            defaultP = new JSONObject(memberPreferences.get(id).toString());
+                            memberSelected=defaultP.getString("Title");
+                        }else{
+                            defaultP = new JSONObject(children.get(0).toString());
+                            memberSelected=defaultP.getString("Title");
+                        }
 
+                        if(defaultP.get("PriceForPackage").equals("Yes")){
+                            price=Double.parseDouble(defaultP.get("Price").toString());
+                        }
+
+                        selectedP+=defaultP.get("ID").toString()+","+title+","+defaultP.get("Title").toString()+","+price+","+price+"|";
 
                         HashMap<String, String> card = new HashMap<>();
                         card.put("id", id);
@@ -574,9 +739,8 @@ public class CheckoutActivity extends Navigation
                         preferencesList.add(card);
                     }
 
-
                 } catch (final JSONException e) {
-                    // Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -587,7 +751,6 @@ public class CheckoutActivity extends Navigation
                     });
                 }
             } else {
-                // Log.e(TAG, "Couldn't get json from server.");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -607,13 +770,239 @@ public class CheckoutActivity extends Navigation
             prefrencesListView = findViewById(R.id.preferences_listing);
 
             preferencesAdapter = new MyPreferencesAdapter(preferencesList, selectedPreference);
-
+            ((MyPreferencesAdapter) preferencesAdapter).setModifier(CheckoutActivity.this);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             prefrencesListView.setLayoutManager(mLayoutManager);
             prefrencesListView.setItemAnimator(new DefaultItemAnimator());
             prefrencesListView.setAdapter(preferencesAdapter);
 
 
+            Log.e("preferenceTotal --> ",preferenceTotal+"");
+            preferenceTotalView.setText(currencySymbol+displayPrice(preferenceTotal));
+            grandTotal=servicesTotal+preferenceTotal;
+            grandTotalView.setText(currencySymbol+displayPrice(grandTotal));
+
         }
     }
+
+
+    public void applyDiscount()
+    {
+
+        boolean validDiscount = sharedPreferencesDiscount.getBoolean("validDiscount",false);
+        String codeString = sharedPreferencesDiscount.getString("codeString", null);
+        discountedPrice=cartDb.getTotalForDiscount(androidId,country);
+        String[] tempArray;
+        Log.e("discountedPrice"," --> "+discountedPrice.toString());
+        String delimiter = "\\|";
+        Double minimumAmount=15.00;
+        if(minimumOrderAmount==null) {
+            minimumAmount = Double.parseDouble(minimumOrderAmount);
+        }else{
+            minimumAmount=15.00;
+        }
+
+        if(validDiscount==true && servicesTotal>minimumAmount) {
+            tempArray = codeString.split(delimiter);
+            Double discount = 0.00;
+
+
+            Boolean isPercentage = false;
+            if (tempArray[0].equals("Discount")) {
+
+                if (tempArray[4].equals("Percentage")) {
+                    discount = (Double.parseDouble(tempArray[3]) / 100);
+                    discountAmount = discountedPrice * discount;
+
+                    isPercentage = true;
+                } else {
+                    discount = Double.parseDouble(tempArray[3]);
+                    if (discount < discountedPrice) {
+                        discountAmount = discountedPrice - discount;
+                    }
+                }
+            } else {
+
+                discount = Double.parseDouble(tempArray[3]);
+                if (discount < discountedPrice) {
+                    discountAmount = discountedPrice - discount;
+                }
+            }
+
+
+            if (isPercentage == true) {
+                grandTotal = servicesTotal - discountAmount + preferenceTotal;
+                discountAmountText.setText("-" + currencySymbol + displayPrice(discountAmount));
+
+            } else {
+                grandTotal = servicesTotal - discount + preferenceTotal;
+                discountAmountText.setText("-" + currencySymbol + displayPrice(discount));
+            }
+        }else if (servicesTotal<=0){
+            grandTotal=Double.parseDouble(minimumOrderAmount);
+            discountAmount=0.00;
+            discountAmountText.setText("-" + currencySymbol + "0.00" );
+        }
+
+
+
+        grandTotalView.setText(currencySymbol+displayPrice(grandTotal));
+        discountsView.setVisibility(View.VISIBLE);
+        //codeField.setVisibility(View.GONE);
+        //applyButton.setVisibility(View.GONE);
+        //discountCodeButton.setVisibility(View.GONE);
+        //referralCodeButton.setVisibility(View.GONE);
+
+    }
+
+    public void postCode(String code,String member_id,String device_id)
+    {
+
+        final Map<String, String> params = new HashMap<String, String>();
+        try{
+            params.put("member_id", member_id);
+            params.put("is_bunddle", "0");
+            params.put("code", code);
+            params.put("device_id", device_id);
+
+            String server = sharedPreferencesCountry.getString("server", null);
+            String url;
+            if(discountCodeType=="discount") {
+                url = server + sharedPreferencesCountry.getString("apiPostDiscount", null);
+            }else{
+                url = server + sharedPreferencesCountry.getString("apiPostReferral", null);
+                params.put("member_data", member);
+            }
+            RequestQueue queue = Volley.newRequestQueue(CheckoutActivity.this);
+            StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+
+                            JSONObject jsonObj = null;
+                            try {
+
+                                jsonObj = new JSONObject(response);
+                                String result= jsonObj.getString("result");
+                                if(result.equals("Success")) {
+
+                                    final SharedPreferences.Editor sp = sharedPreferencesDiscount.edit();
+                                    sp.putString("codeString", jsonObj.getString("data").toString());
+                                    sp.putBoolean("validDiscount", true);
+                                    sp.commit();
+                                    applyDiscount();
+
+                                }else{
+
+                                    Toast.makeText(getApplicationContext(),
+                                            jsonObj.getString("message"),
+                                            Toast.LENGTH_LONG).show();
+                                }
+
+                            } catch (JSONException e) {
+                                Log.e(TAG+" JSONException ", e.getMessage());
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                        }
+                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams() {
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<String, String>();
+                    headers.put("Content-Type", "application/x-www-form-urlencoded");
+                    return headers;
+                }
+            };
+            postRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    10000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            queue.add(postRequest);
+
+        } catch (Exception e) {
+            Log.e(TAG + " JSONException ", e.getMessage());
+        }
+    }
+
+    public void managePreferencesTotal(){
+
+        try {
+            checkoutPreferences = ((MyPreferencesAdapter) preferencesAdapter).getSelected();
+
+            checkoutPreferencesCopy=checkoutPreferences;
+            int size = checkoutPreferencesCopy.size();
+            Iterator it = checkoutPreferencesCopy.entrySet().iterator();
+            //Log.e("iterator();",checkoutPreferencesCopy.entrySet().iterator().toString());
+            String preferences_data ="" ;
+            Double total=0.00;
+            for (Map.Entry me : checkoutPreferencesCopy.entrySet()) {
+                System.out.println("Key: "+me.getKey() + " & Value: " + me.getValue());
+                String string = (String) me.getValue();
+
+                JSONObject json = new JSONObject(string);
+                String priceForPackage = json.getString("PriceForPackage");
+                Double price = 0.00;
+                if (priceForPackage.equals("Yes")) {
+                    Log.e("json.toString --> ",json.toString());
+                    price = Double.parseDouble(json.getString("Price"));
+                    total += price;
+
+                }
+
+                selectedP += json.getString("ID") + "," + json.getString("categoryTitle")
+                        + "," + json.getString("Title") + "," + price + "," + price + "|";
+
+
+            }
+            selectedP = (selectedP == null || selectedP.length() == 0) ? "" : (selectedP.substring(0, selectedP.length() - 1));
+
+            preferenceTotal = total;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        preferenceTotalView.setText(currencySymbol+displayPrice(preferenceTotal));
+
+        applyDiscount();
+    }
+
+    public String displayPrice(Double price){
+        return String.format("%.2f", price);
+    }
+
+
+
+    public void managePrices(){
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveToListingActivity();
+    }
+
+
+    private void moveToListingActivity(){
+        Intent intent = new Intent(CheckoutActivity.this, ListingActivity.class);
+        startActivityForResult(intent, 10);
+        String server = sharedPreferencesCountry.getString("server", null);
+        String action = sharedPreferencesCountry.getString("loadData", null);
+
+        String q = "?type=load&device_id=" + androidId + "&post_code=" + postCodeField.getText().toString() + "&versions=1|2|3&more_info=1";
+        String url = server + action + q;
+        intent.putExtra("request", url);
+        startActivity(intent);
+    }
+
 }

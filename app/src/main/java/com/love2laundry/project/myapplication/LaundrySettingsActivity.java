@@ -44,6 +44,7 @@ public class LaundrySettingsActivity extends Navigation {
     private RecyclerView.Adapter cartAdapter, preferencesAdapter;
     String memberPreferences;
     String selectedP = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,6 +200,8 @@ public class LaundrySettingsActivity extends Navigation {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Navigation navigation =new Navigation();
+        navigation.initView(navigationView,member_id);
 
     }
 

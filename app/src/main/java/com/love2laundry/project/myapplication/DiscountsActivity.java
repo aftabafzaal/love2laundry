@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -75,6 +76,8 @@ public class DiscountsActivity extends Navigation {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Navigation navigation =new Navigation();
+        navigation.initView(navigationView,member_id);
 
 
         new GetDiscountCodes().execute();
@@ -132,6 +135,11 @@ public class DiscountsActivity extends Navigation {
             ListView lv = (ListView) rootView.findViewById(R.id.list);
 
             int num=getArguments().getInt(ARG_SECTION_NUMBER);
+
+            if(num==1){
+                LinearLayout lp = (LinearLayout) rootView.findViewById(R.id.tab_header);
+                lp.setVisibility(View.GONE);
+            }
             try {
                 JSONArray obj = (JSONArray) l.get(num);
                 recyclerView = rootView.findViewById(R.id.list);

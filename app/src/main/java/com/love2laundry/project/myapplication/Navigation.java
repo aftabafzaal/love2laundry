@@ -1,5 +1,6 @@
 package com.love2laundry.project.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +8,7 @@ import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -28,6 +30,39 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
         } else {
             super.onBackPressed();
         }
+    }
+
+    protected void initView(NavigationView navigationView,String member_id) {
+
+        if(member_id==null) {
+            // if not login
+            navigationView.getMenu().findItem(R.id.login).setVisible(true);
+            navigationView.getMenu().findItem(R.id.register).setVisible(true);
+            navigationView.getMenu().findItem(R.id.logout).setVisible(false);
+            navigationView.getMenu().findItem(R.id.dashboard).setVisible(false);
+            navigationView.getMenu().findItem(R.id.place_order).setVisible(false);
+            navigationView.getMenu().findItem(R.id.account).setVisible(false);
+            navigationView.getMenu().findItem(R.id.laundry_settings).setVisible(false);
+            navigationView.getMenu().findItem(R.id.loyalties).setVisible(false);
+            navigationView.getMenu().findItem(R.id.payment_cards).setVisible(false);
+            navigationView.getMenu().findItem(R.id.discount_codes).setVisible(false);
+            navigationView.getMenu().findItem(R.id.referral).setVisible(false);
+        }else{
+            /// if login
+            navigationView.getMenu().findItem(R.id.login).setVisible(false);
+            navigationView.getMenu().findItem(R.id.register).setVisible(false);
+            navigationView.getMenu().findItem(R.id.logout).setVisible(true);
+
+            navigationView.getMenu().findItem(R.id.dashboard).setVisible(true);
+            navigationView.getMenu().findItem(R.id.place_order).setVisible(true);
+            navigationView.getMenu().findItem(R.id.account).setVisible(true);
+            navigationView.getMenu().findItem(R.id.laundry_settings).setVisible(true);
+            navigationView.getMenu().findItem(R.id.loyalties).setVisible(true);
+            navigationView.getMenu().findItem(R.id.payment_cards).setVisible(true);
+            navigationView.getMenu().findItem(R.id.discount_codes).setVisible(true);
+            navigationView.getMenu().findItem(R.id.referral).setVisible(true);
+        }
+
     }
 
     /*
@@ -85,7 +120,17 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
             intent = new Intent(this, DiscountsActivity.class);
         } else if (id == R.id.payment_cards) {
             intent = new Intent(this, PaymentCardsActivity.class);
+        }else if (id == R.id.logout) {
+            intent = new Intent(this, LogoutActivity.class);
+        }else if (id == R.id.login) {
+            intent = new Intent(this, LoginActivity.class);
+        }else if (id == R.id.register) {
+            intent = new Intent(this, RegisterActivity.class);
+        }else if (id == R.id.referral) {
+            intent = new Intent(this, ReferralActivity.class);
         }
+
+
         startActivityForResult(intent, 10);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

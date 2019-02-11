@@ -48,6 +48,9 @@ public class AddCardSubActivity extends Config {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.subactivity_add_card);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
 
         final String member_id = sharedpreferences.getString("member_id", null);

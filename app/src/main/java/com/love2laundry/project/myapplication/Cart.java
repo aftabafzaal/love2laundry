@@ -111,11 +111,32 @@ public class Cart extends SQLiteOpenHelper {
         return true;
     }
 
+    public Double getServicesTotal(String androidId,String country){
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select sum(unitPrice * quantity) as total  from cart where androidId=? and country=?;", new String[]{androidId, country});
+        Double total = 0.00;
+
+        if (res.getCount() == 0) {
+
+        } else {
+
+            res.moveToFirst();
+            total = res.getDouble(0);
+            res.close();
+
+            Log.e("count ",""+total);
+            return total;
+        }
+        return 0.00;
+
+    }
+
     public int insertId() {
         String sql = "SELECT last_insert_rowid();";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery(sql, null);
-        Log.e("Aftab Khan res", " " + res.toString());
         return 1;
     }
 
@@ -152,9 +173,32 @@ public class Cart extends SQLiteOpenHelper {
 
     public Integer deleteCartItem(String androidId, Integer service_id, String country) {
         SQLiteDatabase db = this.getWritableDatabase();
+
+
         return db.delete("cart",
                 "androidId=? and service_id=? and country=?",
                 new String[]{androidId, service_id.toString(), country});
+    }
+
+
+    public Double getTotalForDiscount(String androidId, String country) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select sum(unitPrice * quantity) as total  from cart where isPackage='No' and discount=0.0 and androidId=? and country=?;", new String[]{androidId, country});
+        Double count = 0.00;
+        if (res.getCount() == 0) {
+            Log.e("res ","-- ");
+            return 0.00;
+        } else {
+
+            res.moveToFirst();
+            count = res.getDouble(0);
+            res.close();
+
+            Log.e("count ",""+count);
+            return count;
+        }
+
+
     }
 
     public boolean showPreferences(String androidId, String country) {
@@ -163,6 +207,7 @@ public class Cart extends SQLiteOpenHelper {
         if (res.getCount() == 0) {
             return false;
         } else {
+
             return true;
         }
     }

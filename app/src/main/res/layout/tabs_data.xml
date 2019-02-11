@@ -9,7 +9,6 @@
     <ImageView
         android:id="@+id/mobileImagePath"
         style="@style/BackGroundImageView"
-
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
@@ -18,63 +17,95 @@
         tools:ignore="ContentDescription" />
 
 
+
     <ImageButton
-        android:layout_marginTop="30dp"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_above="@+id/title_bar"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="8dp"
         android:id="@+id/add"
         android:scaleType="fitXY"
         android:cropToPadding="false"
-        android:paddingLeft="10dp"
-        android:background="@drawable/add">
-    </ImageButton>
+        android:background="@drawable/add" />
 
     <ImageButton
-        android:layout_marginTop="30dp"
-
-        android:layout_alignParentRight="true"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_above="@id/title_bar"
+        android:layout_alignEnd="@id/title_bar"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="8dp"
         android:id="@+id/minus"
         android:scaleType="fitXY"
         android:cropToPadding="false"
-        android:paddingLeft="10dp"
-        android:background="@drawable/minus">
-    </ImageButton>
+        android:background="@drawable/minus" />
 
 
     <TextView
         android:id="@+id/discount"
-
         android:background="@drawable/sale_bg"
-        android:textSize="14dp"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_above="@id/title_bar"
+        android:layout_alignParentLeft="true"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="16dp"
         android:textColor="#ffffff"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="70dp"
         android:textStyle="bold"
-        android:gravity="center_horizontal|center_vertical"
+        />
+    <TextView
+        android:id="@+id/price"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textColor="#ffffff"
+        android:textSize="14dp"
+        android:layout_above="@id/title_bar"
+        android:layout_alignBaseline="@id/offerPrice"
+        android:layout_toLeftOf="@id/offerPrice"
+        />
+    <TextView
+        android:id="@+id/offerPrice"
+        android:background="@drawable/offer_price"
+        android:gravity="left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_above="@id/title_bar"
+        android:layout_alignParentRight="true"
         />
 
-
     <RelativeLayout
+        android:id="@+id/title_bar"
         style="@style/BackGroundServicesList"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:gravity="center_vertical"
         >
 
         <TextView
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="4dp"
             android:id="@+id/quantity"
             android:textStyle="bold"
             android:gravity="center_horizontal|center_vertical"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorPrimary"
             android:textSize="18dp"
             android:text="0"
             android:background="@drawable/quantity_bg"
@@ -84,49 +115,35 @@
         <TextView
 
             android:id="@+id/title"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_marginLeft="4dp"
-            android:textSize="16dp"
+            android:gravity="left|center_vertical"
+            android:fontFamily="@font/oxygen_regular"
+            android:textColor="@color/colorWhite"
+            android:textStyle="normal"
+            android:textAllCaps="true"
+            android:layout_marginLeft="8dp"
+            android:textSize="15sp"
             android:layout_toRightOf="@id/quantity"
             />
 
         <TextView
             android:id="@+id/content"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:textSize="14dp"
+            android:gravity="left|center_vertical"
+            android:fontFamily="@font/oxygen_regular"
+            android:textColor="@color/colorWhite"
+            android:textSize="13dp"
             android:layout_below="@id/title"
             android:layout_toRightOf="@id/quantity"
             android:layout_marginLeft="4dp"
             />
 
 
-        <TextView
-            android:id="@+id/price"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="14dp"
-            android:layout_toRightOf="@id/title"
-            android:layout_alignParentRight="true"
-            />
 
-        <TextView
-            android:id="@+id/offerPrice"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:layout_below="@id/price"
-            android:layout_toRightOf="@id/title"
-            android:layout_alignParentRight="true"
-             />
+
+
 
 
 

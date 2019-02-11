@@ -3,6 +3,7 @@ package com.love2laundry.project.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -85,6 +86,8 @@ public class DatesActivity extends Config {
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
             String server = sharedpreferences.getString("server", null);
             String url = server + action;
+
+            Log.e(TAG,url);
             String jsonStr = sh.makeServiceCall(url);
             if (jsonStr != null) {
 

@@ -77,7 +77,8 @@ public class TimeActivity extends Config {
 
             String url = server + action;
             String jsonStr = sh.makeServiceCall(url);
-            Log.e(TAG, jsonStr);
+
+            Log.e(TAG, url);
             if (jsonStr != null) {
 
                 try {
@@ -145,7 +146,6 @@ public class TimeActivity extends Config {
                     R.layout.time_list, new String[]{"availableTime", "status", "hour"},
                     new int[]{R.id.time}){
 
-                //@SuppressLint("WrongConstant")
                 @Override
                 public View getView(final int position, View convertView, ViewGroup parent) {
                     final View v = super.getView(position, convertView, parent);
@@ -168,11 +168,13 @@ public class TimeActivity extends Config {
 
                     }else{
 
+                        //Log.e(" --> ",timeList.get(position).get("availableTime").toString());
 
-                        TextView tv = v.findViewById(R.id.disable);
-                        tv.setVisibility(View.VISIBLE);
-                        tv.setEnabled(false);
-                        tv.setClickable(false);
+                     TextView tv = v.findViewById(R.id.disable);
+                     tv.setVisibility(View.VISIBLE);
+                        tv.setText(timeList.get(position).get("availableTime"));
+                    tv.setEnabled(false);
+                    tv.setClickable(false);
 
                     }
                     return v;

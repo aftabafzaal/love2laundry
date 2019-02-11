@@ -4,76 +4,72 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-
+        <item
+            android:id="@+id/login"
+            android:icon="@drawable/ic_exit_to_app"
+            android:title="Login" />
+        <item
+            android:id="@+id/register"
+            android:icon="@drawable/ic_exit_to_app"
+            android:title="Register" />
         <item
             android:id="@+id/dashboard"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_dashboard"
             android:title="Dashboard" />
 
         <item
-            android:id="@+id/account"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Account" />
-
-        <item
             android:id="@+id/place_order"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_place_order"
             android:title="Place Order" />
 
         <item
-            android:id="@+id/loyalties"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Loyalties" />
+            android:id="@+id/account"
+            android:icon="@drawable/ic_account_setting"
+            android:title="Account" />
 
         <item
             android:id="@+id/laundry_settings"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_laundry_setting"
             android:title="Laundry Settings" />
-
+        <item
+            android:id="@+id/payment_cards"
+            android:icon="@drawable/ic_payment_card"
+            android:title="Payment Cards" />
+        <item
+            android:id="@+id/loyalties"
+            android:icon="@drawable/ic_loyalty"
+            android:title="Loyalty" />
         <item
             android:id="@+id/discount_codes"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_discount"
             android:title="Discount Codes" />
 
         <item
-            android:id="@+id/payment_cards"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Payments Cards" />
+            android:id="@+id/referral"
+            android:icon="@drawable/ic_referral_code"
+            android:title="Get Free Laundry" />
 
         <item
-            android:id="@+id/orders"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Orders" />
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_exit_to_app"
+            android:title="Sign Out" />
+        <item
+            android:id="@+id/faqs"
+            android:icon="@drawable/ic_help"
+            android:title="FAQ's" />
+        <item
+            android:id="@+id/terms"
+            android:icon="@drawable/ic_term_condition"
+            android:title="Terms and Conditions" />
+        <item
+            android:id="@+id/contact"
+            android:icon="@drawable/ic_contact_mail"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/rate_app"
+            android:icon="@drawable/ic_rate"
+            android:title="Rate App" />
 
-        <!--
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" /> -->
     </group>
-
-    <!--
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
-    -->
 
 </menu>

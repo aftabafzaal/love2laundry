@@ -75,7 +75,10 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
 
             myViewHolder.title.setText(json.getString("Title"));
             myViewHolder.content.setText(json.getString("Content"));
-            Picasso.with(p).load(json.getString("MobileImagePath")).into(myViewHolder.mobileImagePath);
+
+            if(!json.getString("MobileImagePath").equals("")) {
+                Picasso.with(p).load(json.getString("MobileImagePath")).into(myViewHolder.mobileImagePath);
+            }
 
             final String discount = json.getString("DiscountPercentage");
             String price = json.getString("Price");
@@ -176,13 +179,11 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
 
                         if (quantity > 0) {
                             quantity--;
-                            //set.add(json.getString("Title"));
-                            //set.add(quantity.toString());
                             cartDb.updateCart(deviceId, service_id, quantity, unitPrice, discountAmount, country);
+                            myViewHolder.quantity.setText(quantity.toString());
                         } else {
                             cartDb.deleteCartItem(deviceId, service_id, country);
                         }
-                        myViewHolder.quantity.setText(quantity.toString());
 
                     } catch (JSONException e) {
                         e.printStackTrace();

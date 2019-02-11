@@ -25,4 +25,10 @@ public class UK {
     public static final String API_LOYALTIES = "/apiv5/get_loyalty";
     public static final String API_DISCOUNTS = "/apiv5/get_discounts";
 
+    public static final String API_POST_DISCOUNT = "/apiv5/post_discount_code";
+    public static final String API_POST_REFERRAL = "/apiv5/post_referral_code";
+
+    public static final String API_FORGOT_PASSWORD = "/apiv5/post_forgot_password";
+
+
 }

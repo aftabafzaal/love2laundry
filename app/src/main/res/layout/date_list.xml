@@ -1,45 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="#f6f6f6">
 
 
 
     <TextView
-        android:drawableLeft="@drawable/ic_correct"
+        android:drawableLeft="@drawable/date_icon"
+        android:drawablePadding="10dp"
         android:visibility="gone"
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:textColor="#000"
+        android:textColor="#696969"
+        android:textSize="18sp"
         android:gravity="center|center_vertical"
-
         />
 
     <TextView
+        android:id="@+id/disable"
         android:clickable="false"
         android:focusableInTouchMode="false"
         android:visibility="gone"
         android:gravity="center|center_vertical"
         android:drawableLeft="@drawable/ic_close"
-        android:id="@+id/disable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-
-        android:textColor="#000"
+        android:textColor="@color/colorGreyHeading"
 
         />
-
-
 
 </RelativeLayout>

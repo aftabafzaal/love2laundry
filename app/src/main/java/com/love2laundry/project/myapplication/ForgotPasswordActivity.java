@@ -3,16 +3,12 @@ package com.love2laundry.project.myapplication;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.app.LoaderManager.LoaderCallbacks;
-
-import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -48,12 +44,12 @@ import java.util.Map;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
+public class ForgotPasswordActivity extends Config implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
      */
-    private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = ForgotPasswordActivity.class.getSimpleName();
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
@@ -65,14 +61,13 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
 
     // UI references.
     private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_forgot_password);
         super.Config();
 
 
@@ -81,7 +76,7 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
         String member_id = sharedpreferencesMember.getString("member_id", null);
 
         if(member_id!=null){
-            startActivity(new Intent(LoginActivity.this,
+            startActivity(new Intent(ForgotPasswordActivity.this,
                    CheckoutActivity.class));
 
         }
@@ -89,18 +84,6 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
-
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -112,26 +95,6 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-
-        final Button button = findViewById(R.id.register);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                startActivity(new Intent(LoginActivity.this,
-                        RegisterActivity.class));
-            }
-        });
-
-        Button forgotButton = findViewById(R.id.forgot_button);
-        forgotButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                startActivity(new Intent(LoginActivity.this,
-                        ForgotPasswordActivity.class));
-            }
-        });
-
-
 
     }
 
@@ -152,21 +115,13 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
 
         // Reset errors.
         mEmailView.setError(null);
-        mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
@@ -187,7 +142,7 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(email);
             mAuthTask.execute((Void) null);
         }
     }
@@ -195,11 +150,6 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return email.contains("@");
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 3;
     }
 
     /**
@@ -244,7 +194,7 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
+                new ArrayAdapter<>(ForgotPasswordActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
@@ -272,11 +222,9 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
-        private final String mPassword;
 
-        UserLoginTask(String email, String password) {
+        UserLoginTask(String email) {
             mEmail = email;
-            mPassword = password;
         }
 
         @Override
@@ -285,9 +233,10 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
 
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
             String server = sharedpreferences.getString("server", null);
-            String action = sharedpreferences.getString("apiLogin", null);
+            String action = sharedpreferences.getString("apiForgotPassword", null);
             String url = server + action;
-            RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+            Log.e("url ---> ",url);
+            RequestQueue queue = Volley.newRequestQueue(ForgotPasswordActivity.this);
             StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                     new Response.Listener<String>() {
                         @Override
@@ -296,53 +245,22 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
 
                             JSONObject jsonObj = null;
                             try {
+                                String message;
                                 jsonObj = new JSONObject(response);
                                 String result = jsonObj.getString("result");
 
                                 if (result.equals("Error")) {
-                                    String message = jsonObj.getString("message");
+                                    message = jsonObj.getString("message");
                                     Toast toast = Toast.makeText(getApplicationContext(),
                                             "Error: " + message, Toast.LENGTH_SHORT);
-                                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+                                    toast.setGravity(200-Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
                                     toast.show();
                                 } else {
-
-                                    JSONObject memberJson = jsonObj.getJSONObject("member");
-                                    Log.e(TAG, "test " + memberJson.toString());
-                                    JSONArray preferences = jsonObj.getJSONArray("preferences");
-
-                                    //JSONArray data = categories.getJSONArray("data");
-
-
-                                    String member_id = memberJson.getString("ID");
-                                    String firstName = memberJson.getString("FirstName");
-                                    String lastName = memberJson.getString("LastName");
-                                    String phone = memberJson.getString("Phone");
-                                    String postCode = memberJson.getString("PostalCode");
-                                    String buildingName = memberJson.getString("BuildingName");
-                                    String streetName = memberJson.getString("StreetName");
-                                    String town = memberJson.getString("Town");
-
-                                    //Log.e(TAG, "member_id " + member_id + "" + memberJson.toString());
-
-                                    sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
-
-                                    SharedPreferences.Editor member = sharedpreferences.edit();
-
-                                    member.putString("member_data", memberJson.toString());
-                                    member.putString("member_preferences", preferences.toString());
-                                    member.putString("member_id", member_id);
-                                    member.putString("email", mEmail);
-                                    member.putString("firstName", firstName);
-                                    member.putString("lastName", lastName);
-                                    member.putString("phone", phone);
-                                    member.putString("postCode", postCode);
-                                    member.putString("streetName", streetName);
-                                    member.putString("buildingName", buildingName);
-                                    member.putString("town", town);
-                                    member.commit();
-                                    startActivity(new Intent(LoginActivity.this, CheckoutActivity.class));
-
+                                    message = jsonObj.getString("message");
+                                    Toast toast = Toast.makeText(getApplicationContext(),
+                                            message, Toast.LENGTH_SHORT);
+                                    toast.setGravity(200-Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+                                    toast.show();
                                 }
 
                             } catch (JSONException e) {
@@ -365,7 +283,6 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("email_address", mEmail);
-                    params.put("password", mPassword);
                     params.put("device_id", androidId);
                     return params;
                 }
@@ -386,13 +303,6 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
-
-            if (success) {
-                //finish();
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
-            }
         }
 
         @Override
