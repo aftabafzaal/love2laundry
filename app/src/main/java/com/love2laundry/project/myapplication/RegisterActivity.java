@@ -176,7 +176,11 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
         View focusView = null;
         // Log.e("Error.cancel", ""+cancel);
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        Config config= new Config();
+        if (!config.isConnected(this)) {
+            config.buildDialog(this).show();
+
+        }else if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;

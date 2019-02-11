@@ -92,14 +92,20 @@ public class ListingActivity extends Navigation {
         super.onCreate(savedInstanceState);
 
 
+        Config config = new Config();
+
+        if (!config.isConnected(this)) {
+            config.buildDialog(this).show();
+        }else{
+
+
         setContentView(R.layout.activity_listing);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -109,19 +115,18 @@ public class ListingActivity extends Navigation {
         Navigation navigation = new Navigation();
 
         spMember = getSharedPreferences("member", MODE_PRIVATE);
-        navigation.initView(navigationView,spMember.getString("member_id",null));
+        navigation.initView(navigationView, spMember.getString("member_id", null));
 
         super.Navigation();
 
 
         sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
-        currencySymbol= sharedpreferences.getString("currencySymbol", null);
+        currencySymbol = sharedpreferences.getString("currencySymbol", null);
         countryCode = sharedpreferences.getString("country", null);
         request = getIntent().getStringExtra("request");
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        FloatingActionButton floatingActionButton =
-                (FloatingActionButton) findViewById(R.id.checkout);
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.checkout);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,76 +136,74 @@ public class ListingActivity extends Navigation {
                 sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
 
                 String member_id = sharedpreferences.getString("member_id", null);
-                startActivity(new Intent(ListingActivity.this,
-                        LoginActivity.class));
+                startActivity(new Intent(ListingActivity.this, LoginActivity.class));
 
             }
         });
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, request,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, request, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-                        JSONObject jsonObj = null;
+                JSONObject jsonObj = null;
 
-                        try {
+                try {
 
-                            jsonObj = new JSONObject(response);
-                            String result = jsonObj.getString("result");
-                            JSONObject categories = jsonObj.getJSONObject("categories");
-                            JSONArray data = categories.getJSONArray("data");
+                    jsonObj = new JSONObject(response);
+                    String result = jsonObj.getString("result");
+                    JSONObject categories = jsonObj.getJSONObject("categories");
+                    JSONArray data = categories.getJSONArray("data");
 
-                            JSONObject franchise = jsonObj.getJSONObject("franchise_detail");
-                            JSONObject settings = jsonObj.getJSONObject("settings");
+                    JSONObject franchise = jsonObj.getJSONObject("franchise_detail");
+                    JSONObject settings = jsonObj.getJSONObject("settings");
 
 
-                            SharedPreferences.Editor sp = sharedpreferences.edit();
-                            sp.putString("franchise_id", franchise.getString("ID"));
-                            sp.putString("minimumOrderAmount", franchise.getString("MinimumOrderAmount"));
-                            sp.putString("settings", settings.toString());
-                            sp.commit();
-                            Log.e(franchise.getString("MinimumOrderAmount")+"franchise --> ",franchise.toString());
+                    SharedPreferences.Editor sp = sharedpreferences.edit();
+                    sp.putString("franchise_id", franchise.getString("ID"));
+                    sp.putString("minimumOrderAmount", franchise.getString("MinimumOrderAmount"));
+                    sp.putString("settings", settings.toString());
+                    sp.commit();
+                    Log.e(franchise.getString("MinimumOrderAmount") + "franchise --> ", franchise.toString());
 
-                            cats = new String[data.length()];
-                            service_records = new JSONArray[data.length()];
+                    cats = new String[data.length()];
+                    service_records = new JSONArray[data.length()];
 
-                            for (int i = 0; i < data.length(); i++) {
-                                JSONObject c = data.getJSONObject(i);
-                                String MTitle = c.getString("MTitle");
-                                JSONArray sr = c.getJSONArray("service_records");
-                                cats[i] = MTitle;
-                                service_records[i] = sr;
-                            }
-
-                            host = findViewById(R.id.tabHost);
-                            host.setup();
-                            host.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-
-                                public void onTabChanged(String tabId) {
-
-                                    int number = host.getCurrentTab();
-                                    activity.setTitle(tabId);
-                                    getServicesView(number, service_records[number], tabId);
-                                }
-                            });
-
-                            Resources res = getResources();
-                            for (int i = 0; i < cats.length; i++) {
-
-                                TabHost.TabSpec spec = host.newTabSpec(cats[i]);
-                                spec.setIndicator(cats[i]);
-                                spec.setContent(R.id.tab1);
-                                host.addTab(spec);
-                            }
-
-                            host.setCurrentTab(1);
-                        } catch (JSONException e) {
-                            Log.e(TAG, "JSONException " + e.getMessage());
-                        }
-
+                    for (int i = 0; i < data.length(); i++) {
+                        JSONObject c = data.getJSONObject(i);
+                        String MTitle = c.getString("MTitle");
+                        JSONArray sr = c.getJSONArray("service_records");
+                        cats[i] = MTitle;
+                        service_records[i] = sr;
                     }
-                }, new Response.ErrorListener() {
+
+                    host = findViewById(R.id.tabHost);
+                    host.setup();
+                    host.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+
+                        public void onTabChanged(String tabId) {
+
+                            int number = host.getCurrentTab();
+                            activity.setTitle(tabId);
+                            getServicesView(number, service_records[number], tabId);
+                        }
+                    });
+
+                    Resources res = getResources();
+                    for (int i = 0; i < cats.length; i++) {
+
+                        TabHost.TabSpec spec = host.newTabSpec(cats[i]);
+                        spec.setIndicator(cats[i]);
+                        spec.setContent(R.id.tab1);
+                        host.addTab(spec);
+                    }
+
+                    host.setCurrentTab(1);
+                } catch (JSONException e) {
+                    Log.e(TAG, "JSONException " + e.getMessage());
+                }
+
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // mTextView.setText("That didn't work!");
@@ -211,6 +214,9 @@ public class ListingActivity extends Navigation {
         stringRequest.setShouldCache(false);
         queue.getCache().clear();
         queue.add(stringRequest);
+
+
+        }
 
     }
 

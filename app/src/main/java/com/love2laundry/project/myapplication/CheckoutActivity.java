@@ -97,7 +97,7 @@ public class CheckoutActivity extends Navigation
     Double discountAmount = 0.0;
     String member_id;
     String member = null;
-    String minimumOrderAmount;
+    Double minimumOrderAmount;
     Double discountedPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,452 +109,441 @@ public class CheckoutActivity extends Navigation
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
         sharedPreferencesDiscount = getSharedPreferences("discount", MODE_PRIVATE);
 
-        Config config= new Config();
+        final Config config= new Config();
 
-        member_id = sharedpreferences.getString("member_id", null);
-        final String firstName = sharedpreferences.getString("firstName", null);
-        String lastName = sharedpreferences.getString("lastName", null);
-        String phone = sharedpreferences.getString("phone", null);
-        String street = sharedpreferences.getString("streetName", null);
-        String building = sharedpreferences.getString("buildingName", null);
-        String town = sharedpreferences.getString("town", null);
-        member = sharedpreferences.getString("member_data", null);
+        if (!config.isConnected(this)) {
+            config.buildDialog(this).show();
 
-        discountForm=(RelativeLayout) findViewById(R.id.discounts_form);
-        discountsView=(RelativeLayout) findViewById(R.id.discounts);
+            Intent i = null;
+            i = new Intent(this, DashboardActivity.class);
+            startActivityForResult(i, 10);
+        }else {
 
-        preferenceTotalView=findViewById(R.id.preferences_total);
-        preferenceTotalTextView=findViewById(R.id.preferences_total_text);
-        minimumOrderMessage=findViewById(R.id.minimum_order_message);
-        preferencesHeadView=findViewById(R.id.preferences_heading);
+            member_id = sharedpreferences.getString("member_id", null);
+            final String firstName = sharedpreferences.getString("firstName", null);
+            String lastName = sharedpreferences.getString("lastName", null);
+            String phone = sharedpreferences.getString("phone", null);
+            String street = sharedpreferences.getString("streetName", null);
+            String building = sharedpreferences.getString("buildingName", null);
+            String town = sharedpreferences.getString("town", null);
+            member = sharedpreferences.getString("member_data", null);
 
+            discountForm = (RelativeLayout) findViewById(R.id.discounts_form);
+            discountsView = (RelativeLayout) findViewById(R.id.discounts);
 
-        sharedPreferencesCountry = getSharedPreferences("country", MODE_PRIVATE);
-
-        currencyCode = sharedPreferencesCountry.getString("currencyCode", null);
-        countryCode = sharedPreferencesCountry.getString("country", null);
-        franchise_id = sharedPreferencesCountry.getString("franchise_id", null);
-        String postCode = sharedPreferencesCountry.getString("postCode", null);
-
-        currencySymbol=config.getCurrencySymbol(currencyCode);
-
-        String franchiseData=null;
-
-        if (postCode == null) {
-            postCode = sharedpreferences.getString("postCode", null);
-        }
-
-        minimumOrderAmount = sharedPreferencesCountry.getString("minimumOrderAmount", null);
-
-        postCodeField = (TextView) findViewById(R.id.post_code);
-        postCodeField.setText(postCode);
-
-        streetField = (EditText) findViewById(R.id.street);
-        streetField.setText(street);
-
-        buildingField = (EditText) findViewById(R.id.building);
-        buildingField.setText(building);
-
-        townField = (EditText) findViewById(R.id.town);
-        townField.setText(town);
-        cartDb = new Cart(this);
-        pickUpDateButton = (Button) findViewById(R.id.pick_up_date);
-
-        accountNotes = (EditText) findViewById(R.id.account_notes);
-
-        additionalInstruction = (EditText) findViewById(R.id.additional_instruction);
-
-        services = cartDb.getServices(androidId, countryCode);
-        cartAdapter = new MyCartAdapter(services,this,country,androidId);
-        ((MyCartAdapter) cartAdapter).setPersonModifier(this);
+            preferenceTotalView = findViewById(R.id.preferences_total);
+            preferenceTotalTextView = findViewById(R.id.preferences_total_text);
+            minimumOrderMessage = findViewById(R.id.minimum_order_message);
+            preferencesHeadView = findViewById(R.id.preferences_heading);
 
 
-        JSONArray servicesData = null;
+            sharedPreferencesCountry = getSharedPreferences("country", MODE_PRIVATE);
 
-        try {
-            servicesData = ((MyCartAdapter) cartAdapter).getServices();
-            servicesTotal = cartDb.getServicesTotal(androidId,country);
-        } catch (JSONException e) {
-            Log.e("Log e ", e.getMessage());
-        }
+            currencyCode = sharedPreferencesCountry.getString("currencyCode", null);
+            countryCode = sharedPreferencesCountry.getString("country", null);
+            franchise_id = sharedPreferencesCountry.getString("franchise_id", null);
+            String postCode = sharedPreferencesCountry.getString("postCode", null);
 
-        if (services.size() > 0) {
+            currencySymbol = config.getCurrencySymbol(currencyCode);
 
-            recyclerView = findViewById(R.id.list);
-            LinearLayoutManager manager = new LinearLayoutManager(this);
-            recyclerView.setLayoutManager(manager);
-            recyclerView.setAdapter(cartAdapter);
-            //cartAdapter.notifyDataSetChanged();
-        }
+            String franchiseData = null;
 
-        discountAmountText= (TextView) findViewById(R.id.discount_amount);
-        cartAmount= (TextView) findViewById(R.id.cart_amount);
-
-        if(servicesData.length()>0) {
-
-            cartAmount.setText(currencySymbol+displayPrice(servicesTotal));
-
-            subTotal = servicesTotal + preferenceTotal;
-            grandTotal = subTotal;
-
-        }else{
-            grandTotal =Double.parseDouble(minimumOrderAmount);
-            preferenceTotalView.setVisibility(View.GONE);
-            preferenceTotalTextView.setVisibility(View.GONE);
-            cartAmount.setText(currencySymbol+"00:00");
-
-        }
-        minimumOrderMessage.setText(minimumOrderMessage.getText().toString()+" "+currencySymbol+minimumOrderAmount+".");
-
-        showPreferences = cartDb.showPreferences(androidId, countryCode);
-
-
-        if(showPreferences==true) {
-            new GetPreferences().execute();
-        }else{
-            preferenceTotalTextView.setVisibility(View.GONE);
-            preferenceTotalView.setVisibility(View.GONE);
-        }
-
-        pickUpDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(CheckoutActivity.this, DatesActivity.class);
-                intent.putExtra("franchise_id", franchise_id);
-                intent.putExtra("type", "Pickup");
-                intent.putExtra("title", "Pick Up Date");
-                intent.putExtra("action", sharedPreferencesCountry.getString("apiPickUpDate", null) + "/" + franchise_id);
-                startActivityForResult(intent, 10);
+            if (postCode == null) {
+                postCode = sharedpreferences.getString("postCode", null);
             }
-        });
+
+            String minimum = sharedPreferencesCountry.getString("minimumOrderAmount", null);
+
+            minimumOrderAmount=Double.parseDouble(minimum);
+
+            Log.e("minimumOrder ",minimumOrderAmount+"");
+
+            postCodeField = (TextView) findViewById(R.id.post_code);
+            postCodeField.setText(postCode);
+
+            streetField = (EditText) findViewById(R.id.street);
+            streetField.setText(street);
+
+            buildingField = (EditText) findViewById(R.id.building);
+            buildingField.setText(building);
+
+            townField = (EditText) findViewById(R.id.town);
+            townField.setText(town);
+            cartDb = new Cart(this);
+            pickUpDateButton = (Button) findViewById(R.id.pick_up_date);
+
+            accountNotes = (EditText) findViewById(R.id.account_notes);
+
+            additionalInstruction = (EditText) findViewById(R.id.additional_instruction);
+
+            services = cartDb.getServices(androidId, countryCode);
+            cartAdapter = new MyCartAdapter(services, this, country, androidId);
+            ((MyCartAdapter) cartAdapter).setPersonModifier(this);
 
 
-        pickUpTimeButton = (Button) findViewById(R.id.pick_up_time);
+            JSONArray servicesData = null;
 
-        pickUpTimeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (pickUpDate == null) {
-                    Toast.makeText(getApplicationContext(),
-                            "Please choose pick up date first!",
-                            Toast.LENGTH_LONG).show();
-
-                } else {
-
-                    Intent intent = new Intent(CheckoutActivity.this, TimeActivity.class);
-
-                    intent.putExtra("franchise_id", franchise_id);
-                    intent.putExtra("type", "Pickup");
-                    intent.putExtra("title", "Pick Up Time");
-                    intent.putExtra("action", sharedPreferencesCountry.getString("apiPickUpTime", null) + "?id=" + franchise_id + "&date=" + pickUpDate + "&type=Pickup&device_id=" + androidId);
-                    startActivityForResult(intent, 10);
-
-                }
+            try {
+                servicesData = ((MyCartAdapter) cartAdapter).getServices();
+                servicesTotal = cartDb.getServicesTotal(androidId, country);
+            } catch (JSONException e) {
+                Log.e("Log e ", e.getMessage());
             }
-        });
+
+            if (services.size() > 0) {
+
+                recyclerView = findViewById(R.id.list);
+                LinearLayoutManager manager = new LinearLayoutManager(this);
+                recyclerView.setLayoutManager(manager);
+                recyclerView.setAdapter(cartAdapter);
+                //cartAdapter.notifyDataSetChanged();
+            }
+
+            discountAmountText = (TextView) findViewById(R.id.discount_amount);
+            cartAmount = (TextView) findViewById(R.id.cart_amount);
+
+            if (servicesData.length() > 0) {
+
+                cartAmount.setText(currencySymbol + displayPrice(servicesTotal));
+
+                subTotal = servicesTotal + preferenceTotal;
+                grandTotal = subTotal;
+
+            } else {
+                grandTotal = minimumOrderAmount;
+                preferenceTotalView.setVisibility(View.GONE);
+                preferenceTotalTextView.setVisibility(View.GONE);
+                cartAmount.setText(currencySymbol + "00:00");
+            }
+
+            minimumOrderMessage.setText(minimumOrderMessage.getText().toString() + " " + currencySymbol + minimumOrderAmount + ".");
+
+            showPreferences = cartDb.showPreferences(androidId, countryCode);
 
 
-        deliveryDateButton = (Button) findViewById(R.id.delivery_date);
-        deliveryDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            if (showPreferences == true) {
+                new GetPreferences().execute();
+            } else {
+                preferenceTotalTextView.setVisibility(View.GONE);
+                preferenceTotalView.setVisibility(View.GONE);
+            }
 
-                if (pickUpTime == null) {
-                    Toast.makeText(getApplicationContext(),
-                            "Please choose pick up time first!",
-                            Toast.LENGTH_LONG).show();
-
-                } else {
+            pickUpDateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
                     Intent intent = new Intent(CheckoutActivity.this, DatesActivity.class);
                     intent.putExtra("franchise_id", franchise_id);
-                    intent.putExtra("type", "delivery");
-                    intent.putExtra("title", "Delivery Date");
+                    intent.putExtra("type", "Pickup");
+                    intent.putExtra("title", "Pick Up Date");
                     intent.putExtra("action", sharedPreferencesCountry.getString("apiPickUpDate", null) + "/" + franchise_id);
                     startActivityForResult(intent, 10);
                 }
-            }
-        });
+            });
 
 
-        deliveryTimeButton = (Button) findViewById(R.id.delivery_time);
+            pickUpTimeButton = (Button) findViewById(R.id.pick_up_time);
 
-        deliveryTimeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            pickUpTimeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-                if (deliveryDate == null) {
-                    Toast.makeText(getApplicationContext(),
-                            "Please choose delivery date first!",
-                            Toast.LENGTH_LONG).show();
-                } else {
+                    if (pickUpDate == null) {
+                        Toast.makeText(getApplicationContext(), "Please choose pick up date first!", Toast.LENGTH_LONG).show();
 
-                    Intent intent = new Intent(CheckoutActivity.this, TimeActivity.class);
+                    } else {
 
-                    intent.putExtra("franchise_id", franchise_id);
-                    intent.putExtra("type", "delivery");
-                    intent.putExtra("title", "Delivery Time");
-                    intent.putExtra("action", sharedPreferencesCountry.getString("apiDeliveryTime", null) + "?id=" + franchise_id +
-                            "&date=" + deliveryDate + "&type=Delivery&pick_date=" + pickUpDate + "&device_id=" + androidId + "&pick_time_hour=" + pickUpTime);
-                    startActivityForResult(intent, 10);
+                        Intent intent = new Intent(CheckoutActivity.this, TimeActivity.class);
 
-                }
-            }
-        });
+                        intent.putExtra("franchise_id", franchise_id);
+                        intent.putExtra("type", "Pickup");
+                        intent.putExtra("title", "Pick Up Time");
+                        intent.putExtra("action", sharedPreferencesCountry.getString("apiPickUpTime", null) + "?id=" + franchise_id + "&date=" + pickUpDate + "&type=Pickup&device_id=" + androidId);
+                        startActivityForResult(intent, 10);
 
-        grandTotalView=(TextView) findViewById(R.id.grand_total_amount);
-
-        grandTotalView.setText(currencySymbol+grandTotal);
-
-
-        discountCodeButton = (Button) findViewById(R.id.discount_code);
-
-        codeField=findViewById(R.id.code);
-        applyButton=findViewById(R.id.apply);
-
-        discountCodeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                discountCodeType="discount";
-                codeField.setHint("Discount Code");
-                codeField.setText("");
-                discountForm.setVisibility(View.VISIBLE);
-            }
-        });
-
-        referralCodeButton = (Button) findViewById(R.id.referral_code);
-
-        referralCodeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                discountCodeType="referral";
-                codeField.setHint("Referral Code");
-                codeField.setText("");
-                discountForm.setVisibility(View.VISIBLE);
-               // applyButton.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-        applyButton = (Button) findViewById(R.id.apply);
-
-        applyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                if (codeField.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(),
-                            "Please enter valid code!",
-                            Toast.LENGTH_LONG).show();
-
-                }else{
-                    String device_id = sharedPreferencesCountry.getString("deviceId", null);
-                    postCode(codeField.getText().toString(),member_id,device_id);
-                }
-
-            }
-        });
-
-
-
-        Button addMoreServices;
-        addMoreServices = (Button) findViewById(R.id.add_more_services);
-
-        addMoreServices.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-
-                SharedPreferences.Editor mp= sharedpreferences.edit();
-
-                mp.putString("streetName",streetField.getText().toString());
-                mp.putString("buildingName",buildingField.getText().toString());
-                mp.putString("town",townField.getText().toString());
-                mp.commit();
-
-
-                moveToListingActivity();
-            }
-        });
-
-        creditCardField = (TextView) findViewById(R.id.credit_card);
-        creditCardField.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View arg0, MotionEvent arg1) {
-
-                Intent intent = new Intent(CheckoutActivity.this, CreditCardsActivity.class);
-
-                startActivityForResult(intent, 10);
-                return false;
-            }
-        });
-
-        final JSONArray finalServicesData = servicesData;
-        Button checkoutButton = (Button) findViewById(R.id.checkout_button);
-        checkoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                String franchise = sharedPreferencesCountry.getString("franchise", null);
-                String device_id = sharedPreferencesCountry.getString("deviceId", null);
-
-                final Map<String, String> postDataParams = new HashMap<String, String>();
-
-                if(servicesTotal < Double.parseDouble(minimumOrderAmount) && grandTotal < Double.parseDouble(minimumOrderAmount) ) {
-
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.minimum_order_message)+"  "+currencySymbol+minimumOrderAmount,
-                            Toast.LENGTH_LONG).show();
-
-                }else if (pickUpDate == null) {
-                    Toast.makeText(getApplicationContext(),
-                            "Please choose pick up date first!",
-                            Toast.LENGTH_LONG).show();
-
-                }else if (pickUpTime == null) {
-                    Toast.makeText(getApplicationContext(),
-                            "Please choose pick up time first!",
-                            Toast.LENGTH_LONG).show();
-
-                }else if(deliveryDate==null){
-                    Toast.makeText(getApplicationContext(),
-                            "Please choose delivery date first!",
-                            Toast.LENGTH_LONG).show();
-
-                }else if(cardId==null){
-                    Toast.makeText(getApplicationContext(),
-                            "Please choose credit card first!",
-                            Toast.LENGTH_LONG).show();
-
-                }else {
-
-                    String ip = Utils.getIPAddress(true);
-
-                    String notes = accountNotes.getText().toString();
-                    String additional = additionalInstruction.getText().toString();
-
-                    try {
-                        postDataParams.put("id", "");
-                        postDataParams.put("preferences_data", selectedP);
-                        postDataParams.put("preference_total", "" + preferenceTotal);
-                        postDataParams.put("service_total", "" + servicesTotal);
-                        postDataParams.put("grand_total", "" + grandTotal);
-                        postDataParams.put("sub_total", "" + subTotal);
-                        postDataParams.put("card_id", cardId);
-                        postDataParams.put("post_code", postCodeField.getText().toString());
-                        postDataParams.put("building_name", buildingField.getText().toString());
-                        postDataParams.put("street_name", streetField.getText().toString());
-                        postDataParams.put("town", townField.getText().toString());
-                        postDataParams.put("pick_date", pickUpDate);
-                        postDataParams.put("pick_time", pickUpTimeSelected);
-                        postDataParams.put("delivery_date", deliveryDate);
-                        postDataParams.put("delivery_time", deliveryTimeSelected);
-                        postDataParams.put("account_notes", notes);
-                        postDataParams.put("additional_instruction", additional);
-                        postDataParams.put("ip_address", ip);
-                        postDataParams.put("member_data", member);
-                        postDataParams.put("franchise_data", franchise);
-                        postDataParams.put("services_data", finalServicesData.toString());
-                        postDataParams.put("device_id", device_id);
-
-
-                        if(sharedPreferencesDiscount.getBoolean("validDiscount",false)==true){
-                            postDataParams.put("discount_referral_data",sharedPreferencesDiscount.getString("codeString",null));
-                            postDataParams.put("discount_total", discountAmount.toString());
-                        }
-
-                        String server = sharedPreferencesCountry.getString("server", null);
-                        String url = server + sharedPreferencesCountry.getString("apiCheckout", null);
-                        RequestQueue queue = Volley.newRequestQueue(CheckoutActivity.this);
-                        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                                new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-
-                                        JSONObject jsonObj = null;
-                                        try {
-
-                                            jsonObj = new JSONObject(response);
-                                            Log.e(TAG+" jsonObj ", ""+jsonObj);
-                                            String result= jsonObj.getString("result");
-                                            if(result.equals("Success")) {
-                                                String invoiceId= jsonObj.getString("InvoiceID");
-                                                String message= jsonObj.getString("message");
-                                                String type= jsonObj.getString("type");
-
-                                                Intent intent = new Intent(CheckoutActivity.this, InvoiceActivity.class);
-                                                intent.putExtra("result", result);
-                                                intent.putExtra("message", message);
-                                                intent.putExtra("type", type);
-                                                intent.putExtra("invoiceId", invoiceId);
-                                                startActivityForResult(intent, 10);
-
-                                            }else{
-
-                                            }
-                                        } catch (JSONException e) {
-                                            Log.e(TAG+" JSONException ", e.getMessage());
-                                            e.printStackTrace();
-                                        }
-
-                                    }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        // error
-                                        Log.e("Error.Response ", error.toString());
-                                    }
-                                }
-                        ) {
-                            @Override
-                            protected Map<String, String> getParams() {
-                                return postDataParams;
-                            }
-
-                            @Override
-                            public Map<String, String> getHeaders() throws AuthFailureError {
-                                Map<String, String> headers = new HashMap<String, String>();
-                                headers.put("Content-Type", "application/x-www-form-urlencoded");
-                                return headers;
-                            }
-                        };
-                        postRequest.setRetryPolicy(new DefaultRetryPolicy(
-                                10000,
-                                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-
-                        queue.add(postRequest);
-
-                    } catch (Exception e) {
-                        Log.e(TAG + " JSONException ", e.getMessage());
                     }
                 }
-            }
-        });
+            });
 
 
-        discountedPrice=cartDb.getTotalForDiscount(androidId,country);
+            deliveryDateButton = (Button) findViewById(R.id.delivery_date);
+            deliveryDateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+                    if (pickUpTime == null) {
+                        Toast.makeText(getApplicationContext(), "Please choose pick up time first!", Toast.LENGTH_LONG).show();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        Navigation navigation =new Navigation();
-        navigation.initView(navigationView,member_id);
-        applyDiscount();
+                    } else {
+
+                        Intent intent = new Intent(CheckoutActivity.this, DatesActivity.class);
+                        intent.putExtra("franchise_id", franchise_id);
+                        intent.putExtra("type", "delivery");
+                        intent.putExtra("title", "Delivery Date");
+                        intent.putExtra("action", sharedPreferencesCountry.getString("apiPickUpDate", null) + "/" + franchise_id);
+                        startActivityForResult(intent, 10);
+                    }
+                }
+            });
+
+
+            deliveryTimeButton = (Button) findViewById(R.id.delivery_time);
+
+            deliveryTimeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (deliveryDate == null) {
+                        Toast.makeText(getApplicationContext(), "Please choose delivery date first!", Toast.LENGTH_LONG).show();
+                    } else {
+
+                        Intent intent = new Intent(CheckoutActivity.this, TimeActivity.class);
+
+                        intent.putExtra("franchise_id", franchise_id);
+                        intent.putExtra("type", "delivery");
+                        intent.putExtra("title", "Delivery Time");
+                        intent.putExtra("action", sharedPreferencesCountry.getString("apiDeliveryTime", null) + "?id=" + franchise_id + "&date=" + deliveryDate + "&type=Delivery&pick_date=" + pickUpDate + "&device_id=" + androidId + "&pick_time_hour=" + pickUpTime);
+                        startActivityForResult(intent, 10);
+
+                    }
+                }
+            });
+
+            grandTotalView = (TextView) findViewById(R.id.grand_total_amount);
+
+            grandTotalView.setText(currencySymbol + grandTotal);
+
+
+            discountCodeButton = (Button) findViewById(R.id.discount_code);
+
+            codeField = findViewById(R.id.code);
+            applyButton = findViewById(R.id.apply);
+
+            discountCodeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    discountCodeType = "discount";
+                    codeField.setHint("Discount Code");
+                    codeField.setText("");
+                    discountForm.setVisibility(View.VISIBLE);
+                }
+            });
+
+            referralCodeButton = (Button) findViewById(R.id.referral_code);
+
+            referralCodeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    discountCodeType = "referral";
+                    codeField.setHint("Referral Code");
+                    codeField.setText("");
+                    discountForm.setVisibility(View.VISIBLE);
+                    // applyButton.setVisibility(View.VISIBLE);
+                }
+            });
+
+
+            applyButton = (Button) findViewById(R.id.apply);
+
+            applyButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+                    if (codeField.getText().toString().equals("")) {
+                        Toast.makeText(getApplicationContext(), "Please enter valid code!", Toast.LENGTH_LONG).show();
+
+                    } else {
+                        String device_id = sharedPreferencesCountry.getString("deviceId", null);
+                        postCode(codeField.getText().toString(), member_id, device_id);
+                    }
+
+                }
+            });
+
+
+            Button addMoreServices;
+            addMoreServices = (Button) findViewById(R.id.add_more_services);
+
+            addMoreServices.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View view) {
+
+                    SharedPreferences.Editor mp = sharedpreferences.edit();
+
+                    mp.putString("streetName", streetField.getText().toString());
+                    mp.putString("buildingName", buildingField.getText().toString());
+                    mp.putString("town", townField.getText().toString());
+                    mp.commit();
+
+
+                    moveToListingActivity();
+                }
+            });
+
+            creditCardField = (TextView) findViewById(R.id.credit_card);
+            creditCardField.setOnTouchListener(new View.OnTouchListener() {
+
+                @Override
+                public boolean onTouch(View arg0, MotionEvent arg1) {
+
+                    Intent intent = new Intent(CheckoutActivity.this, CreditCardsActivity.class);
+
+                    startActivityForResult(intent, 10);
+                    return false;
+                }
+            });
+
+            final JSONArray finalServicesData = servicesData;
+            Button checkoutButton = (Button) findViewById(R.id.checkout_button);
+            checkoutButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+                    String franchise = sharedPreferencesCountry.getString("franchise", null);
+                    String device_id = sharedPreferencesCountry.getString("deviceId", null);
+
+                    final Map<String, String> postDataParams = new HashMap<String, String>();
+
+                    if (!config.isConnected(CheckoutActivity.this)) {
+                        config.buildDialog(CheckoutActivity.this).show();
+
+                    } else if (servicesTotal < minimumOrderAmount && grandTotal < minimumOrderAmount) {
+
+                        Toast.makeText(getApplicationContext(), getString(R.string.minimum_order_message) + "  " + currencySymbol + minimumOrderAmount, Toast.LENGTH_LONG).show();
+
+                    } else if (pickUpDate == null) {
+                        Toast.makeText(getApplicationContext(), "Please choose pick up date first!", Toast.LENGTH_LONG).show();
+
+                    } else if (pickUpTime == null) {
+                        Toast.makeText(getApplicationContext(), "Please choose pick up time first!", Toast.LENGTH_LONG).show();
+
+                    } else if (deliveryDate == null) {
+                        Toast.makeText(getApplicationContext(), "Please choose delivery date first!", Toast.LENGTH_LONG).show();
+
+                    } else if (cardId == null) {
+                        Toast.makeText(getApplicationContext(), "Please choose credit card first!", Toast.LENGTH_LONG).show();
+
+                    } else {
+
+                        String ip = Utils.getIPAddress(true);
+
+                        String notes = accountNotes.getText().toString();
+                        String additional = additionalInstruction.getText().toString();
+
+                        try {
+                            postDataParams.put("id", "");
+                            postDataParams.put("preferences_data", selectedP);
+                            postDataParams.put("preference_total", "" + preferenceTotal);
+                            postDataParams.put("service_total", "" + servicesTotal);
+                            postDataParams.put("grand_total", "" + grandTotal);
+                            postDataParams.put("sub_total", "" + subTotal);
+                            postDataParams.put("card_id", cardId);
+                            postDataParams.put("post_code", postCodeField.getText().toString());
+                            postDataParams.put("building_name", buildingField.getText().toString());
+                            postDataParams.put("street_name", streetField.getText().toString());
+                            postDataParams.put("town", townField.getText().toString());
+                            postDataParams.put("pick_date", pickUpDate);
+                            postDataParams.put("pick_time", pickUpTimeSelected);
+                            postDataParams.put("delivery_date", deliveryDate);
+                            postDataParams.put("delivery_time", deliveryTimeSelected);
+                            postDataParams.put("account_notes", notes);
+                            postDataParams.put("additional_instruction", additional);
+                            postDataParams.put("ip_address", ip);
+                            postDataParams.put("member_data", member);
+                            postDataParams.put("franchise_data", franchise);
+                            postDataParams.put("services_data", finalServicesData.toString());
+                            postDataParams.put("device_id", device_id);
+
+
+                            if (sharedPreferencesDiscount.getBoolean("validDiscount", false) == true) {
+                                postDataParams.put("discount_referral_data", sharedPreferencesDiscount.getString("codeString", null));
+                                postDataParams.put("discount_total", discountAmount.toString());
+                            }
+
+                            String server = sharedPreferencesCountry.getString("server", null);
+                            String url = server + sharedPreferencesCountry.getString("apiCheckout", null);
+                            RequestQueue queue = Volley.newRequestQueue(CheckoutActivity.this);
+                            StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+
+                                    JSONObject jsonObj = null;
+                                    try {
+
+                                        jsonObj = new JSONObject(response);
+                                        Log.e(TAG + " jsonObj ", "" + jsonObj);
+                                        String result = jsonObj.getString("result");
+                                        if (result.equals("Success")) {
+                                            String invoiceId = jsonObj.getString("InvoiceID");
+                                            String message = jsonObj.getString("message");
+                                            String type = jsonObj.getString("type");
+
+                                            Intent intent = new Intent(CheckoutActivity.this, InvoiceActivity.class);
+                                            intent.putExtra("result", result);
+                                            intent.putExtra("message", message);
+                                            intent.putExtra("type", type);
+                                            intent.putExtra("invoiceId", invoiceId);
+                                            startActivityForResult(intent, 10);
+
+                                        } else {
+
+                                        }
+                                    } catch (JSONException e) {
+                                        Log.e(TAG + " JSONException ", e.getMessage());
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    // error
+                                    Log.e("Error.Response ", error.toString());
+                                }
+                            }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    return postDataParams;
+                                }
+
+                                @Override
+                                public Map<String, String> getHeaders() throws AuthFailureError {
+                                    Map<String, String> headers = new HashMap<String, String>();
+                                    headers.put("Content-Type", "application/x-www-form-urlencoded");
+                                    return headers;
+                                }
+                            };
+                            postRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+
+                            queue.add(postRequest);
+
+                        } catch (Exception e) {
+                            Log.e(TAG + " JSONException ", e.getMessage());
+                        }
+                    }
+                }
+            });
+
+
+            discountedPrice = cartDb.getTotalForDiscount(androidId, country);
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
+
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            Navigation navigation = new Navigation();
+            navigation.initView(navigationView, member_id);
+            applyDiscount();
+        }
     }
 
 
@@ -795,14 +784,11 @@ public class CheckoutActivity extends Navigation
         String[] tempArray;
         Log.e("discountedPrice"," --> "+discountedPrice.toString());
         String delimiter = "\\|";
-        Double minimumAmount=15.00;
-        if(minimumOrderAmount==null) {
-            minimumAmount = Double.parseDouble(minimumOrderAmount);
-        }else{
-            minimumAmount=15.00;
-        }
+        //Double minimumAmount=15.00;
 
-        if(validDiscount==true && servicesTotal>minimumAmount) {
+        Log.e("minimumAmount",minimumOrderAmount.toString());
+
+        if(validDiscount==true && servicesTotal>minimumOrderAmount) {
             tempArray = codeString.split(delimiter);
             Double discount = 0.00;
 
@@ -822,7 +808,7 @@ public class CheckoutActivity extends Navigation
                     }
                 }
             } else {
-
+                Log.e("--> ","<-->");
                 discount = Double.parseDouble(tempArray[3]);
                 if (discount < discountedPrice) {
                     discountAmount = discountedPrice - discount;
@@ -839,9 +825,14 @@ public class CheckoutActivity extends Navigation
                 discountAmountText.setText("-" + currencySymbol + displayPrice(discount));
             }
         }else if (servicesTotal<=0){
-            grandTotal=Double.parseDouble(minimumOrderAmount);
+            grandTotal=minimumOrderAmount;
             discountAmount=0.00;
             discountAmountText.setText("-" + currencySymbol + "0.00" );
+        }else if(validDiscount==true && servicesTotal<minimumOrderAmount) {
+            grandTotal = servicesTotal + preferenceTotal;
+            discountAmount=0.00;
+            discountAmountText.setText("-" + currencySymbol + "0.00" );
+
         }
 
 
@@ -979,8 +970,6 @@ public class CheckoutActivity extends Navigation
     public String displayPrice(Double price){
         return String.format("%.2f", price);
     }
-
-
 
     public void managePrices(){
 

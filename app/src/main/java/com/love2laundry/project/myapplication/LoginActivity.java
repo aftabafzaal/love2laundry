@@ -106,7 +106,14 @@ public class LoginActivity extends Config implements LoaderCallbacks<Cursor> {
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+
+                Config config= new Config();
+                if (!config.isConnected(LoginActivity.this)) {
+                    config.buildDialog(LoginActivity.this).show();
+
+                }else {
+                    attemptLogin();
+                }
             }
         });
 

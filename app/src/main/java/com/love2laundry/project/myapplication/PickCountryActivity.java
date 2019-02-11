@@ -1,5 +1,6 @@
 package com.love2laundry.project.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -46,15 +47,24 @@ public class PickCountryActivity extends Config {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString("country", "uk");
-        editor.commit();
 
-        radioUk = findViewById(R.id.radioUk);
-        radioUae = findViewById(R.id.radioUae);
+        Config config =new Config();
 
-        setContentView(R.layout.pick_country);
+        if(!config.isConnected(this)) {
+            config.buildDialog(this).show();
+        }
+        else {
+            //Toast.makeText(this,"Welcome", Toast.LENGTH_SHORT).show();
+            setContentView(R.layout.pick_country);
+            //Config.isConnected(this);
+            sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString("country", "uk");
+            editor.commit();
+
+            radioUk = findViewById(R.id.radioUk);
+            radioUae = findViewById(R.id.radioUae);
+        }
     }
 
 
@@ -162,5 +172,14 @@ public class PickCountryActivity extends Config {
         queue.add(postRequest);
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+       // Log.e("asd onBackPressed ","asd");
+        //super.onBackPressed();
+        finishAffinity();
+        //finish();
+        //System.exit(0);
     }
 }

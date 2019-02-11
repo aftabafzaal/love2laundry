@@ -1,8 +1,13 @@
 package com.love2laundry.project.myapplication;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.provider.Settings;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -25,6 +30,53 @@ public class Config extends AppCompatActivity {
         country=sharedpreferences.getString("country",null);
 
     }
+
+    public boolean isConnected(Context context) {
+
+
+        boolean status = false;
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+            if ((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting())) {
+                status = true;
+            } else {
+            status= false;
+            }
+        } else {
+            status = false;
+        }
+        return status;
+    }
+
+
+
+    public AlertDialog.Builder buildDialog(final Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle("No Internet Connection");
+        builder.setMessage("You need to have Mobile Data or wifi to access this. Press ok to Exit");
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                //Intent i = null;
+                //i = new Intent(c, DashboardActivity.class);
+                //startActivityForResult(getApplicationContext(), 10);
+                //System.exit(0);
+            }
+        });
+
+        return builder;
+    }
+
 
     public String getCurrencySymbol(String country) {
         return UK.CURRENCY_SYMBOL;

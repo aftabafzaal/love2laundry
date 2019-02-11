@@ -78,7 +78,6 @@ public class TimeActivity extends Config {
             String url = server + action;
             String jsonStr = sh.makeServiceCall(url);
 
-            Log.e(TAG, url);
             if (jsonStr != null) {
 
                 try {
