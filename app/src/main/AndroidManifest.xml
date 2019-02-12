@@ -17,18 +17,16 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".LogoutActivity"></activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".PickCountryActivity"
             android:label="@string/app_name"
-            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".PickCountryActivity"
+            android:name=".SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -84,6 +82,12 @@
             android:name=".InvoicesActivity"
             android:label="@string/title_activity_invoices"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".CancelInvoiceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
         <activity
             android:name=".EditInvoiceActivity"
             android:label="@string/title_activity_edit_invoice"

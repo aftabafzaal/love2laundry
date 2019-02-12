@@ -5,16 +5,9 @@
     android:layout_height="match_parent"
     android:background="@color/colorLightGray"
     android:gravity="center"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     tools:context=".LoginActivity">
-
-    <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
 
     <ScrollView
         android:id="@+id/login_form"
@@ -29,172 +22,138 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin">
 
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
+                style="@style/TextInputEditText"
+                android:id="@+id/firstName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="60dp"
+                android:drawableEnd="@drawable/ic_first_name"
+                android:drawablePadding="5dp"
+                android:hint="@string/first_name"
+                android:inputType="text"
+                android:text="123456"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/firstName"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="@string/first_name"
-                    android:inputType="text"
-                    android:drawablePadding="5dp"
-                    android:maxLines="1"
-                    android:text="test"
-
-                    android:singleLine="true" />
-
-
-
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
+                style="@style/TextInputEditText"
+                android:id="@+id/lastName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <AutoCompleteTextView
-                    android:id="@+id/lastName"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="@string/last_name"
-                    android:inputType="text"
-                    android:text="Alfred"
-                    android:maxLines="1"
-                    android:textColorHint="#FF00"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+                android:layout_height="60dp"
+                android:drawableEnd="@drawable/ic_last_name"
+                android:drawablePadding="5dp"
+                android:hint="@string/last_name"
+                android:inputType="text"
+                android:text="Alfred"
+                android:maxLines="1"
+                android:singleLine="true" />
+            <EditText
+                style="@style/TextInputEditText"
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="60dp"
+                android:drawableEnd="@drawable/ic_phone"
+                android:drawablePadding="5dp"
+                android:hint="@string/phone_number"
+                android:inputType="number"
+                android:text="3337191695"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/phone"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="@string/phone_number"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="3337191695"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
+                style="@style/TextInputEditText"
+                android:id="@+id/postCode"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="60dp"
+                android:drawableEnd="@drawable/ic_post_code"
+                android:drawablePadding="5dp"
+                android:hint="@string/post_code"
+                android:inputType="text"
+                android:text="E12pe"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/postCode"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="@string/post_code"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="E12pe"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
+                style="@style/TextInputEditText"
+                android:id="@+id/building"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <AutoCompleteTextView
-                    android:id="@+id/building"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="@string/building_name_number"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="12345 test"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+                android:layout_height="60dp"
+                android:drawableEnd="@drawable/ic_building"
+                android:drawablePadding="5dp"
+                android:hint="@string/building_name_number"
+                android:inputType="text"
+                android:text=""
+                android:maxLines="1"
+                android:singleLine="true" />
+            <EditText
+                style="@style/TextInputEditText"
+                android:id="@+id/street"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <AutoCompleteTextView
-                    android:id="@+id/street"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="@string/street_name"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="12345 test"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+                android:layout_height="60dp"
+                android:drawableEnd="@drawable/ic_street_name"
+                android:drawablePadding="5dp"
+                android:hint="@string/street_name"
+                android:inputType="text"
+                android:text=""
+                android:maxLines="1"
+                android:singleLine="true" />
+            <EditText
+                style="@style/TextInputEditText"
+                android:id="@+id/town"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="60dp"
+                android:drawableEnd="@drawable/ic_town"
+                android:drawablePadding="5dp"
+                android:hint="Town"
+                android:inputType="text"
+                android:text=""
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/town"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="Town"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="test"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <AutoCompleteTextView
+                style="@style/TextInputEditText"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="60dp"
+                android:drawableRight="@drawable/ic_email_address"
+                android:drawablePadding="5dp"
+                android:scaleType="fitXY"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:text="aftab@yopmail.com"
+                android:singleLine="true"/>
 
-                <AutoCompleteTextView
-                    android:id="@+id/email"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:text="aftab@yopmail.com"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
+                style="@style/TextInputEditText"
+                android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="60dp"
+                android:drawableEnd="@drawable/ic_password"
+                android:drawablePadding="5dp"
+                android:hint="@string/prompt_password"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:text="123456"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <EditText
-                    android:id="@+id/password"
-                    style="@style/TextInputEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="@string/prompt_password"
-                    android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:text="123456"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
+            <ProgressBar
+                android:id="@+id/loading"
+                style="@style/ButtonGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorWhite"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/register"
@@ -202,7 +161,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/register"
-                android:layout_marginBottom="5dp"
                 android:textStyle="bold" />
 
         </LinearLayout>

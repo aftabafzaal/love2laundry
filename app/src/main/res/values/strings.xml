@@ -107,6 +107,8 @@
     <string name="code_colon">Code:</string>
     <string name="referral_code">Referral Code</string>
     <string name="discount">Discount</string>
+    <string name="cancel">Cancel</string>
+
     <string name="minimum_order_message">You can complete your order with minimum amount of</string>
     <string name="search">Search</string>
     <string name="referral_title">Get your {{amount}} free credits</string>

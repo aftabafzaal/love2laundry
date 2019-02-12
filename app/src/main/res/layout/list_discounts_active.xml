@@ -44,6 +44,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/colorDarkGray" />
             <Button
+                android:id="@id/copy"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight=".5"

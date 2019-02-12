@@ -30,6 +30,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -61,7 +62,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class ListingActivity extends Navigation {
+public class ListingActivity extends Navigation implements MyServicesAdapter.UpdateListing {
 
     private ViewPager mViewPager;
 
@@ -83,7 +84,8 @@ public class ListingActivity extends Navigation {
     private Cart cartDb;
     String countryCode, currencyCode, request;
     SharedPreferences spMember;
-
+    TextView itemMessage,servicesTotalView;
+    Config config;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -92,7 +94,7 @@ public class ListingActivity extends Navigation {
         super.onCreate(savedInstanceState);
 
 
-        Config config = new Config();
+        config = new Config();
 
         if (!config.isConnected(this)) {
             config.buildDialog(this).show();
@@ -126,7 +128,7 @@ public class ListingActivity extends Navigation {
         request = getIntent().getStringExtra("request");
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.checkout);
+        RelativeLayout floatingActionButton = (RelativeLayout) findViewById(R.id.checkout);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,6 +161,7 @@ public class ListingActivity extends Navigation {
 
 
                     SharedPreferences.Editor sp = sharedpreferences.edit();
+                    sp.putString("franchise", franchise.toString());
                     sp.putString("franchise_id", franchise.getString("ID"));
                     sp.putString("minimumOrderAmount", franchise.getString("MinimumOrderAmount"));
                     sp.putString("settings", settings.toString());
@@ -217,8 +220,10 @@ public class ListingActivity extends Navigation {
 
 
         }
-
+        getServicesTotal();
     }
+
+
 
     private RecyclerView listing;
     private RecyclerView.Adapter myServicesAdapter;
@@ -229,6 +234,7 @@ public class ListingActivity extends Navigation {
         listing = findViewById(R.id.listing);
         currencySymbol=sharedpreferences.getString("currencySymbol",null);
         myServicesAdapter = new MyServicesAdapter(ListingActivity.this,number,service_records,categoryName,currencySymbol,countryCode,androidId);
+        ((MyServicesAdapter) myServicesAdapter).setUpdateServices(this);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         listing.setLayoutManager(mLayoutManager);
@@ -236,7 +242,30 @@ public class ListingActivity extends Navigation {
         listing.setAdapter(myServicesAdapter);
 
 
+
+
     }
+
+
+
+    public void getServicesTotal(){
+        Double servicesTotal=cartDb.getServicesTotal(androidId,country);
+
+        //Log.e("servicesTotal",servicesTotal.toString());
+
+        TextView itemMessage = findViewById(R.id.item_message);
+        TextView servicesTotalView = findViewById(R.id.services_total);
+
+        if(servicesTotal==null || servicesTotal==0.0 ){
+            itemMessage.setText("Skip item selection");
+            servicesTotalView.setText("Order");
+        }else{
+            itemMessage.setText("You Basket");
+            servicesTotalView.setText(currencySymbol+config.displayPrice(servicesTotal)+"");
+        }
+
+    }
+
 
     @Override
     public void onBackPressed() {

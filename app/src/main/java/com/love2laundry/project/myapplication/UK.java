@@ -22,6 +22,8 @@ public class UK {
     public static final String API_DASHBOARD = "/apiv5/dashboard";
     public static final String API_INVOICES = "/apiv5/get_invoices";
 
+    public static final String API_CANCEL_INVOICE = "/apiv5/post_invoice_re_order_copy";
+
     public static final String API_LOYALTIES = "/apiv5/get_loyalty";
     public static final String API_DISCOUNTS = "/apiv5/get_discounts";
 

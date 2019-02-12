@@ -567,6 +567,16 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"/>
 
+            <ProgressBar
+                android:id="@+id/loading"
+                style="@style/ButtonGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorWhite"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="gone" />
+
             <Button
                 android:id="@+id/checkout_button"
                 style="@style/ButtonGreen"
@@ -578,6 +588,8 @@
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:text="@string/action_check_out"
                 android:layout_below="@+id/credit_card" />
+
+
 
         </LinearLayout>
     </ScrollView>

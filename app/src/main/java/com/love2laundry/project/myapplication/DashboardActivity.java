@@ -54,7 +54,7 @@ public class DashboardActivity extends Navigation {
                 break;
 
             case R.id.canceled_invoices:
-                type="Canceled";
+                type="Cancel";
                 break;
 
             case R.id.completed_invoices:

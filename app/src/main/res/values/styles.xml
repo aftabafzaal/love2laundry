@@ -138,7 +138,7 @@
         <item name="android:textColorHint">@color/colorAccent</item>
     </style>
     <style name="BackGroundImageView">
-
+        <item name="android:background">@drawable/item_placeholder</item>
         <item name="android:scaleType">fitXY</item>
     </style>
 

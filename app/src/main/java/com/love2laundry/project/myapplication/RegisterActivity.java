@@ -128,7 +128,7 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
         });
 
         mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        mProgressView = findViewById(R.id.loading);
     }
 
 
@@ -354,6 +354,7 @@ public class RegisterActivity extends Config implements LoaderCallbacks<Cursor> 
                                 jsonObj = new JSONObject(response);
                                 String result = jsonObj.getString("result");
                                 if (result.equals("Error")) {
+                                    showProgress(false);
                                     String message = jsonObj.getString("message");
                                     Toast toast = Toast.makeText(getApplicationContext(),
                                             "Error: " + message, Toast.LENGTH_SHORT);

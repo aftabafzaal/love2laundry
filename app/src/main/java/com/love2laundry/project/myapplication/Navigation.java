@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.nio.channels.InterruptedByTimeoutException;
 import java.text.DecimalFormat;
 
 public class Navigation extends Config implements NavigationView.OnNavigationItemSelectedListener  {
@@ -33,6 +35,10 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
     }
 
     protected void initView(NavigationView navigationView,String member_id) {
+
+
+
+
 
         if(member_id==null) {
             // if not login
@@ -99,6 +105,8 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
 
 
         Intent intent = null;
+        Boolean activityForResult=true;
+
         if (id == R.id.dashboard) {
             intent = new Intent(this, DashboardActivity.class);
         } else if (id == R.id.place_order) {
@@ -128,10 +136,26 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
             intent = new Intent(this, RegisterActivity.class);
         }else if (id == R.id.referral) {
             intent = new Intent(this, ReferralActivity.class);
+        }else if (id == R.id.faqs) {
+            intent = new Intent("android.intent.action.VIEW", Uri.parse("http:google.com/"));
+
+        }else if (id == R.id.terms) {
+            intent = new Intent("android.intent.action.VIEW", Uri.parse("http:facebook.com/"));
+
+        }else if (id == R.id.contact) {
+            intent = new Intent("android.content.Intent.ACTION_SENDTO");
+            intent.setType("message/rfc822");
+            intent.putExtra(Intent.EXTRA_EMAIL,new String[] { "info@love2laundry.com" } );
+            intent.putExtra(Intent.EXTRA_SUBJECT,"Contact Us Message for Love2Laundry");
+
+            startActivity(Intent.createChooser(intent,"Choose an email client:"));
+            activityForResult=false;
+
         }
 
-
-        startActivityForResult(intent, 10);
+        if(activityForResult==true) {
+            startActivityForResult(intent, 10);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -94,7 +95,7 @@ public class CheckoutActivity extends Navigation
 
     TextView minimumOrderMessage;
 
-    Double discountAmount = 0.0;
+    Double discountAmount = 0.00;
     String member_id;
     String member = null;
     Double minimumOrderAmount;
@@ -396,10 +397,12 @@ public class CheckoutActivity extends Navigation
             });
 
             final JSONArray finalServicesData = servicesData;
-            Button checkoutButton = (Button) findViewById(R.id.checkout_button);
+            final Button checkoutButton = (Button) findViewById(R.id.checkout_button);
             checkoutButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    final ProgressBar loading= (ProgressBar) findViewById(R.id.loading);
 
 
                     String franchise = sharedPreferencesCountry.getString("franchise", null);
@@ -432,6 +435,11 @@ public class CheckoutActivity extends Navigation
 
                         String notes = accountNotes.getText().toString();
                         String additional = additionalInstruction.getText().toString();
+
+
+                        loading.setVisibility(View.VISIBLE);
+                        checkoutButton.setVisibility(View.GONE);
+                        checkoutButton.setEnabled(false);
 
                         try {
                             postDataParams.put("id", "");
@@ -476,9 +484,10 @@ public class CheckoutActivity extends Navigation
                                         jsonObj = new JSONObject(response);
                                         Log.e(TAG + " jsonObj ", "" + jsonObj);
                                         String result = jsonObj.getString("result");
+                                        String message = jsonObj.getString("message");
                                         if (result.equals("Success")) {
                                             String invoiceId = jsonObj.getString("InvoiceID");
-                                            String message = jsonObj.getString("message");
+
                                             String type = jsonObj.getString("type");
 
                                             Intent intent = new Intent(CheckoutActivity.this, InvoiceActivity.class);
@@ -490,9 +499,19 @@ public class CheckoutActivity extends Navigation
 
                                         } else {
 
+                                            Toast.makeText(getApplicationContext(),
+                                                    message,
+                                                    Toast.LENGTH_LONG).show();
+
+                                            loading.setVisibility(View.GONE);
+                                            checkoutButton.setVisibility(View.VISIBLE);
+                                            checkoutButton.setEnabled(true);
+
                                         }
                                     } catch (JSONException e) {
-                                        Log.e(TAG + " JSONException ", e.getMessage());
+                                        loading.setVisibility(View.GONE);
+                                        checkoutButton.setVisibility(View.VISIBLE);
+                                        checkoutButton.setEnabled(true);
                                         e.printStackTrace();
                                     }
 
@@ -500,7 +519,9 @@ public class CheckoutActivity extends Navigation
                             }, new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-                                    // error
+                                    loading.setVisibility(View.GONE);
+                                    checkoutButton.setVisibility(View.VISIBLE);
+                                    checkoutButton.setEnabled(true);
                                     Log.e("Error.Response ", error.toString());
                                 }
                             }) {
@@ -522,9 +543,14 @@ public class CheckoutActivity extends Navigation
                             queue.add(postRequest);
 
                         } catch (Exception e) {
+                            loading.setVisibility(View.GONE);
+                            checkoutButton.setVisibility(View.VISIBLE);
+                            checkoutButton.setEnabled(true);
                             Log.e(TAG + " JSONException ", e.getMessage());
                         }
                     }
+                    //loading.setVisibility(View.GONE);
+                    //checkoutButton.setVisibility(View.VISIBLE);
                 }
             });
 
@@ -678,7 +704,6 @@ public class CheckoutActivity extends Navigation
             String url = server + sharedpreferences.getString("apiPreferences", null);
 
             String jsonStr = sh.makeServiceCall(url+"?member_id="+member_id);
-            //Log.e("member_id",url+"?member_id="+member_id);
             if (jsonStr != null) {
 
                 try {

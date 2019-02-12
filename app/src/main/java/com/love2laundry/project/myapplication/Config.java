@@ -111,6 +111,9 @@ public class Config extends AppCompatActivity {
             editor.putString("apiPostReferral", UK.API_POST_REFERRAL);
             editor.putString("apiForgotPassword", UK.API_FORGOT_PASSWORD);
 
+            editor.putString("apiCancelInvoice", UK.API_CANCEL_INVOICE);
+
+
         } else if (country.equals("uae")) {
             UAE location = new UAE();
             editor.putString("currencyCode", UAE.CURRENCY_CODE);
@@ -131,11 +134,12 @@ public class Config extends AppCompatActivity {
             editor.putString("apiInvoice", UAE.API_INVOICE);
             editor.putString("apiDashboard", UAE.API_DASHBOARD);
             editor.putString("apiInvoices", UAE.API_INVOICES);
-            editor.putString("apiLoyalties", UK.API_LOYALTIES);
-            editor.putString("apiDiscounts", UK.API_DISCOUNTS);
-            editor.putString("apiPostDiscount", UK.API_POST_DISCOUNT);
-            editor.putString("apiPostReferral", UK.API_POST_REFERRAL);
-            editor.putString("apiForgotPassword", UK.API_FORGOT_PASSWORD);
+            editor.putString("apiLoyalties", UAE.API_LOYALTIES);
+            editor.putString("apiDiscounts", UAE.API_DISCOUNTS);
+            editor.putString("apiPostDiscount", UAE.API_POST_DISCOUNT);
+            editor.putString("apiPostReferral", UAE.API_POST_REFERRAL);
+            editor.putString("apiForgotPassword", UAE.API_FORGOT_PASSWORD);
+            editor.putString("apiCancelInvoice", UAE.API_CANCEL_INVOICE);
 
         } else if (country == null) {
             Log.e("Pick Country", "Error in country");
@@ -144,10 +148,10 @@ public class Config extends AppCompatActivity {
         // return location;
     }
 
-    static double roundTwoDecimals(double d) {
-        DecimalFormat twoDForm = new DecimalFormat("###.###");
-        return Double.valueOf(twoDForm.format(d));
+    public String displayPrice(Double price){
+        return String.format("%.2f", price);
     }
+
 
 
 }

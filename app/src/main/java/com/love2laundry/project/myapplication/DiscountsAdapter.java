@@ -1,5 +1,7 @@
 package com.love2laundry.project.myapplication;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -49,7 +52,7 @@ class DiscountsAdapter extends RecyclerView.Adapter<DiscountsAdapter.MyViewHolde
 
         //JSONObject contact = listingLoyalties.get(i);
         try {
-            JSONObject o = listingLoyalties.getJSONObject(i);
+            final JSONObject o = listingLoyalties.getJSONObject(i);
             if(num==1) {
                 Log.e("toString -> "+num ,o.toString());
                 myViewHolder.discount_worth.setText(o.getString("DiscountWorthValue"));
@@ -61,6 +64,20 @@ class DiscountsAdapter extends RecyclerView.Adapter<DiscountsAdapter.MyViewHolde
 
                 myViewHolder.code.setText(o.getString("Code"));
                 myViewHolder.value.setText(o.getString("WorthValue"));
+                myViewHolder.copy.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View arg0) {
+
+                        try {
+                            Log.e("toString -> ",o.getString("Code"));
+                            ClipboardManager clipboard = (ClipboardManager) p.getSystemService(Context.CLIPBOARD_SERVICE);
+                            ClipData clip = ClipData.newPlainText("copy", o.getString("Code"));
+                            clipboard.setPrimaryClip(clip);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
 
         } catch (JSONException e) {
@@ -77,6 +94,7 @@ class DiscountsAdapter extends RecyclerView.Adapter<DiscountsAdapter.MyViewHolde
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView id,code,value;
         public TextView discount_worth,invoiceNumber,date,price;
+        public Button copy;
 
         public MyViewHolder(View view) {
             super(view);
@@ -89,6 +107,7 @@ class DiscountsAdapter extends RecyclerView.Adapter<DiscountsAdapter.MyViewHolde
                 price = (TextView) view.findViewById(R.id.price);
             }else{
                 value = (TextView) view.findViewById(R.id.value);
+                copy = (Button) view.findViewById(R.id.copy);
             }
 
         }

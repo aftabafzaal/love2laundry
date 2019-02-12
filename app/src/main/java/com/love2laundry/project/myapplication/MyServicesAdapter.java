@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,19 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
     private Cart cartDb;
     Map<Integer, Integer> totalServices = new HashMap<Integer, Integer>();
     String deviceId,  country;
+
+    public interface UpdateListing{
+        public void getServicesTotal();
+    }
+
+    private UpdateListing updateServices;
+
+
+    public void setUpdateServices(UpdateListing updateServices){
+        this.updateServices = updateServices;
+    }
+
+
     public MyServicesAdapter(Context activity,int n, JSONArray servicesJson,String c,String currencyCode,String countryCode,String androidId) {
 
         cartDb = new Cart(activity);
@@ -152,6 +166,9 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
                         } else {
                             cartDb.updateCart(deviceId, service_id, quantity, unitPrice, discountAmount, country);
                         }
+                        if(updateServices!=null){
+                            updateServices.getServicesTotal();
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -184,6 +201,11 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
                         } else {
                             cartDb.deleteCartItem(deviceId, service_id, country);
                         }
+
+                        if(updateServices!=null){
+                            updateServices.getServicesTotal();
+                        }
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
