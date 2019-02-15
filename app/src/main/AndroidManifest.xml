@@ -2,26 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.love2laundry.project.myapplication">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:hardwareAccelerated="false"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
+        android:largeHeap="true"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LogoutActivity"></activity>
+        <activity android:name=".LogoutActivity" />
         <activity
             android:name=".PickCountryActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,7 +31,6 @@
             android:name=".SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ListingActivity"
             android:label="@string/app_name"
@@ -41,8 +42,7 @@
         <activity
             android:name=".PaymentCardsActivity"
             android:label="@string/title_activity_payment_cards"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EditPaymentCardActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -61,11 +61,22 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme" />
+            android:parentActivityName=".PickCountryActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PickCountryActivity" />
+        </activity>
         <activity
             android:name=".ForgotPasswordActivity"
             android:label="@string/title_activity_forgot_password"
-            android:theme="@style/AppTheme" />
+            android:parentActivityName=".LoginActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity" />
+        </activity>
+
         <activity
             android:name=".LoyaltyActivity"
             android:label="@string/title_activity_loyalties"
@@ -82,12 +93,9 @@
             android:name=".InvoicesActivity"
             android:label="@string/title_activity_invoices"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".CancelInvoiceActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
         <activity
             android:name=".EditInvoiceActivity"
             android:label="@string/title_activity_edit_invoice"
@@ -96,7 +104,6 @@
             android:name=".CopyInvoiceActivity"
             android:label="@string/title_activity_invoices"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".AccountActivity"
             android:label="@string/app_name"
@@ -129,8 +136,7 @@
         <activity
             android:name=".CreditCardsActivity"
             android:label="@string/credit_card"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddCardSubActivity"
             android:label="@string/credit_card"
@@ -140,10 +146,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CreditCardsActivity" />
         </activity>
-
-        <activity android:name=".ReferralActivity"
+        <activity
+            android:name=".ReferralActivity"
             android:label="@string/title_activity_referral"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

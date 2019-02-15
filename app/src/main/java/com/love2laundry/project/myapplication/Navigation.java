@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,15 +13,23 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.nio.channels.InterruptedByTimeoutException;
 import java.text.DecimalFormat;
 
-public class Navigation extends Config implements NavigationView.OnNavigationItemSelectedListener  {
+public class Navigation extends Config implements NavigationView.OnNavigationItemSelectedListener {
 
-    public void Navigation() {
+    SharedPreferences loginMember;
+
+
+    public Navigation() {
         super.Config();
     }
 
@@ -34,11 +43,15 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
         }
     }
 
-    protected void initView(NavigationView navigationView,String member_id) {
+    public void initView(NavigationView navigationView,String member_id,SharedPreferences loginMember) {
 
 
-
-
+        //
+        View headerLayout = navigationView.getHeaderView(0);
+        Menu nav_Menu = navigationView.getMenu();
+        ImageView navbarCenterLogo = (ImageView) headerLayout.findViewById(R.id.CenterLogo);
+        LinearLayout navHeaderTxt = (LinearLayout) headerLayout.findViewById(R.id.navHeaderTxt);
+        ImageView navbarSideLogo = (ImageView) headerLayout.findViewById(R.id.SideLogo);
 
         if(member_id==null) {
             // if not login
@@ -53,8 +66,17 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
             navigationView.getMenu().findItem(R.id.payment_cards).setVisible(false);
             navigationView.getMenu().findItem(R.id.discount_codes).setVisible(false);
             navigationView.getMenu().findItem(R.id.referral).setVisible(false);
+
+
+            navbarCenterLogo.setVisibility(View.VISIBLE);
+            navbarSideLogo.setVisibility(View.GONE);
+            navHeaderTxt.setVisibility(View.GONE);
+
+
         }else{
             /// if login
+
+
             navigationView.getMenu().findItem(R.id.login).setVisible(false);
             navigationView.getMenu().findItem(R.id.register).setVisible(false);
             navigationView.getMenu().findItem(R.id.logout).setVisible(true);
@@ -67,6 +89,23 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
             navigationView.getMenu().findItem(R.id.payment_cards).setVisible(true);
             navigationView.getMenu().findItem(R.id.discount_codes).setVisible(true);
             navigationView.getMenu().findItem(R.id.referral).setVisible(true);
+
+            navbarCenterLogo.setVisibility(View.GONE);
+            navbarSideLogo.setVisibility(View.VISIBLE);
+            navHeaderTxt.setVisibility(View.VISIBLE);
+            //loginMember = getSharedPreferences("member", MODE_PRIVATE);
+            //sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
+            TextView txtName = (TextView) headerLayout.findViewById(R.id.name);
+            TextView txtEmail = (TextView) headerLayout.findViewById(R.id.email);
+
+
+           // Log.e("asd","asdad"+sharedpreferences.toString());
+            //String yourName=loginMember.getString("firstName",null)+" "+
+            //        loginMember.getString("lastName",null);
+           // String email=loginMember.getString("email",null);
+            //txtName.setText(yourName);
+           // txtEmail.setText(email);
+
         }
 
     }
@@ -94,7 +133,6 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
 
@@ -142,6 +180,14 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
         }else if (id == R.id.terms) {
             intent = new Intent("android.intent.action.VIEW", Uri.parse("http:facebook.com/"));
 
+        }else if (id == R.id.pick_country) {
+
+            SharedPreferences.Editor editor = getSharedPreferences("country", MODE_PRIVATE).edit();
+
+            editor.putString("country",null);
+            editor.commit();
+
+            intent = new Intent(this, PickCountryActivity.class);
         }else if (id == R.id.contact) {
             intent = new Intent("android.content.Intent.ACTION_SENDTO");
             intent.setType("message/rfc822");

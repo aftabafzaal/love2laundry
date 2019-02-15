@@ -51,7 +51,6 @@ public class TimeActivity extends Config {
         type = getIntent().getStringExtra("type");
         activity.setTitle(title);
         timeList = new ArrayList<>();
-        Log.e(TAG, action);
         new GetDates().execute();
     }
 
@@ -143,7 +142,7 @@ public class TimeActivity extends Config {
             lv = (ListView) findViewById(R.id.list);
             ListAdapter adapter = new SimpleAdapter(TimeActivity.this, timeList,
                     R.layout.time_list, new String[]{"availableTime", "status", "hour"},
-                    new int[]{R.id.time}){
+                    new int[]{R.id.time,R.id.disable}){
 
                 @Override
                 public View getView(final int position, View convertView, ViewGroup parent) {
@@ -151,35 +150,39 @@ public class TimeActivity extends Config {
 
                     if (timeList.get(position).get("status").equals("Available")) {
 
-                        TextView tv = v.findViewById(R.id.time);
-                        tv.setVisibility(View.VISIBLE);
+                        TextView tv1 = v.findViewById(R.id.time);
+                        tv1.setVisibility(View.VISIBLE);
 
-                        tv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                timeSelected = timeList.get(position).get("availableTime");
-                                hour = timeList.get(position).get("hour");
-                                finish();
-
-                            }
-                        });
+                        TextView tv = v.findViewById(R.id.disable);
+                        tv.setVisibility(View.GONE);
+                       // tv.setText(View.GONE);
 
                     }else{
 
-                        //Log.e(" --> ",timeList.get(position).get("availableTime").toString());
+                     TextView tv1 = v.findViewById(R.id.disable);
+                     tv1.setText(timeList.get(position).get("availableTime"));
+                     tv1.setVisibility(View.VISIBLE);
 
-                     TextView tv = v.findViewById(R.id.disable);
-                     tv.setVisibility(View.VISIBLE);
-                        tv.setText(timeList.get(position).get("availableTime"));
-                    tv.setEnabled(false);
-                    tv.setClickable(false);
+                        TextView tv = v.findViewById(R.id.time);
+                        tv.setVisibility(View.GONE);
+
 
                     }
                     return v;
                 }
             };
             lv.setAdapter(adapter);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    if (timeList.get(i).get("status").equals("Available")) {
+                        timeSelected = timeList.get(i).get("availableTime");
+                        hour = timeList.get(i).get("hour");
+                        finish();
+                    }
+                }
+            });
         }
     }
 

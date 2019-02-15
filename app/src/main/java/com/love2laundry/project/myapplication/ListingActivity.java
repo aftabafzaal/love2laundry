@@ -1,37 +1,24 @@
 package com.love2laundry.project.myapplication;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -43,26 +30,16 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-public class ListingActivity extends Navigation implements MyServicesAdapter.UpdateListing {
+public class ListingActivity extends Navigation implements ServicesFragment.UpdateCart  {
 
     private ViewPager mViewPager;
 
@@ -70,185 +47,179 @@ public class ListingActivity extends Navigation implements MyServicesAdapter.Upd
     private Context context;
 
     ArrayList<HashMap<String, String>> services;
-    private ListView lv;
-    String[] cats;
+
     JSONArray[] service_records;
 
-    TabHost host;
-    private android.R.id viewHolder;
-    List<Map<String, String>> data = new ArrayList<>();
-    Integer quantity;
-    TextView quantityText;
     Map<Integer, Integer> totalServices = new HashMap<Integer, Integer>();
-    final Activity activity = this;
     private Cart cartDb;
     String countryCode, currencyCode, request;
     SharedPreferences spMember;
     TextView itemMessage,servicesTotalView;
     Config config;
+
+    private TabAdapter adapter;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+
+    String[] cats;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         cartDb = new Cart(this);
 
         super.onCreate(savedInstanceState);
-
-
         config = new Config();
 
         if (!config.isConnected(this)) {
             config.buildDialog(this).show();
-        }else{
+        }else {
 
 
-        setContentView(R.layout.activity_listing);
+            setContentView(R.layout.activity_listing);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().findItem(R.id.login).setVisible(false);
-        Navigation navigation = new Navigation();
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            navigationView.getMenu().findItem(R.id.login).setVisible(false);
+            Navigation navigation = new Navigation();
 
-        spMember = getSharedPreferences("member", MODE_PRIVATE);
-        navigation.initView(navigationView, spMember.getString("member_id", null));
+            spMember = getSharedPreferences("member", MODE_PRIVATE);
 
-        super.Navigation();
+            navigation.initView(navigationView, spMember.getString("member_id", null));
 
+            super.Navigation();
 
-        sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
-        currencySymbol = sharedpreferences.getString("currencySymbol", null);
-        countryCode = sharedpreferences.getString("country", null);
-        request = getIntent().getStringExtra("request");
-        RequestQueue queue = Volley.newRequestQueue(this);
+            RelativeLayout floatingActionButton = (RelativeLayout) findViewById(R.id.sticky_cart);
 
-        RelativeLayout floatingActionButton = (RelativeLayout) findViewById(R.id.checkout);
+            floatingActionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    long count = cartDb.getCount(androidId, countryCode);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                long count = cartDb.getCount(androidId, countryCode);
+                    sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
 
-                sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
+                    String member_id = sharedpreferences.getString("member_id", null);
+                    startActivity(new Intent(ListingActivity.this, LoginActivity.class));
 
-                String member_id = sharedpreferences.getString("member_id", null);
-                startActivity(new Intent(ListingActivity.this, LoginActivity.class));
-
-            }
-        });
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, request, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                JSONObject jsonObj = null;
-
-                try {
-
-                    jsonObj = new JSONObject(response);
-                    String result = jsonObj.getString("result");
-                    JSONObject categories = jsonObj.getJSONObject("categories");
-                    JSONArray data = categories.getJSONArray("data");
-
-                    JSONObject franchise = jsonObj.getJSONObject("franchise_detail");
-                    JSONObject settings = jsonObj.getJSONObject("settings");
-
-
-                    SharedPreferences.Editor sp = sharedpreferences.edit();
-                    sp.putString("franchise", franchise.toString());
-                    sp.putString("franchise_id", franchise.getString("ID"));
-                    sp.putString("minimumOrderAmount", franchise.getString("MinimumOrderAmount"));
-                    sp.putString("settings", settings.toString());
-                    sp.commit();
-                    Log.e(franchise.getString("MinimumOrderAmount") + "franchise --> ", franchise.toString());
-
-                    cats = new String[data.length()];
-                    service_records = new JSONArray[data.length()];
-
-                    for (int i = 0; i < data.length(); i++) {
-                        JSONObject c = data.getJSONObject(i);
-                        String MTitle = c.getString("MTitle");
-                        JSONArray sr = c.getJSONArray("service_records");
-                        cats[i] = MTitle;
-                        service_records[i] = sr;
-                    }
-
-                    host = findViewById(R.id.tabHost);
-                    host.setup();
-                    host.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-
-                        public void onTabChanged(String tabId) {
-
-                            int number = host.getCurrentTab();
-                            activity.setTitle(tabId);
-                            getServicesView(number, service_records[number], tabId);
-                        }
-                    });
-
-                    Resources res = getResources();
-                    for (int i = 0; i < cats.length; i++) {
-
-                        TabHost.TabSpec spec = host.newTabSpec(cats[i]);
-                        spec.setIndicator(cats[i]);
-                        spec.setContent(R.id.tab1);
-                        host.addTab(spec);
-                    }
-
-                    host.setCurrentTab(1);
-                } catch (JSONException e) {
-                    Log.e(TAG, "JSONException " + e.getMessage());
                 }
+            });
+
+
+            sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
+            currencySymbol = sharedpreferences.getString("currencySymbol", null);
+            countryCode = sharedpreferences.getString("country", null);
+            request = getIntent().getStringExtra("request");
+            RequestQueue queue = Volley.newRequestQueue(this);
+
+            if (!config.isConnected(this)) {
+                config.buildDialog(this).show();
+            }else{
+
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, request, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        JSONObject jsonObj = null;
+
+                        try {
+
+                            jsonObj = new JSONObject(response);
+                            String result = jsonObj.getString("result");
+                            JSONObject categories = jsonObj.getJSONObject("categories");
+                            JSONArray data = categories.getJSONArray("data");
+
+                            JSONObject franchise = jsonObj.getJSONObject("franchise_detail");
+                            JSONObject settings = jsonObj.getJSONObject("settings");
+
+                            SharedPreferences.Editor sp = sharedpreferences.edit();
+                            sp.putString("franchise", franchise.toString());
+                            sp.putString("franchise_id", franchise.getString("ID"));
+                            sp.putString("minimumOrderAmount", franchise.getString("MinimumOrderAmount"));
+                            sp.putString("settings", settings.toString());
+                            sp.commit();
+                            Log.e(franchise.getString("MinimumOrderAmount") + "franchise --> ", franchise.toString());
+
+                            service_records = new JSONArray[data.length()];
+
+
+                            viewPager = (ViewPager) findViewById(R.id.viewPager);
+                            tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+                            adapter = new TabAdapter(getSupportFragmentManager());
+
+                            cats = new String[data.length()];
+
+                            for (int i = 0; i < data.length(); i++) {
+                                JSONObject c = data.getJSONObject(i);
+                                String MTitle = c.getString("MTitle");
+                                JSONArray sr = c.getJSONArray("service_records");
+                                service_records[i] = sr;
+                                cats[i] = MTitle;
+                                ServicesFragment servicesFragment=new ServicesFragment();
+                                adapter.addFragment(servicesFragment,service_records[i],i,country,currencySymbol,
+                                        MTitle,androidId);
+                            }
+                            viewPager.setAdapter(adapter);
+                            viewPager.setCurrentItem(0);
+                            tabLayout.setupWithViewPager(viewPager);
+
+                            for (int i = 0; i < tabLayout.getTabCount(); i++) {
+                                //TabLayout.Tab tab = tabLayout.getTabAt(i);
+
+                                tabLayout.getTabAt(i).setCustomView(R.layout.custom_tab);
+                                TextView tab_name = (TextView) tabLayout.getTabAt(i).getCustomView().findViewById(R.id.tab);
+                                tab_name.setText("" + cats[i]);
+
+                                ImageView tabImage = (ImageView) tabLayout.getTabAt(i).getCustomView().findViewById(R.id.tabImage);
+
+                                Picasso.with(getApplicationContext()).load("https://www.love2laundry.com/uploads/categories/"+cats[i].toLowerCase()+"-icon.png").into(tabImage);
+
+                                //tabImage.setImageURI(Uri.parse("https://www.love2laundry.com/uploads/categories/trousers-icon.png"));
+
+
+
+                            }
+
+
+
+
+                        } catch (JSONException e) {
+                            Log.e(TAG, "JSONException " + e.getMessage());
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // mTextView.setText("That didn't work!");
+
+                        Log.e(TAG, "VolleyError " + error.getMessage());
+                    }
+                });
+                stringRequest.setShouldCache(false);
+                queue.getCache().clear();
+                queue.add(stringRequest);
+
 
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // mTextView.setText("That didn't work!");
-
-                Log.e(TAG, "VolleyError " + error.getMessage());
-            }
-        });
-        stringRequest.setShouldCache(false);
-        queue.getCache().clear();
-        queue.add(stringRequest);
-
 
         }
-        getServicesTotal();
+
+        updateCart();
     }
 
 
-
-    private RecyclerView listing;
-    private RecyclerView.Adapter myServicesAdapter;
-
-    protected void getServicesView(int number, final JSONArray service_records, String categoryName) {
+    @Override
+    public void updateCart() {
 
 
-        listing = findViewById(R.id.listing);
-        currencySymbol=sharedpreferences.getString("currencySymbol",null);
-        myServicesAdapter = new MyServicesAdapter(ListingActivity.this,number,service_records,categoryName,currencySymbol,countryCode,androidId);
-        ((MyServicesAdapter) myServicesAdapter).setUpdateServices(this);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        listing.setLayoutManager(mLayoutManager);
-        listing.setItemAnimator(new DefaultItemAnimator());
-        listing.setAdapter(myServicesAdapter);
-
-
-
-
-    }
-
-
-
-    public void getServicesTotal(){
         Double servicesTotal=cartDb.getServicesTotal(androidId,country);
 
         //Log.e("servicesTotal",servicesTotal.toString());
@@ -257,21 +228,19 @@ public class ListingActivity extends Navigation implements MyServicesAdapter.Upd
         TextView servicesTotalView = findViewById(R.id.services_total);
 
         if(servicesTotal==null || servicesTotal==0.0 ){
-            itemMessage.setText("Skip item selection");
+            itemMessage.setText("Skip Item Selection");
             servicesTotalView.setText("Order");
         }else{
-            itemMessage.setText("You Basket");
+            itemMessage.setText("Your Basket");
             servicesTotalView.setText(currencySymbol+config.displayPrice(servicesTotal)+"");
         }
-
     }
-
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ListingActivity.this, UKActivity.class);
+       // finishAffinity();
+        Intent intent = new Intent(this, UKActivity.class);
         startActivityForResult(intent, 10);
         startActivity(intent);
     }
-
 }

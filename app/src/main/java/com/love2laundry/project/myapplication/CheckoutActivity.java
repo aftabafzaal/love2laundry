@@ -61,7 +61,7 @@ public class CheckoutActivity extends Navigation
     TextView postCodeField;
     TextView preferencesHeadView;
 
-    TextView preferenceTotalView,preferenceTotalTextView,servicesTotalView,grandTotalView;
+    TextView preferenceTotalView,preferenceTotalTextView,grandTotalView;
 
     private Cart cartDb;
     String countryCode, currencyCode,currencySymbol;
@@ -73,8 +73,6 @@ public class CheckoutActivity extends Navigation
 
     RelativeLayout discountsView,discountForm,discountButtons;
 
-
-    private DrawerLayout mDrawerLayout;
     public ArrayList<HashMap<String, String>>  services = new ArrayList<>();
 
 
@@ -157,8 +155,6 @@ public class CheckoutActivity extends Navigation
 
             minimumOrderAmount=Double.parseDouble(minimum);
 
-            Log.e("minimumOrder ",minimumOrderAmount+"");
-
             postCodeField = (TextView) findViewById(R.id.post_code);
             postCodeField.setText(postCode);
 
@@ -217,7 +213,7 @@ public class CheckoutActivity extends Navigation
                 cartAmount.setText(currencySymbol + "00:00");
             }
 
-            minimumOrderMessage.setText(minimumOrderMessage.getText().toString() + " " + currencySymbol + minimumOrderAmount + ".");
+            minimumOrderMessage.setText(minimumOrderMessage.getText().toString() + " " + currencySymbol + config.displayPrice(minimumOrderAmount) + ".");
 
             showPreferences = cartDb.showPreferences(androidId, countryCode);
 
@@ -654,7 +650,9 @@ public class CheckoutActivity extends Navigation
 
             } else if (returnType.equals("credit_card")) {
 
+
                 String selectCardName=data.getExtras().getString("selectedCardName");
+                Log.e("selectCardName "," <---> "+selectCardName);
                 if(selectCardName != null && !selectCardName.equals("")) {
                     cardId = data.getExtras().getString("selectedCardId");
                     creditCardField.setText(data.getExtras().getString("selectedCardName"));
@@ -789,9 +787,6 @@ public class CheckoutActivity extends Navigation
             prefrencesListView.setLayoutManager(mLayoutManager);
             prefrencesListView.setItemAnimator(new DefaultItemAnimator());
             prefrencesListView.setAdapter(preferencesAdapter);
-
-
-            Log.e("preferenceTotal --> ",preferenceTotal+"");
             preferenceTotalView.setText(currencySymbol+displayPrice(preferenceTotal));
             grandTotal=servicesTotal+preferenceTotal;
             grandTotalView.setText(currencySymbol+displayPrice(grandTotal));
@@ -807,7 +802,6 @@ public class CheckoutActivity extends Navigation
         String codeString = sharedPreferencesDiscount.getString("codeString", null);
         discountedPrice=cartDb.getTotalForDiscount(androidId,country);
         String[] tempArray;
-        Log.e("discountedPrice"," --> "+discountedPrice.toString());
         String delimiter = "\\|";
         //Double minimumAmount=15.00;
 
@@ -1018,5 +1012,7 @@ public class CheckoutActivity extends Navigation
         intent.putExtra("request", url);
         startActivity(intent);
     }
+
+
 
 }

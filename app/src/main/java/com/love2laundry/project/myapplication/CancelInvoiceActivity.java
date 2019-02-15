@@ -43,7 +43,6 @@ public class CancelInvoiceActivity extends Config {
         final Map<String, String> postDataParams = new HashMap<String, String>();
         try{
             String invoiceId = getIntent().getStringExtra("invoiceId");
-            sharedPreferencesCountry = getSharedPreferences("country", MODE_PRIVATE);
             postDataParams.put("id", member_id);
 
             String device_id = sharedPreferencesCountry.getString("deviceId", null);

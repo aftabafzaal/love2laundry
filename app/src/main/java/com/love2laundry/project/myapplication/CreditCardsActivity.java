@@ -36,7 +36,7 @@ public class CreditCardsActivity extends Config {
     private String TAG = CreditCardsActivity.class.getSimpleName();
     ArrayList<HashMap<String, String>> cardList;
     private ListView lv;
-    String action, title, type, selectedCardId, selectedCardName, selectedCardTitle, selectedCardMaskedNumber;
+    String action,title, type, selectedCardId, selectedCardName, selectedCardTitle, selectedCardMaskedNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,23 +46,34 @@ public class CreditCardsActivity extends Config {
         setSupportActionBar(toolbar);
 
 
-        Button addButton = (Button) findViewById(R.id.add);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(CreditCardsActivity.this, AddCardSubActivity.class);
-
-                startActivityForResult(intent, 10);
-                finish();
-
-
-            }
-        });
+       // Log.e("ddddff","asdd"+getIntent().getStringExtra("selectedCardId"));
+        if(getIntent().getStringExtra("selectedCardId")!=null){
+            selectedCardId=getIntent().getStringExtra("selectedCardId");
+            selectedCardName=getIntent().getStringExtra("selectedCardName");
+            selectedCardTitle=getIntent().getStringExtra("selectedCardTitle");
+            selectedCardMaskedNumber=getIntent().getStringExtra("selectedCardMaskedNumber");
+            finish();
+        }else {
 
 
-        cardList = new ArrayList<>();
-        new GetDates().execute();
+            Button addButton = (Button) findViewById(R.id.add);
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(CreditCardsActivity.this, AddCardSubActivity.class);
+
+                    startActivityForResult(intent, 10);
+                    finish();
+
+
+                }
+            });
+
+
+            cardList = new ArrayList<>();
+            new GetDates().execute();
+        }
     }
 
     private class GetDates extends AsyncTask<Void, Void, Void> {
@@ -180,7 +191,10 @@ public class CreditCardsActivity extends Config {
 
     @Override
     public void finish() {
+
+        Log.e("asd",selectedCardId+"-"+selectedCardName+""+selectedCardTitle+"-"+selectedCardMaskedNumber);
         Intent data = new Intent();
+
         data.putExtra("selectedCardId", selectedCardId);
         data.putExtra("selectedCardName", selectedCardName);
         data.putExtra("selectedCardTitle", selectedCardTitle);

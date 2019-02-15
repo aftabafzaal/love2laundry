@@ -27,16 +27,19 @@
             android:layout_weight="1.25"
             android:paddingRight="5dp">
             <TextView
+                android:id="@id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Danny Scott Test"
                 style="@style/TextSmall" />
             <TextView
+                android:id="@id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="testingg37@gmail.com"
                 style="@style/TextSmall" />
             <TextView
+                android:id="@id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="601, International House, 223 Region, Street SE12QR, London"
@@ -44,12 +47,12 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="170dp"
+            android:layout_height="140dp"
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:background="@color/colorPrimaryDark"
             android:layout_weight="0.75"
-            android:padding="15dp">
+            >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,13 +60,13 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:fontFamily="@font/oxygen_bold"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textAllCaps="true"
                 android:textColor="@color/colorWhite"
-                android:text="Loyalty Point"/>
+                android:text="Loyalty Points"/>
             <TextView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:background="@drawable/circle"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:gravity="center"

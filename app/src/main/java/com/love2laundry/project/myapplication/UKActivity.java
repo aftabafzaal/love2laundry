@@ -87,8 +87,9 @@ public class UKActivity extends Config {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, PickCountryActivity.class);
-        startActivityForResult(intent, 10);
-        startActivity(intent);
+        finishAffinity();
+        //Intent intent = new Intent(this, PickCountryActivity.class);
+        //startActivityForResult(intent, 10);
+        //startActivity(intent);
     }
 }

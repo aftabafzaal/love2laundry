@@ -164,17 +164,6 @@ public class DatesActivity extends Config {
                         TextView tv = v.findViewById(R.id.date);
                         tv.setVisibility(View.VISIBLE);
 
-                        tv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                pickUpDate = dateList.get(position).get("dateNumber");
-                                dateSelected = dateList.get(position).get("dateSelected");
-
-                                finish();
-
-                            }
-                        });
 
                     }else{
 
@@ -189,6 +178,16 @@ public class DatesActivity extends Config {
                 }
             };
             lv.setAdapter(adapter);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    pickUpDate = dateList.get(i).get("dateNumber");
+                    dateSelected = dateList.get(i).get("dateSelected");
+                    finish();
+
+                }
+            });
         }
     }
 

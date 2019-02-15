@@ -1,7 +1,9 @@
 package com.love2laundry.project.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -42,7 +44,7 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
     int number;
     String category;
     String currency;
-    private Cart cartDb;
+    Cart cartDb;
     Map<Integer, Integer> totalServices = new HashMap<Integer, Integer>();
     String deviceId,  country;
 
@@ -58,7 +60,7 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
     }
 
 
-    public MyServicesAdapter(Context activity,int n, JSONArray servicesJson,String c,String currencyCode,String countryCode,String androidId) {
+    public MyServicesAdapter(Activity activity, int n, JSONArray servicesJson, String c, String currencyCode, String countryCode, String androidId) {
 
         cartDb = new Cart(activity);
         services_record = servicesJson;
@@ -98,26 +100,35 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
             String price = json.getString("Price");
             Double offerPrice;
             Integer serviceId = Integer.parseInt(json.getString("ID"));
+            Config config = new Config();
 
             if (Double.parseDouble(discount) > 0) {
                 offerPrice = Double.parseDouble(price) - (Double.parseDouble(price) / 100) * Double.parseDouble(discount);
                 offerPrice = Math.floor(offerPrice);
+
                 myViewHolder.discount.setText(discount + "%");
-                myViewHolder.offerPrice.setText(currency+offerPrice.toString());
+                myViewHolder.offerPrice.setText(currency+config.displayPrice(offerPrice));
+
 
             } else {
                 offerPrice = Double.parseDouble(price);
+
+                // myViewHolder.price.getText();
                 myViewHolder.discount.setVisibility(View.GONE);
-                myViewHolder.offerPrice.setVisibility(View.GONE);
+                myViewHolder.price.setVisibility(View.GONE);
+                myViewHolder.offerPrice.setText(currency+config.displayPrice(offerPrice));
+                //myViewHolder.offerPrice.setVisibility(View.GONE);
+                //myViewHolder.offerPrice.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                //myViewHolder.offerPrice.setTextColor(R.color.colorDarkGray);
             }
 
             final Double  discountAmount = Double.parseDouble(price) - offerPrice;
 
 
             HashMap<String, String> item = new HashMap<>();
-
+            Log.e("aaa ",deviceId+" "+serviceId+" "+country);
             item = cartDb.getService(deviceId, serviceId, country);
-            Log.e(" ",""+item);
+
 
 
             if (item.isEmpty() == true) {
@@ -127,7 +138,7 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
             }
 
             myViewHolder.price.setText(currency+""+json.getString("Price"));
-
+            myViewHolder.price.setPaintFlags(myViewHolder.price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             final Double finalOfferPrice = offerPrice;
             myViewHolder.add.setOnClickListener(new View.OnClickListener() {
                 final Set<String> set = new HashSet<String>();
@@ -139,6 +150,9 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
                     quantity = Integer.parseInt(total);
                     quantity++;
                     try {
+
+
+                        Log.e("--",json.toString());
                         totalServices.put(Integer.parseInt(json.getString("ID")), quantity);
                         set.add(json.getString("Title"));
                         set.add(quantity.toString());

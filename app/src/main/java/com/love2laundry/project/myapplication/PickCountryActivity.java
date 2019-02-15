@@ -37,8 +37,6 @@ public class PickCountryActivity extends Config {
 
 
     private String TAG = PickCountryActivity.class.getSimpleName();
-    ArrayList<HashMap<String, String>> contactList;
-    private ListView lv;
     RadioButton radioUk;
     RadioButton radioUae;
     String country;
@@ -48,15 +46,25 @@ public class PickCountryActivity extends Config {
         super.onCreate(savedInstanceState);
 
 
-        Config config =new Config();
 
+
+        sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
+        String c=sharedpreferences.getString("country",null);
+
+        if(c!=null) {
+            if (c.equals("uk")) {
+                startActivity(new Intent(PickCountryActivity.this, UKActivity.class));
+                finish();
+
+            }
+        }
+        Config config =new Config();
         if(!config.isConnected(this)) {
             config.buildDialog(this).show();
         }
         else {
-            //Toast.makeText(this,"Welcome", Toast.LENGTH_SHORT).show();
+
             setContentView(R.layout.pick_country);
-            //Config.isConnected(this);
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString("country", "uk");
@@ -176,10 +184,8 @@ public class PickCountryActivity extends Config {
 
     @Override
     public void onBackPressed() {
-       // Log.e("asd onBackPressed ","asd");
-        //super.onBackPressed();
+
         finishAffinity();
-        //finish();
-        //System.exit(0);
+
     }
 }

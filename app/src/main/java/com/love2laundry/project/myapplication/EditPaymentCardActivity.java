@@ -89,10 +89,10 @@ public class EditPaymentCardActivity extends Navigation {
         title.setText(cardTitle);
 
         number = (EditText) findViewById(R.id.number);
-        number.setHint(maskedNumber);
+        number.setText(maskedNumber);
 
         cvvCode = (EditText) findViewById(R.id.ccv);
-        cvvCode.setHint(maskedCode);
+        cvvCode.setText(maskedCode);
 
         year = (Spinner) findViewById(R.id.year);
 

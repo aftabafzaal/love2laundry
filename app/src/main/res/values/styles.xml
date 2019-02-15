@@ -9,7 +9,6 @@
     </style>
 
 
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -40,6 +39,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:ems">10</item>
     </style>
+
     <style name="SubTitleHeading">
         <item name="android:textColor">@color/colorDarkGray</item>
         <item name="android:textSize">18sp</item>
@@ -48,12 +48,14 @@
         <item name="fontFamily">@font/oxygen_regular</item>
         <item name="android:ems">10</item>
     </style>
+
     <style name="SubTitleHeadingSmall">
         <item name="android:textColor">@color/colorDarkGray</item>
         <item name="android:textSize">24sp</item>
         <item name="android:fontFamily">@font/oxygen_light</item>
         <item name="android:ems">10</item>
     </style>
+
     <style name="TextSmall">
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">16sp</item>
@@ -63,6 +65,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:ems">10</item>
     </style>
+
     <style name="TextMediumGray">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">16sp</item>
@@ -72,6 +75,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:ems">10</item>
     </style>
+
     <style name="TextMediumBlue">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">16sp</item>
@@ -81,6 +85,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:ems">10</item>
     </style>
+
     <style name="ButtonGreen">
         <item name="android:background">@drawable/btn_green</item>
         <item name="android:minHeight">60dip</item>
@@ -95,6 +100,7 @@
         <item name="fontFamily">@font/titillium_web_semibold</item>
         <item name="android:stateListAnimator">@null</item>
     </style>
+
     <style name="ButtonBlue">
         <item name="android:background">@drawable/btn_blue</item>
         <item name="android:minHeight">60dip</item>
@@ -109,6 +115,7 @@
         <item name="fontFamily">@font/titillium_web_semibold</item>
         <item name="android:stateListAnimator">@null</item>
     </style>
+
     <style name="ButtonBorderGrey" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:background">@drawable/btn_dark_grey</item>
         <item name="android:minHeight">60dip</item>
@@ -123,9 +130,11 @@
         <item name="fontFamily">@font/titillium_web_semibold</item>
         <item name="android:stateListAnimator">@null</item>
     </style>
+
     <style name="RadioBtnStyle">
         <item name="buttonTint">@color/colorPrimary</item>
     </style>
+
     <style name="TextInputEditText">
         <item name="android:layout_marginBottom">15dp</item>
         <item name="android:paddingLeft">15dp</item>
@@ -137,6 +146,7 @@
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textColorHint">@color/colorAccent</item>
     </style>
+
     <style name="BackGroundImageView">
         <item name="android:background">@drawable/item_placeholder</item>
         <item name="android:scaleType">fitXY</item>
@@ -168,10 +178,12 @@
         <item name="colorControlActivated">@color/colorPrimaryDark</item>
         <item name="colorControlHighlight">@color/colorPrimaryDark</item>
     </style>
+
     <style name="hintText" parent="TextAppearance.Design.Hint">
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="TabWidget">
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorWhite</item>

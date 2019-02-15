@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -48,7 +49,6 @@ public class DiscountsActivity extends Navigation {
     private ViewPager mViewPager;
 
     ArrayList<HashMap<String, String>> preferencesList;
-    HashMap<String, String> selectedPreference = new HashMap<>();
     public SharedPreferences sharedPreferencesCountry;
 
     private String TAG = DiscountsActivity.class.getSimpleName();
@@ -59,28 +59,32 @@ public class DiscountsActivity extends Navigation {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
-        member_id = sharedpreferences.getString("member_id", null);
+        Config config = new Config();
+        if (!config.isConnected(this)) {
+            config.buildDialog(this).show();
+        }else {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loyalty);
+            sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
+            member_id = sharedpreferences.getString("member_id", null);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_loyalty);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        Navigation navigation =new Navigation();
-        navigation.initView(navigationView,member_id);
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            Navigation navigation = new Navigation();
+            navigation.initView(navigationView, member_id);
 
-        new GetDiscountCodes().execute();
+            new GetDiscountCodes().execute();
+        }
     }
 
 
@@ -96,10 +100,8 @@ public class DiscountsActivity extends Navigation {
          */
         private ViewPager mViewPager;
 
-
-
-
         private static final String ARG_SECTION_NUMBER = "section_number";
+
         public PlaceholderFragment() {
         }
 
@@ -114,7 +116,6 @@ public class DiscountsActivity extends Navigation {
 
         public static PlaceholderFragment newInstance(int sectionNumber,JSONArray loyaltyList)  {
             PlaceholderFragment fragment = new PlaceholderFragment();
-            //loyalties=loyaltyList;
             l=loyaltyList;
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber-1);
@@ -122,9 +123,8 @@ public class DiscountsActivity extends Navigation {
             return fragment;
         }
 
-
-
         @Override
+
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
@@ -133,6 +133,11 @@ public class DiscountsActivity extends Navigation {
 
             View rootView = inflater.inflate(R.layout.fragment_loyalty, container, false);
             ListView lv = (ListView) rootView.findViewById(R.id.list);
+            TextView tv = (TextView) rootView.findViewById(R.id.fragment_title);
+            tv.setText("Discounts");
+
+            TextView messageView = (TextView) rootView.findViewById(R.id.fragment_message);
+            messageView.setText("Your discount codes");
 
             int num=getArguments().getInt(ARG_SECTION_NUMBER);
 
@@ -209,7 +214,6 @@ public class DiscountsActivity extends Navigation {
                     preferencesList = new ArrayList<>();
                     String result = jsonObj.getString("result");
                     JSONObject data = jsonObj.getJSONObject("data");
-                    ///Log.e("data",data.toString());
                     JSONArray loyaltyActive = data.getJSONArray("discount_active");
                     JSONArray history = data.getJSONArray("discount_history");
 

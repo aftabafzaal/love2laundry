@@ -166,9 +166,17 @@ public class AddCardSubActivity extends Config {
                                             if(result.equals("Success")) {
                                                 String message= jsonObj.getString("message");
                                                 Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
-                                                Intent intent = new Intent(AddCardSubActivity.this, CreditCardsActivity.class);
-                                                startActivityForResult(intent, 10);
-                                                //finish();
+                                                Intent data = new Intent(AddCardSubActivity.this, CreditCardsActivity.class);
+                                                id=jsonObj.getString("card_id");
+                                                data.putExtra("selectedCardId", id);
+                                                data.putExtra("selectedCardName", name.getText().toString());
+                                                data.putExtra("selectedCardTitle", title.getText().toString());
+                                                data.putExtra("selectedCardMaskedNumber", number.getText().toString());
+                                                data.putExtra("returnType", "credit_card");
+                                                //Intent intent = new Intent(AddCardSubActivity.this, CreditCardsActivity.class);
+                                                startActivity(data);
+
+                                               finish();
                                                 //return false;
 
                                             }
@@ -218,4 +226,5 @@ public class AddCardSubActivity extends Config {
 
 
     }
+
 }

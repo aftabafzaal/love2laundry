@@ -109,9 +109,9 @@ class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHolder> {
 
         myViewHolder.serviceName.setText(services.get(i).get("serviceName"));
         myViewHolder.quantity.setText(services.get(i).get("quantity"));
-
+        Double unitPrice = Double.parseDouble(services.get(i).get("unitPrice"));
         Config config = new Config();
-        myViewHolder.unitPrice.setText(config.getCurrencySymbol(country)+services.get(i).get("unitPrice"));
+        myViewHolder.unitPrice.setText(config.getCurrencySymbol(country)+config.displayPrice(unitPrice));
 
         if(services.get(i).get("image")!=null && !services.get(i).get("image").equals("") ){
             Picasso.with(p.getApplicationContext()).load(services.get(i).get("image")).resize(50,50).into(myViewHolder.mobileImagePath);

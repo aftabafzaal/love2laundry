@@ -2,9 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:drawable="@drawable/ic_discount"
-        android:width="24dp"
-        android:height="24dp"
-        />
+        android:drawable="@drawable/ic_discount" />
+
 
 </layer-list >

@@ -24,6 +24,7 @@
                 android:drawableStart="@drawable/ic_first_name"
                 android:drawablePadding="5dp"
                 android:hint="@string/name"
+                android:text="name"
                 android:inputType="text"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
@@ -40,6 +41,7 @@
                 android:drawableStart="@drawable/ic_title"
                 android:drawablePadding="5dp"
                 android:hint="@string/title"
+                android:text="title"
                 android:inputType="text"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
@@ -56,6 +58,7 @@
                 android:drawableStart="@drawable/payment_icon"
                 android:drawablePadding="5dp"
                 android:hint="@string/number"
+                android:text="1234567890123456"
                 android:inputType="text"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>

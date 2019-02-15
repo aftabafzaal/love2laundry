@@ -113,6 +113,9 @@
     <string name="search">Search</string>
     <string name="referral_title">Get your {{amount}} free credits</string>
     <string name="referral_text">Give a friend and get {{amount}} when they use this code on first order.</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
 
 
 </resources>

@@ -70,6 +70,11 @@
             android:icon="@drawable/ic_rate"
             android:title="Rate App" />
 
+        <item
+            android:id="@+id/pick_country"
+            android:icon="@drawable/ic_rate"
+            android:title="Change Country" />
+
     </group>
 
 </menu>

@@ -31,9 +31,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
-public class LaundrySettingsActivity extends Navigation {
+public class LaundrySettingsActivity extends Navigation implements MyPreferencesAdapter.Modifier {
+
 
     EditText accountNotes;
     private String TAG = LaundrySettingsActivity.class.getSimpleName();
@@ -44,7 +46,7 @@ public class LaundrySettingsActivity extends Navigation {
     private RecyclerView.Adapter cartAdapter, preferencesAdapter;
     String memberPreferences;
     String selectedP = "";
-
+    String member_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ public class LaundrySettingsActivity extends Navigation {
         setSupportActionBar(toolbar);
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
 
-        final String member_id = sharedpreferences.getString("member_id", null);
+        member_id = sharedpreferences.getString("member_id", null);
 
         String memberJsonString = sharedpreferences.getString("member_data", null);
 
@@ -80,9 +82,8 @@ public class LaundrySettingsActivity extends Navigation {
                 updateButton.setEnabled(false);
 
                 try {
-                    selectedP = ((MyPreferencesAdapter) preferencesAdapter).getMemberSelected();
-                    selectedP = (selectedP == null || selectedP.length() == 0) ? "" : (selectedP.substring(0, selectedP.length() - 2));
-
+                    //selectedP = ((MyPreferencesAdapter) preferencesAdapter).getMemberSelected();
+                    //selectedP = (selectedP == null || selectedP.length() == 0) ? "" : (selectedP.substring(0, selectedP.length() - 2));
 
                     try{
 
@@ -92,7 +93,6 @@ public class LaundrySettingsActivity extends Navigation {
 
                         String device_id = sharedPreferencesCountry.getString("deviceId", null);
                         postDataParams.put("member_id", member_id);
-
                         postDataParams.put("device_id", device_id);
                         String notes=accountNotes.getText().toString();
                         postDataParams.put("preferences_data",notes+"||"+selectedP);
@@ -100,8 +100,9 @@ public class LaundrySettingsActivity extends Navigation {
                         String server = sharedPreferencesCountry.getString("server", null);
                         String url = server + sharedPreferencesCountry.getString("apiPreferencesUpdate", "/apiv5/post_preferences_update");
                         RequestQueue queue = Volley.newRequestQueue(LaundrySettingsActivity.this);
+                        //String url="";
                         Log.e(TAG,url);
-
+                        Log.e("postDataParams -->",postDataParams.toString());
                         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                                 new Response.Listener<String>() {
                                     @Override
@@ -117,12 +118,9 @@ public class LaundrySettingsActivity extends Navigation {
                                             if(result.equals("Success")) {
                                                 String message= jsonObj.getString("message");
                                                 Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                                                /*
                                                 String preferenceData = jsonObj.getString("data");
-                                                Log.e(TAG+" preferenceData -> ", ""+preferenceData);
-
                                                 String memberData = jsonObj.getString("member_data");
-                                                Log.e(TAG+" memberData -> ", ""+memberData);
-
                                                 sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
 
                                                 SharedPreferences.Editor member = sharedpreferences.edit();
@@ -133,7 +131,7 @@ public class LaundrySettingsActivity extends Navigation {
                                                 member.commit();
                                                 finish();
                                                 startActivity(getIntent());
-
+                                                */
                                             }
 
                                         } catch (JSONException e) {
@@ -181,10 +179,11 @@ public class LaundrySettingsActivity extends Navigation {
                     }
 
 
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     Log.e("TAG","sdasdasd"+e.getMessage());
                     e.printStackTrace();
                 }
+                updateButton.setEnabled(true);
 
             }
         });
@@ -205,6 +204,42 @@ public class LaundrySettingsActivity extends Navigation {
 
     }
 
+    @Override
+    public void managePreferencesTotal() {
+        Log.e("-->","asd");
+        selectedP="";
+        try {
+            HashMap<String, String> checkoutPreferences = ((MyPreferencesAdapter) preferencesAdapter).getSelected();
+            HashMap<String, String> checkoutPreferencesCopy;
+            checkoutPreferencesCopy=checkoutPreferences;
+            int size = checkoutPreferencesCopy.size();
+            Iterator it = checkoutPreferencesCopy.entrySet().iterator();
+            String preferences_data ="" ;
+
+            for (Map.Entry me : checkoutPreferencesCopy.entrySet()) {
+
+                String string = (String) me.getValue();
+
+                JSONObject json = new JSONObject(string);
+                String priceForPackage = json.getString("PriceForPackage");
+                Double price = 0.00;
+                if (priceForPackage.equals("Yes")) {
+                    Log.e("json.toString --> ",json.toString());
+                    price = Double.parseDouble(json.getString("Price"));
+
+                }
+
+                selectedP += json.getString("ID") + "||";
+
+            }
+            selectedP = (selectedP == null || selectedP.length() == 0) ? "" : (selectedP.substring(0, selectedP.length() - 2));
+            Log.e("-->",selectedP);
+        } catch (JSONException e) {
+            Log.e("-->",selectedP);
+            e.printStackTrace();
+        }
+    }
+
     public class GetPreferences extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -218,8 +253,10 @@ public class LaundrySettingsActivity extends Navigation {
             HttpHandler sh = new HttpHandler();
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
             String server = sharedpreferences.getString("server", null);
-            String url = server + sharedpreferences.getString("apiPreferences", null);
+            String url = server + sharedpreferences.getString("apiPreferences", null)+"?member_id="+member_id;
             String jsonStr = sh.makeServiceCall(url);
+
+            Log.e("url",url);
 
             if (jsonStr != null) {
 
@@ -231,28 +268,33 @@ public class LaundrySettingsActivity extends Navigation {
                     JSONObject preferences = jsonObj.getJSONObject("preferences");
                     JSONArray data = preferences.getJSONArray("data");
 
-                    JSONArray memberArray = new JSONArray(memberPreferences);
+                    //JSONArray memberArray = new JSONArray(memberPreferences);
                     String memberSelected=null;
+                    JSONObject memberPreferences = preferences.getJSONObject("member_preferences");
+
+                   // Log.e("memberPreferences",memberPreferences.toString());
+
                     int d=0;
                     for (int i = 0; i < data.length(); i++) {
 
-                        memberSelected=null;
-                        if(memberArray.get(i).toString()!=null) {
-                            JSONObject m = new JSONObject(memberArray.get(i).toString());
-                            memberSelected=m.getString("ID");
-                            d++;
-                        }
 
+                        memberSelected=null;
                         JSONObject c = data.getJSONObject(i);
                         String id = c.getString("ID");
                         String title = c.getString("Title");
                         JSONArray children = c.getJSONArray("child_records");
-                        //Log.e(TAG,"+ children "+children.get(0));
                         JSONObject defaultP=new JSONObject(children.get(0).toString());
 
 
+                        if(memberPreferences.get(id)!=null) {
+                            defaultP = new JSONObject(memberPreferences.get(id).toString());
+                            memberSelected=defaultP.getString("Title");
+                        }else{
+                            defaultP = new JSONObject(children.get(0).toString());
+                            memberSelected=defaultP.getString("Title");
+                        }
 
-                        selectedP+=defaultP.get("ID").toString()+"||";
+                        //selectedP+=defaultP.get("ID").toString()+"||";
 
                         HashMap<String, String> card = new HashMap<>();
                         card.put("id", id);
@@ -300,6 +342,7 @@ public class LaundrySettingsActivity extends Navigation {
             prefrencesListView.setLayoutManager(mLayoutManager);
             prefrencesListView.setItemAnimator(new DefaultItemAnimator());
             prefrencesListView.setAdapter(preferencesAdapter);
+            ((MyPreferencesAdapter) preferencesAdapter).setModifier(LaundrySettingsActivity.this);
 
 
         }

@@ -35,6 +35,7 @@ public class AccountActivity extends Navigation {
     private String TAG = AccountActivity.class.getSimpleName();
     public SharedPreferences sharedPreferencesCountry;
     String passwordText,confirmPasswordText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +46,6 @@ public class AccountActivity extends Navigation {
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
 
         final String member_id = sharedpreferences.getString("member_id", null);
-        //String firstName = sharedpreferences.getString("firstName", null);
-        //String lastName = sharedpreferences.getString("lastName", null);
         String memberJson = sharedpreferences.getString("member_data", null);
 
         JSONObject member= null;
@@ -82,23 +81,11 @@ public class AccountActivity extends Navigation {
             town.setText(member.getString("Town"));
 
             password = (EditText) findViewById(R.id.password);
-
-
-
             confirmPassword = (EditText) findViewById(R.id.confirm_password);
-
-
-
-            //town.setText(member.getString("Town"));
-
-
 
         } catch (JSONException e) {
             Log.e(TAG,"JSONException");
-            e.printStackTrace();
         }
-
-
 
         Button updateButton = (Button) findViewById(R.id.update_button);
         updateButton.setOnClickListener(new View.OnClickListener() {
@@ -261,10 +248,6 @@ public class AccountActivity extends Navigation {
                 }
             }
         });
-
-        Log.e("member",""+member);
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

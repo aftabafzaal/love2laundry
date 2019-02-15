@@ -6,11 +6,13 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -72,6 +74,16 @@ class DiscountsAdapter extends RecyclerView.Adapter<DiscountsAdapter.MyViewHolde
                             ClipboardManager clipboard = (ClipboardManager) p.getSystemService(Context.CLIPBOARD_SERVICE);
                             ClipData clip = ClipData.newPlainText("copy", o.getString("Code"));
                             clipboard.setPrimaryClip(clip);
+
+                            Toast.makeText(p,
+                                    "Discount code copied.",
+                                    Toast.LENGTH_LONG).show();
+                            //Toast toast;
+                           // toast = (Toast) Toast.makeText(this,
+                            //        "Discount code copied.", Toast.LENGTH_SHORT).show();;
+                            //toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
+                            //toast.show();
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();

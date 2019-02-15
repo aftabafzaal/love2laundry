@@ -8,17 +8,20 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ListingActivity">
+        android:background="@color/colorWhite"
+        tools:context=".LoyaltyActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -27,70 +30,34 @@
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+
+                android:minHeight="?actionBarSize"
+                app:tabMode="scrollable"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/colorWhite"
+                app:tabIndicatorHeight="3dp"
+                android:background="@color/colorPrimary"
+                app:tabTextColor="@color/colorLightGray"
+                app:tabSelectedTextColor="@color/colorWhite"
+                />
+
         </android.support.design.widget.AppBarLayout>
 
-    <TabHost
-        android:layout_marginTop="60dp"
-        android:id="@+id/tabHost"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
 
-        <LinearLayout
+
+        <android.support.v4.view.ViewPager
+            android:layout_marginTop="0dp"
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <HorizontalScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true"
-                android:scrollbars="none">
-
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </TabWidget>
-            </HorizontalScrollView>
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <LinearLayout
-                    android:id="@+id/tab1"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/listing"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="60dp"
-                        />
-
-
-
-                </LinearLayout>
-
-            </FrameLayout>
-        </LinearLayout>
-
-    </TabHost>
-
-
-
-
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <RelativeLayout
-            android:id="@+id/checkout"
+            android:id="@+id/sticky_cart"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingBottom="5dp"
@@ -119,6 +86,7 @@
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:text="Order"
                 android:textAllCaps="true"
                 android:textColor="@color/colorWhite"
@@ -126,7 +94,7 @@
                 />
         </RelativeLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+    </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
