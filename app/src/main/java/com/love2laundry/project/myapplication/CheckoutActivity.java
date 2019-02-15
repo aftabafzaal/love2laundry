@@ -98,17 +98,31 @@ public class CheckoutActivity extends Navigation
     String member = null;
     Double minimumOrderAmount;
     Double discountedPrice;
+    Config config;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
         super.Navigation();
-
+        config= new Config();
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        member_id = sharedpreferences.getString("member_id", null);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        Navigation navigation = new Navigation();
+        navigation.initView(navigationView, member_id,sharedpreferences);
         sharedPreferencesDiscount = getSharedPreferences("discount", MODE_PRIVATE);
 
-        final Config config= new Config();
 
         if (!config.isConnected(this)) {
             config.buildDialog(this).show();
@@ -118,7 +132,7 @@ public class CheckoutActivity extends Navigation
             startActivityForResult(i, 10);
         }else {
 
-            member_id = sharedpreferences.getString("member_id", null);
+
             final String firstName = sharedpreferences.getString("firstName", null);
             String lastName = sharedpreferences.getString("lastName", null);
             String phone = sharedpreferences.getString("phone", null);
@@ -157,7 +171,7 @@ public class CheckoutActivity extends Navigation
 
             postCodeField = (TextView) findViewById(R.id.post_code);
             postCodeField.setText(postCode);
-
+            postCodeField.setEnabled(false);
             streetField = (EditText) findViewById(R.id.street);
             streetField.setText(street);
 
@@ -553,17 +567,7 @@ public class CheckoutActivity extends Navigation
 
             discountedPrice = cartDb.getTotalForDiscount(androidId, country);
 
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-            drawer.addDrawerListener(toggle);
-            toggle.syncState();
 
-            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-            navigationView.setNavigationItemSelectedListener(this);
-            Navigation navigation = new Navigation();
-            navigation.initView(navigationView, member_id);
             applyDiscount();
         }
     }
@@ -805,8 +809,6 @@ public class CheckoutActivity extends Navigation
         String delimiter = "\\|";
         //Double minimumAmount=15.00;
 
-        Log.e("minimumAmount",minimumOrderAmount.toString());
-
         if(validDiscount==true && servicesTotal>minimumOrderAmount) {
             tempArray = codeString.split(delimiter);
             Double discount = 0.00;
@@ -827,7 +829,7 @@ public class CheckoutActivity extends Navigation
                     }
                 }
             } else {
-                Log.e("--> ","<-->");
+
                 discount = Double.parseDouble(tempArray[3]);
                 if (discount < discountedPrice) {
                     discountAmount = discountedPrice - discount;

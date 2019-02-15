@@ -29,7 +29,7 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
     SharedPreferences loginMember;
 
 
-    public Navigation() {
+    public void Navigation() {
         super.Config();
     }
 
@@ -94,17 +94,14 @@ public class Navigation extends Config implements NavigationView.OnNavigationIte
             navbarSideLogo.setVisibility(View.VISIBLE);
             navHeaderTxt.setVisibility(View.VISIBLE);
             //loginMember = getSharedPreferences("member", MODE_PRIVATE);
-            //sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
-            TextView txtName = (TextView) headerLayout.findViewById(R.id.name);
-            TextView txtEmail = (TextView) headerLayout.findViewById(R.id.email);
+            String firstName = loginMember.getString("firstName", null);
+            String lastName = loginMember.getString("lastName", null);
+            String email = loginMember.getString("email", null);
+            TextView txtName = (TextView) headerLayout.findViewById(R.id.nav_header_name);
+            TextView txtEmail = (TextView) headerLayout.findViewById(R.id.nav_header_email);
 
-
-           // Log.e("asd","asdad"+sharedpreferences.toString());
-            //String yourName=loginMember.getString("firstName",null)+" "+
-            //        loginMember.getString("lastName",null);
-           // String email=loginMember.getString("email",null);
-            //txtName.setText(yourName);
-           // txtEmail.setText(email);
+            txtName.setText(firstName+" "+lastName);
+            txtEmail.setText(email);
 
         }
 

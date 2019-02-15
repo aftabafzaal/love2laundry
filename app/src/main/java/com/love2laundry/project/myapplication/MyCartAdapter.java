@@ -138,7 +138,7 @@ class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHolder> {
 
                         cartDb.deleteCartItem(deviceId, service_id, country);
                         services.remove(i);
-                        notifyDataSetChanged();
+                        //notifyDataSetChanged();
                     } else {
                         services.get(i).put("quantity",quantity.toString());
                         cartDb.updateCart(deviceId, service_id, quantity, unitPrice, discount, country);

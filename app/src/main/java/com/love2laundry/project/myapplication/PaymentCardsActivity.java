@@ -67,7 +67,7 @@ public class PaymentCardsActivity extends Navigation {
         navigationView.setNavigationItemSelectedListener(this);
 
         Navigation navigation =new Navigation();
-        navigation.initView(navigationView,member_id);
+        navigation.initView(navigationView, member_id,sharedpreferences);
 
         cardList = new ArrayList<>();
 

@@ -34,7 +34,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         return mFragmentList.get(position);
     }
-    public void addFragment(Fragment fragment, JSONArray servicesRecords, int number, String countryCode, String currencySymbol, String category, String androidId ) throws JSONException {
+    public void addFragment(Fragment fragment, JSONArray servicesRecords, int number, String countryCode, String currencySymbol, String category,String icon, String androidId ) throws JSONException {
 
 
         Bundle args = new Bundle();
@@ -44,6 +44,8 @@ public class TabAdapter extends FragmentStatePagerAdapter {
         args.putString("currencySymbol",currencySymbol);
         args.putString("androidId",androidId);
         args.putString("category",category);
+        args.putString("icon",icon);
+
         fragment.setArguments(args);
 
 

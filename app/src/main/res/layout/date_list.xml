@@ -13,12 +13,12 @@
 
 
     <TextView
-        android:drawableLeft="@drawable/date_icon"
-        android:drawablePadding="10dp"
         android:visibility="gone"
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_date_time_icon"
+        android:drawablePadding="10dp"
         android:textColor="#696969"
         android:textSize="18sp"
         android:gravity="center|center_vertical"

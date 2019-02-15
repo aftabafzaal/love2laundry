@@ -17,8 +17,8 @@
 
             <ImageView
                 android:id="@+id/tabImage"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:tint="@color/colorWhite"
                 android:src="@mipmap/ic_launcher"/>
             <TextView

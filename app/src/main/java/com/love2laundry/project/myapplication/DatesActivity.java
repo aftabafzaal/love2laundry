@@ -163,16 +163,13 @@ public class DatesActivity extends Config {
 
                         TextView tv = v.findViewById(R.id.date);
                         tv.setVisibility(View.VISIBLE);
-
-
                     }else{
 
 
                         TextView tv = v.findViewById(R.id.disable);
-                        tv.setVisibility(View.VISIBLE);
                         tv.setEnabled(false);
                         tv.setClickable(false);
-
+                        tv.setVisibility(View.VISIBLE);
                     }
                     return v;
                 }

@@ -44,25 +44,18 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
     private ViewPager mViewPager;
 
     private String TAG = MainActivity.class.getSimpleName();
-    private Context context;
-
-    ArrayList<HashMap<String, String>> services;
-
     JSONArray[] service_records;
-
-    Map<Integer, Integer> totalServices = new HashMap<Integer, Integer>();
     private Cart cartDb;
-    String countryCode, currencyCode, request;
+    String countryCode, request;
     SharedPreferences spMember;
-    TextView itemMessage,servicesTotalView;
     Config config;
 
     private TabAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-    String[] cats;
-
+    String[] cats,mobileIcons;
+    String server;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -92,9 +85,7 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
             Navigation navigation = new Navigation();
 
             spMember = getSharedPreferences("member", MODE_PRIVATE);
-
-            navigation.initView(navigationView, spMember.getString("member_id", null));
-
+            navigation.initView(navigationView, spMember.getString("member_id", null),spMember);
             super.Navigation();
 
             RelativeLayout floatingActionButton = (RelativeLayout) findViewById(R.id.sticky_cart);
@@ -114,6 +105,7 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
 
 
             sharedpreferences = getSharedPreferences("country", MODE_PRIVATE);
+            server =sharedpreferences.getString("server",null);
             currencySymbol = sharedpreferences.getString("currencySymbol", null);
             countryCode = sharedpreferences.getString("country", null);
             request = getIntent().getStringExtra("request");
@@ -145,7 +137,7 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
                             sp.putString("minimumOrderAmount", franchise.getString("MinimumOrderAmount"));
                             sp.putString("settings", settings.toString());
                             sp.commit();
-                            Log.e(franchise.getString("MinimumOrderAmount") + "franchise --> ", franchise.toString());
+                            //Log.e(franchise.getString("MinimumOrderAmount") + "franchise --> ", franchise.toString());
 
                             service_records = new JSONArray[data.length()];
 
@@ -156,19 +148,39 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
 
                             cats = new String[data.length()];
 
+                            mobileIcons = new String[data.length()];
+
                             for (int i = 0; i < data.length(); i++) {
+
                                 JSONObject c = data.getJSONObject(i);
                                 String MTitle = c.getString("MTitle");
+                                ListingActivity.this.setTitle(cats[0]);
+                                String icon = c.getString("MobileIcon");
                                 JSONArray sr = c.getJSONArray("service_records");
                                 service_records[i] = sr;
                                 cats[i] = MTitle;
+                                mobileIcons[i] = icon;
+                                //Log.e("c.toString ",c.toString());
                                 ServicesFragment servicesFragment=new ServicesFragment();
                                 adapter.addFragment(servicesFragment,service_records[i],i,country,currencySymbol,
-                                        MTitle,androidId);
+                                        MTitle,mobileIcons[i],androidId);
                             }
+
                             viewPager.setAdapter(adapter);
                             viewPager.setCurrentItem(0);
                             tabLayout.setupWithViewPager(viewPager);
+
+                            tabLayout.addOnTabSelectedListener(
+                                    new TabLayout.ViewPagerOnTabSelectedListener(mViewPager) {
+                                        @Override
+                                        public void onTabSelected(TabLayout.Tab tab) {
+                                            //super.onTabSelected(tab);
+                                            int numTab = tab.getPosition();
+
+                                            ListingActivity.this.setTitle(cats[numTab]);
+                                            //prefs.edit().putInt("numTab", numTab).apply();
+                                        }
+                                    });
 
                             for (int i = 0; i < tabLayout.getTabCount(); i++) {
                                 //TabLayout.Tab tab = tabLayout.getTabAt(i);
@@ -179,11 +191,7 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
 
                                 ImageView tabImage = (ImageView) tabLayout.getTabAt(i).getCustomView().findViewById(R.id.tabImage);
 
-                                Picasso.with(getApplicationContext()).load("https://www.love2laundry.com/uploads/categories/"+cats[i].toLowerCase()+"-icon.png").into(tabImage);
-
-                                //tabImage.setImageURI(Uri.parse("https://www.love2laundry.com/uploads/categories/trousers-icon.png"));
-
-
+                                Picasso.with(getApplicationContext()).load(server+"/uploads/categories/"+mobileIcons[i]).into(tabImage);
 
                             }
 

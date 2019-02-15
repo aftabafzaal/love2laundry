@@ -139,6 +139,7 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
 
             myViewHolder.price.setText(currency+""+json.getString("Price"));
             myViewHolder.price.setPaintFlags(myViewHolder.price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
             final Double finalOfferPrice = offerPrice;
             myViewHolder.add.setOnClickListener(new View.OnClickListener() {
                 final Set<String> set = new HashSet<String>();
@@ -204,22 +205,23 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
                         Double unitPrice = finalOfferPrice;
                         String total = myViewHolder.quantity.getText().toString();
                         Integer quantity = Integer.parseInt(total);
-
-                        HashMap<String, String> item = new HashMap<>();
-                        item = cartDb.getService(deviceId, service_id, country);
-
-                        if (quantity > 0) {
+                        if (quantity>0) {
+                            HashMap<String, String> item = new HashMap<>();
+                            item = cartDb.getService(deviceId, service_id, country);
                             quantity--;
-                            cartDb.updateCart(deviceId, service_id, quantity, unitPrice, discountAmount, country);
-                            myViewHolder.quantity.setText(quantity.toString());
-                        } else {
-                            cartDb.deleteCartItem(deviceId, service_id, country);
-                        }
+                            Log.e("quantity", "==" + quantity);
+                            if (quantity == 0) {
+                                cartDb.deleteCartItem(deviceId, service_id, country);
+                                myViewHolder.quantity.setText("0");
+                            } else {
+                                cartDb.updateCart(deviceId, service_id, quantity, unitPrice, discountAmount, country);
+                                myViewHolder.quantity.setText(quantity.toString());
+                            }
 
-                        if(updateServices!=null){
-                            updateServices.getServicesTotal();
+                            if (updateServices != null) {
+                                updateServices.getServicesTotal();
+                            }
                         }
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();

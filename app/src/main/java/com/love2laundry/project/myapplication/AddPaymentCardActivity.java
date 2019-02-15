@@ -53,11 +53,6 @@ public class AddPaymentCardActivity extends Navigation {
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
 
         final String member_id = sharedpreferences.getString("member_id", null);
-
-
-
-
-
         ArrayList<String> years = new ArrayList<String>();
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
         for (int i = thisYear; i <= thisYear+5; i++) {
@@ -230,7 +225,7 @@ public class AddPaymentCardActivity extends Navigation {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Navigation navigation =new Navigation();
-        navigation.initView(navigationView,member_id);
+        navigation.initView(navigationView,member_id,sharedpreferences);
 
     }
 }

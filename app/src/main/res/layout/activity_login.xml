@@ -35,7 +35,7 @@
             android:layout_marginBottom="10dp"
             android:scaleType="fitCenter"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo_black" />
         <AutoCompleteTextView
             style="@style/TextInputEditText"
             android:id="@+id/email"

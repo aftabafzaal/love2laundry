@@ -30,24 +30,21 @@
                 android:id="@id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Danny Scott Test"
                 style="@style/TextSmall" />
             <TextView
                 android:id="@id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="testingg37@gmail.com"
                 style="@style/TextSmall" />
             <TextView
                 android:id="@id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="601, International House, 223 Region, Street SE12QR, London"
                 style="@style/TextSmall" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="140dp"
+            android:layout_height="170dp"
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:background="@color/colorPrimaryDark"
@@ -57,7 +54,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top|center_horizontal"
-                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_gravity="center_horizontal|top"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="10dp"
                 android:fontFamily="@font/oxygen_bold"
                 android:textStyle="bold"
                 android:textSize="16sp"
@@ -65,6 +65,7 @@
                 android:textColor="@color/colorWhite"
                 android:text="Loyalty Points"/>
             <TextView
+                android:id="@+id/loyalty_point"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:background="@drawable/circle"
@@ -74,7 +75,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 android:textSize="30sp"
-                android:text="100" />
+                android:text="0" />
         </LinearLayout>
 
     </LinearLayout>
@@ -107,7 +108,7 @@
             app:layout_rowWeight="1"
             android:onClick="getInvoices">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -115,15 +116,31 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/pendingImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_pending"
+                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="10dp" />
-
+                <TextView
+                    android:id="@+id/pending"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignTop="@id/pendingImage"
+                    android:layout_toRightOf="@+id/pendingImage"
+                    android:layout_marginTop="-16dp"
+                    android:layout_marginLeft="-17dp"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="#FFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/circle_blue"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/pendingImage"
                     android:fontFamily="@font/oxygen_light"
                     android:text="@string/pending_invoices"
                     android:textAlignment="center"
@@ -131,7 +148,7 @@
                     android:textSize="16sp"
                     android:textStyle="normal" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -152,7 +169,7 @@
             app:cardPreventCornerOverlap="false"
             android:onClick="getInvoices">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -160,15 +177,31 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/processedImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_processed"
+                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="10dp" />
-
+                <TextView
+                    android:id="@+id/processed"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignTop="@id/processedImage"
+                    android:layout_toRightOf="@+id/processedImage"
+                    android:layout_marginTop="-16dp"
+                    android:layout_marginLeft="-17dp"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="#FFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/circle_orange"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/processedImage"
                     android:fontFamily="@font/oxygen_light"
                     android:text="@string/processed_invoices"
                     android:textAlignment="center"
@@ -176,7 +209,7 @@
                     android:textSize="16sp"
                     android:textStyle="normal" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -197,7 +230,7 @@
             app:cardPreventCornerOverlap="false"
             android:onClick="getInvoices">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -205,15 +238,31 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/canceledImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_cancelled"
+                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="10dp" />
-
+                <TextView
+                    android:id="@+id/canceled"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignTop="@id/canceledImage"
+                    android:layout_toRightOf="@+id/canceledImage"
+                    android:layout_marginTop="-16dp"
+                    android:layout_marginLeft="-17dp"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="#FFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/circle_orange"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/canceledImage"
                     android:fontFamily="@font/oxygen_light"
                     android:text="@string/canceled_invoices"
                     android:textAlignment="center"
@@ -221,7 +270,7 @@
                     android:textSize="16sp"
                     android:textStyle="normal" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -241,7 +290,7 @@
             app:cardPreventCornerOverlap="false"
             android:onClick="getInvoices">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -249,15 +298,31 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/completedImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_completed"
+                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="10dp" />
-
+                <TextView
+                    android:id="@+id/completed"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignTop="@id/completedImage"
+                    android:layout_toRightOf="@+id/completedImage"
+                    android:layout_marginTop="-16dp"
+                    android:layout_marginLeft="-17dp"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="#FFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/circle_green"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/completedImage"
                     android:fontFamily="@font/oxygen_light"
                     android:text="@string/completed_invoices"
                     android:textAlignment="center"
@@ -265,65 +330,10 @@
                     android:textSize="16sp"
                     android:textStyle="normal" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </android.support.v7.widget.CardView>
 
     </android.support.v7.widget.GridLayout>
-    <!--<LinearLayout-->
-        <!--android:id="@+id/content_dashboard"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/header_dashboard"-->
-        <!--android:layout_marginTop="50dip">-->
-
-
-    <!--<Button-->
-        <!--android:id="@+id/pending_invoices"-->
-        <!--style="?android:textAppearanceSmall"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="52dp"-->
-        <!--android:text="@string/pending_invoices"-->
-        <!--android:onClick="getInvoices"-->
-        <!--android:textStyle="bold"-->
-         <!--/>-->
-
-
-        <!--<Button-->
-        <!--android:id="@+id/processed_invoices"-->
-        <!--style="?android:textAppearanceSmall"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="52dp"-->
-        <!--android:text="@string/processed_invoices"-->
-        <!--android:textStyle="bold"-->
-            <!--android:onClick="getInvoices"-->
-        <!--android:layout_below="@+id/pending_invoices" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/canceled_invoices"-->
-            <!--style="?android:textAppearanceSmall"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="52dp"-->
-            <!--android:text="@string/canceled_invoices"-->
-            <!--android:textStyle="bold"-->
-            <!--android:onClick="getInvoices"-->
-            <!--android:layout_below="@+id/processed_invoices" />-->
-
-
-        <!--<Button-->
-            <!--android:id="@+id/completed_invoices"-->
-            <!--style="?android:textAppearanceSmall"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="52dp"-->
-            <!--android:text="@string/completed_invoices"-->
-            <!--android:textStyle="bold"-->
-            <!--android:onClick="getInvoices"-->
-            <!--android:layout_below="@+id/canceled_invoices" />-->
-
-    <!--</LinearLayout>-->
 
 </LinearLayout>

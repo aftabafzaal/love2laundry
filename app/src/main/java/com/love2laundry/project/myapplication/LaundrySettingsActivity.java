@@ -55,12 +55,21 @@ public class LaundrySettingsActivity extends Navigation implements MyPreferences
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
-
         member_id = sharedpreferences.getString("member_id", null);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        Navigation navigation=new Navigation();
+        navigation.initView(navigationView, member_id,sharedpreferences);
+
+
 
         String memberJsonString = sharedpreferences.getString("member_data", null);
-
-        memberPreferences = sharedpreferences.getString("member_preferences", null);
 
         accountNotes = (EditText) findViewById(R.id.account_notes);
         String notes="";
@@ -181,7 +190,6 @@ public class LaundrySettingsActivity extends Navigation implements MyPreferences
 
                 } catch (Exception e) {
                     Log.e("TAG","sdasdasd"+e.getMessage());
-                    e.printStackTrace();
                 }
                 updateButton.setEnabled(true);
 
@@ -191,16 +199,7 @@ public class LaundrySettingsActivity extends Navigation implements MyPreferences
 
         new GetPreferences().execute();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        Navigation navigation =new Navigation();
-        navigation.initView(navigationView,member_id);
 
     }
 
