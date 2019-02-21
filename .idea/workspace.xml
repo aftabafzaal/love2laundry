@@ -11,8 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccd00304-555a-4e57-a3e2-a24e0da2f3e0" name="Default Changelist" comment="test commit">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/extensions/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/extensions/R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java" afterDir="false" />
@@ -351,7 +351,7 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/processInstantRunDebugResourcesApk/package_resources-debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/processInstantRunDebugResourcesApk/package_resources-debug/dex-renamer-state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant_run_main_apk_resources/debug/instantRunMainApkResourcesDebug/out/main_resources/resources_ap" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant_run_main_apk_resources/debug/instantRunMainApkResourcesDebug/out/main_resources/resources_ap" afterDir="false" />
@@ -691,16 +691,14 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/resources/instant-run/debug/resources-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/instant-run/debug/resources-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/resources/instant-run/debug/resources-debug.apk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/dep/dependencies.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/dep/dependencies.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/resources/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/resources/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_0.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_0.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_1.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_1.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_2.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_2.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_4.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_4.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_5.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_5.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_6.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_6.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_7.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_7.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_8.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_8.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" afterDir="false" />
@@ -1060,14 +1058,25 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/TimeActivity$GetDates.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/TimeActivity$GetDates.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/TimeActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/TimeActivity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAE.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAEActivity$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAEActivity$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAEActivity$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAEActivity$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAEActivity$UserLoginTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAEActivity$UserLoginTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAEActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UAEActivity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UK.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UK.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UKActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/0/com/love2laundry/project/myapplication/UKActivity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/AccountActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/AccountActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/CheckoutActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/CheckoutActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/DiscountsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/DiscountsActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LaundrySettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LaundrySettingsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ListingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ListingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/PickCountryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/PickCountryActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/RegisterActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/SubListingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/SubListingActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_laundry_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_laundry_settings.xml" afterDir="false" />
     </list>
@@ -1102,12 +1111,12 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="2" />
-          <entry key="gitignore" value="3" />
+          <entry key="gitignore" value="4" />
           <entry key="gradle" value="6" />
           <entry key="ignore" value="1" />
-          <entry key="java" value="431" />
+          <entry key="java" value="442" />
           <entry key="png" value="7" />
-          <entry key="xml" value="361" />
+          <entry key="xml" value="362" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -1115,9 +1124,9 @@
           <entry key="CLASS" value="2" />
           <entry key="Groovy" value="6" />
           <entry key="Image" value="7" />
-          <entry key="JAVA" value="431" />
-          <entry key="PLAIN_TEXT" value="4" />
-          <entry key="XML" value="361" />
+          <entry key="JAVA" value="442" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="XML" value="362" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -1125,18 +1134,18 @@
           <entry key="dummy" value="6" />
           <entry key="gitignore" value="21" />
           <entry key="gradle" value="6" />
-          <entry key="java" value="30129" />
+          <entry key="java" value="30821" />
           <entry key="txt" value="11" />
-          <entry key="xml" value="5689" />
+          <entry key="xml" value="5690" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Android Room SQL" value="1" />
           <entry key="Groovy" value="6" />
-          <entry key="JAVA" value="30128" />
+          <entry key="JAVA" value="30820" />
           <entry key="PLAIN_TEXT" value="38" />
-          <entry key="XML" value="5689" />
+          <entry key="XML" value="5690" />
         </counts>
       </usages-collector>
     </session>
@@ -1144,40 +1153,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/CheckoutActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ListingActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1075">
-              <caret line="183" column="22" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#16486#25448#0" expanded="true" />
-                <element signature="e#25447#25448#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/InvoiceActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="162" column="37" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
-              <folding>
-                <element signature="e#3278#10523#0" expanded="true" />
-                <element signature="e#10522#10523#0" expanded="true" />
-                <element signature="e#10525#10728#0" expanded="true" />
-                <element signature="e#10727#10728#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="183">
+              <caret line="246" selection-start-line="246" selection-end-line="252" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -1185,54 +1164,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditInvoiceActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="311" column="150" selection-start-line="311" selection-start-column="150" selection-end-line="311" selection-end-column="150" />
+            <state relative-caret-position="287">
+              <caret line="816" column="3" selection-start-line="816" selection-start-column="3" selection-end-line="823" selection-end-column="5" />
               <folding>
-                <element signature="e#6627#31306#0" expanded="true" />
-                <element signature="e#10771#11528#0" expanded="true" />
-                <element signature="e#11527#11528#0" expanded="true" />
-                <element signature="e#11820#12960#0" expanded="true" />
-                <element signature="e#12959#12960#0" expanded="true" />
-                <element signature="e#13494#14695#0" expanded="true" />
-                <element signature="e#14694#14695#0" expanded="true" />
-                <element signature="e#15018#16232#0" expanded="true" />
-                <element signature="e#16231#16232#0" expanded="true" />
-                <element signature="e#16873#28869#0" expanded="true" />
-                <element signature="e#17414#17455#0" expanded="true" />
-                <element signature="e#28868#28869#0" expanded="true" />
-                <element signature="e#31305#31306#0" expanded="true" />
-                <element signature="e#31308#31511#0" expanded="true" />
-                <element signature="e#31510#31511#0" expanded="true" />
-                <element signature="e#31711#32540#0" expanded="true" />
-                <element signature="e#32539#32540#0" expanded="true" />
+                <element signature="e#6662#33078#0" expanded="true" />
+                <element signature="e#11807#12564#0" expanded="true" />
+                <element signature="e#12563#12564#0" expanded="true" />
+                <element signature="e#12923#14063#0" expanded="true" />
+                <element signature="e#14062#14063#0" expanded="true" />
+                <element signature="e#14397#15733#0" expanded="true" />
+                <element signature="e#15732#15733#0" expanded="true" />
+                <element signature="e#16119#17333#0" expanded="true" />
+                <element signature="e#17332#17333#0" expanded="true" />
+                <element signature="e#17504#30708#0" expanded="true" />
+                <element signature="e#20709#20750#0" expanded="true" />
+                <element signature="e#30707#30708#0" expanded="true" />
+                <element signature="e#33077#33078#0" expanded="true" />
+                <element signature="e#33080#33283#0" expanded="true" />
+                <element signature="e#33282#33283#0" expanded="true" />
+                <element signature="e#33483#34312#0" expanded="true" />
+                <element signature="e#34311#34312#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/DatesActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/InvoiceActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="87" column="40" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditCartAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditServicesAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3190">
-              <caret line="41" column="36" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="36" />
+            <state relative-caret-position="725">
+              <caret line="261" selection-start-line="261" selection-end-line="261" />
             </state>
           </provider>
         </entry>
@@ -1240,23 +1201,67 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="80" column="18" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+            <state relative-caret-position="217">
+              <caret line="70" column="107" selection-start-line="70" selection-start-column="97" selection-end-line="70" selection-end-column="107" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="343">
+              <caret line="37" column="46" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/DiscountsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
               <folding>
-                <element signature="e#2593#2594#0" expanded="true" />
-                <element signature="e#2634#2635#0" expanded="true" />
-                <element signature="e#6287#6288#0" expanded="true" />
-                <element signature="e#6338#6339#0" expanded="true" />
+                <element signature="e#2556#2587#0" expanded="true" />
+                <element signature="e#2589#2621#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/UAE.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/UKActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="75" selection-start-line="22" selection-start-column="75" selection-end-line="22" selection-end-column="75" />
+            <state relative-caret-position="-434">
+              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LoyaltyActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-171">
+              <caret line="86" selection-start-line="86" selection-end-line="86" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LaundrySettingsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="56" column="60" lean-forward="true" selection-start-line="56" selection-start-column="60" selection-end-line="56" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/PickCountryActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="56" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -1274,17 +1279,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cartAmount</find>
-      <find>currencySymbol</find>
-      <find>preferenceTotalTextView</find>
-      <find>discountButtons</find>
-      <find>discountedPrice</find>
-      <find>discount_buttons</find>
-      <find>discountA</find>
-      <find>discountAmount</find>
-      <find>jsonObj</find>
-      <find>grandTotalView</find>
-      <find>creditCardField</find>
       <find>franchise_detail</find>
       <find>accountNotes</find>
       <find>member</find>
@@ -1295,7 +1289,6 @@
       <find>pickUpTime</find>
       <find>pickUpTimeSelected</find>
       <find>subTotal</find>
-      <find>services</find>
       <find>---&gt;</find>
       <find>me.</find>
       <find>get</find>
@@ -1304,6 +1297,18 @@
       <find>finalServicesData</find>
       <find>cate</find>
       <find>Date</find>
+      <find>device</find>
+      <find>device_</find>
+      <find>buildDialog</find>
+      <find>device_id</find>
+      <find>services</find>
+      <find>setP</find>
+      <find>null</find>
+      <find>Log.</find>
+      <find>ba</find>
+      <find>deviceId</find>
+      <find>back</find>
+      <find>minimumOrderAmount</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1312,6 +1317,7 @@
     <dirStrings>
       <dir>$PROJECT_DIR$/app/src/main/res</dir>
       <dir>$PROJECT_DIR$/app</dir>
+      <dir>$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -1320,7 +1326,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_keyboard_arrow_right_black_24dp.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable-v24/btn_red_border.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/UKActivity.java" />
@@ -1328,16 +1333,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/CancelInvoiceActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/AccountActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/AddPaymentCardActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/DiscountsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditPaymentCardActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LoyaltyActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/PaymentCardsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/CopyInvoiceActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ReferralActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/nav_header_navigation.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Navigation.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ListingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/InvoicesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_invoice.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/MyCartAdapter.java" />
@@ -1351,37 +1353,42 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_checkout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_navigation_drawer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LaundrySettingsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/TimeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/DatesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_sub_listing.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sub_listing.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/TabAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/TabEditAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ServicesEditFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/SubListingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/UK.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Config.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/UAE.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/InvoiceActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditServicesAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/CheckoutActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditCartAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditInvoiceActivity.java" />
         <option value="$PROJECT_DIR$/app/.gitignore" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ListingActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LaundrySettingsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LoyaltyActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/CheckoutActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditInvoiceActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/InvoiceActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Config.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/DiscountsActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1191" />
-    <option name="height" value="821" />
+    <option name="height" value="819" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
+      <hideEmptyPackages ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -1419,6 +1426,57 @@
               <item name="love2laundry" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
+            <path>
+              <item name="love2laundry" type="b2602c69:ProjectViewProjectNode" />
+              <item name="love2laundry" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="love2laundry" type="b2602c69:ProjectViewProjectNode" />
+              <item name="love2laundry" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="love2laundry" type="b2602c69:ProjectViewProjectNode" />
+              <item name="love2laundry" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="love2laundry" type="b2602c69:ProjectViewProjectNode" />
+              <item name="love2laundry" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="love2laundry" type="b2602c69:ProjectViewProjectNode" />
+              <item name="love2laundry" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="love2laundry" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="love2laundry" type="b2602c69:ProjectViewProjectNode" />
+              <item name="love2laundry" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="love2laundry" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -1434,7 +1492,7 @@
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="device.picker.selection" value="Nexus_5X_Edited_2_API_28_ww" />
+    <property name="device.picker.selection" value="cc99b837" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="instant.run" />
@@ -1527,7 +1585,7 @@
         <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="com.love2laundry.project.myapplication.AccountActivity" />
+      <option name="ACTIVITY_CLASS" value="com.love2laundry.project.love2laundry.AccountActivity" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -1704,7 +1762,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550733512665</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="test commit">
+      <created>1550733627752</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1550733627752</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1717,8 +1782,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1191" height="821" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1191" height="819" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.25761533" />
@@ -1729,7 +1793,7 @@
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49615714" weight="0.22085048" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.58311343" visible="true" weight="0.35390946" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.58311343" visible="true" weight="0.35488307" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.49957302" weight="0.32647464" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49957302" weight="0.37756497" />
       <window_info anchor="bottom" id="Version Control" order="4" show_stripe_button="false" sideWeight="0.49957302" weight="0.32876712" />
@@ -1783,32 +1847,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="test commit" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ReferralActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="107" column="69" selection-start-line="107" selection-start-column="69" selection-end-line="107" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/CopyInvoiceActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="201" column="73" selection-start-line="201" selection-start-column="73" selection-end-line="201" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_checkout.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/InvoicesActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10">
@@ -1892,13 +1930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LaundrySettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="82" column="39" selection-start-line="82" selection-start-column="39" selection-end-line="82" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/TimeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
@@ -1924,13 +1955,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
           <caret line="116" column="79" selection-start-line="116" selection-start-column="20" selection-end-line="116" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/UKActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -2005,30 +2029,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ListingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="170" column="68" lean-forward="true" selection-start-line="170" selection-start-column="68" selection-end-line="170" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/TabAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="44" column="56" lean-forward="true" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
-          <folding>
-            <element signature="e#1043#1061#0" expanded="true" />
-            <element signature="e#1433#1467#0" expanded="true" />
-            <element signature="e#4155#4188#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2098,26 +2102,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="80" column="18" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
-          <folding>
-            <element signature="e#2593#2594#0" expanded="true" />
-            <element signature="e#2634#2635#0" expanded="true" />
-            <element signature="e#6287#6288#0" expanded="true" />
-            <element signature="e#6338#6339#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Cart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="183" column="18" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditServicesAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3190">
@@ -2132,19 +2116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/InvoiceActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="162" column="37" selection-start-line="162" selection-start-column="37" selection-end-line="162" selection-end-column="37" />
-          <folding>
-            <element signature="e#3278#10523#0" expanded="true" />
-            <element signature="e#10522#10523#0" expanded="true" />
-            <element signature="e#10525#10728#0" expanded="true" />
-            <element signature="e#10727#10728#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/DatesActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
@@ -2152,39 +2123,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditInvoiceActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="311" column="150" selection-start-line="311" selection-start-column="150" selection-end-line="311" selection-end-column="150" />
-          <folding>
-            <element signature="e#6627#31306#0" expanded="true" />
-            <element signature="e#10771#11528#0" expanded="true" />
-            <element signature="e#11527#11528#0" expanded="true" />
-            <element signature="e#11820#12960#0" expanded="true" />
-            <element signature="e#12959#12960#0" expanded="true" />
-            <element signature="e#13494#14695#0" expanded="true" />
-            <element signature="e#14694#14695#0" expanded="true" />
-            <element signature="e#15018#16232#0" expanded="true" />
-            <element signature="e#16231#16232#0" expanded="true" />
-            <element signature="e#16873#28869#0" expanded="true" />
-            <element signature="e#17414#17455#0" expanded="true" />
-            <element signature="e#28868#28869#0" expanded="true" />
-            <element signature="e#31305#31306#0" expanded="true" />
-            <element signature="e#31308#31511#0" expanded="true" />
-            <element signature="e#31510#31511#0" expanded="true" />
-            <element signature="e#31711#32540#0" expanded="true" />
-            <element signature="e#32539#32540#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/.ignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/PickCountryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="56" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Cart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/CheckoutActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1075">
-          <caret line="183" column="22" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="22" />
+        <state relative-caret-position="956">
+          <caret line="509" column="73" selection-start-line="509" selection-start-column="67" selection-end-line="509" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#16486#25448#0" expanded="true" />
@@ -2193,11 +2158,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="111" column="58" lean-forward="true" selection-start-line="111" selection-start-column="58" selection-end-line="111" selection-end-column="58" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/ListingActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="246" selection-start-line="246" selection-end-line="252" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/EditInvoiceActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="816" column="3" selection-start-line="816" selection-start-column="3" selection-end-line="823" selection-end-column="5" />
+          <folding>
+            <element signature="e#6662#33078#0" expanded="true" />
+            <element signature="e#11807#12564#0" expanded="true" />
+            <element signature="e#12563#12564#0" expanded="true" />
+            <element signature="e#12923#14063#0" expanded="true" />
+            <element signature="e#14062#14063#0" expanded="true" />
+            <element signature="e#14397#15733#0" expanded="true" />
+            <element signature="e#15732#15733#0" expanded="true" />
+            <element signature="e#16119#17333#0" expanded="true" />
+            <element signature="e#17332#17333#0" expanded="true" />
+            <element signature="e#17504#30708#0" expanded="true" />
+            <element signature="e#20709#20750#0" expanded="true" />
+            <element signature="e#30707#30708#0" expanded="true" />
+            <element signature="e#33077#33078#0" expanded="true" />
+            <element signature="e#33080#33283#0" expanded="true" />
+            <element signature="e#33282#33283#0" expanded="true" />
+            <element signature="e#33483#34312#0" expanded="true" />
+            <element signature="e#34311#34312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LaundrySettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="56" column="60" lean-forward="true" selection-start-line="56" selection-start-column="60" selection-end-line="56" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/LoyaltyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-171">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/InvoiceActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="261" selection-start-line="261" selection-end-line="261" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/UKActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-434">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="70" column="107" selection-start-line="70" selection-start-column="97" selection-end-line="70" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="37" column="46" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/love2laundry/project/myapplication/DiscountsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="e#2556#2587#0" expanded="true" />
+            <element signature="e#2589#2621#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
