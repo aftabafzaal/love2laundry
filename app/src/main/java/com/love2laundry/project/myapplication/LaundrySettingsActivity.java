@@ -47,86 +47,88 @@ public class LaundrySettingsActivity extends Navigation implements MyPreferences
     String memberPreferences;
     String selectedP = "";
     String member_id;
+    Config config;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_laundry_settings);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
-        member_id = sharedpreferences.getString("member_id", null);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        config=new Config();
+        if (!config.isConnected(this)) {
+            config.buildDialog(this).show();
+        }else {
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        Navigation navigation=new Navigation();
-        navigation.initView(navigationView, member_id,sharedpreferences);
+            setContentView(R.layout.activity_laundry_settings);
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            sharedpreferences = getSharedPreferences("member", MODE_PRIVATE);
+            member_id = sharedpreferences.getString("member_id", null);
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
+
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            Navigation navigation = new Navigation();
+            navigation.initView(navigationView, member_id, sharedpreferences);
 
 
+            String memberJsonString = sharedpreferences.getString("member_data", null);
 
-        String memberJsonString = sharedpreferences.getString("member_data", null);
+            accountNotes = (EditText) findViewById(R.id.account_notes);
+            String notes = "";
+            try {
+                JSONObject memberObj = new JSONObject(memberJsonString);
+                notes = memberObj.getString("AccountNotes");
+            } catch (JSONException e) {
+                Log.e(TAG,e.getMessage());
+            }
+            accountNotes.setText(notes);
 
-        accountNotes = (EditText) findViewById(R.id.account_notes);
-        String notes="";
-        try {
-            JSONObject memberObj= new JSONObject(memberJsonString);
-            notes=memberObj.getString("AccountNotes");
-        } catch (JSONException e) {
+            //Log.e(TAG,memberJson);
 
-            e.printStackTrace();
-        }
-        accountNotes.setText(notes);
+            final Button updateButton = (Button) findViewById(R.id.update_button);
+            updateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    updateButton.setEnabled(false);
 
-        //Log.e(TAG,memberJson);
+                    try {
+                        //selectedP = ((MyPreferencesAdapter) preferencesAdapter).getMemberSelected();
+                        //selectedP = (selectedP == null || selectedP.length() == 0) ? "" : (selectedP.substring(0, selectedP.length() - 2));
 
-        final Button updateButton = (Button) findViewById(R.id.update_button);
-        updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateButton.setEnabled(false);
+                        try {
 
-                try {
-                    //selectedP = ((MyPreferencesAdapter) preferencesAdapter).getMemberSelected();
-                    //selectedP = (selectedP == null || selectedP.length() == 0) ? "" : (selectedP.substring(0, selectedP.length() - 2));
+                            final Map<String, String> postDataParams = new HashMap<String, String>();
 
-                    try{
+                            sharedPreferencesCountry = getSharedPreferences("country", MODE_PRIVATE);
 
-                        final Map<String, String> postDataParams = new HashMap<String, String>();
+                            String device_id = sharedPreferencesCountry.getString("deviceId", null);
+                            postDataParams.put("member_id", member_id);
+                            postDataParams.put("device_id", device_id);
+                            String notes = accountNotes.getText().toString();
+                            postDataParams.put("preferences_data", notes + "||" + selectedP);
 
-                        sharedPreferencesCountry = getSharedPreferences("country", MODE_PRIVATE);
+                            String server = sharedPreferencesCountry.getString("server", null);
+                            String url = server + sharedPreferencesCountry.getString("apiPreferencesUpdate", "/apiv5/post_preferences_update");
+                            RequestQueue queue = Volley.newRequestQueue(LaundrySettingsActivity.this);
+                            //String url="";
+                            Log.e(TAG, url);
+                            Log.e("postDataParams -->", postDataParams.toString());
+                            StringRequest postRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
 
-                        String device_id = sharedPreferencesCountry.getString("deviceId", null);
-                        postDataParams.put("member_id", member_id);
-                        postDataParams.put("device_id", device_id);
-                        String notes=accountNotes.getText().toString();
-                        postDataParams.put("preferences_data",notes+"||"+selectedP);
+                                    JSONObject jsonObj = null;
+                                    Log.e(TAG + "response->", response);
+                                    try {
 
-                        String server = sharedPreferencesCountry.getString("server", null);
-                        String url = server + sharedPreferencesCountry.getString("apiPreferencesUpdate", "/apiv5/post_preferences_update");
-                        RequestQueue queue = Volley.newRequestQueue(LaundrySettingsActivity.this);
-                        //String url="";
-                        Log.e(TAG,url);
-                        Log.e("postDataParams -->",postDataParams.toString());
-                        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                                new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
+                                        jsonObj = new JSONObject(response);
 
-                                        JSONObject jsonObj = null;
-                                        Log.e(TAG+"response->", response);
-                                        try {
-
-                                            jsonObj = new JSONObject(response);
-
-                                            String result= jsonObj.getString("result");
-                                            if(result.equals("Success")) {
-                                                String message= jsonObj.getString("message");
-                                                Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                                        String result = jsonObj.getString("result");
+                                        if (result.equals("Success")) {
+                                            String message = jsonObj.getString("message");
+                                            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                                                 /*
                                                 String preferenceData = jsonObj.getString("data");
                                                 String memberData = jsonObj.getString("member_data");
@@ -141,66 +143,61 @@ public class LaundrySettingsActivity extends Navigation implements MyPreferences
                                                 finish();
                                                 startActivity(getIntent());
                                                 */
-                                            }
-
-                                        } catch (JSONException e) {
-                                            Log.e(TAG+"response->", response);
-                                            Log.e(TAG+" JSONException ", e.getMessage());
-                                            e.printStackTrace();
                                         }
 
+                                    } catch (JSONException e) {
+                                        Log.e(TAG + "response->", response);
+                                        Log.e(TAG + " JSONException ", e.getMessage());
+                                        e.printStackTrace();
                                     }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        finish();
-                                        startActivity(getIntent());
-                                        // error
-                                        Log.e("Error.Response ", error.toString());
-                                    }
-                                }
-                        ) {
-                            @Override
-                            protected Map<String, String> getParams() {
-                                return postDataParams;
-                            }
 
-                            @Override
-                            public Map<String, String> getHeaders() throws AuthFailureError {
-                                Map<String, String> headers = new HashMap<String, String>();
-                                headers.put("Content-Type", "application/x-www-form-urlencoded");
-                                return headers;
-                            }
-                        };
-                        postRequest.setRetryPolicy(new DefaultRetryPolicy(
-                                10000,
-                                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                        queue.add(postRequest);
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    finish();
+                                    startActivity(getIntent());
+                                    // error
+                                    Log.e("Error.Response ", error.toString());
+                                }
+                            }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    return postDataParams;
+                                }
+
+                                @Override
+                                public Map<String, String> getHeaders() throws AuthFailureError {
+                                    Map<String, String> headers = new HashMap<String, String>();
+                                    headers.put("Content-Type", "application/x-www-form-urlencoded");
+                                    return headers;
+                                }
+                            };
+                            postRequest.setRetryPolicy(new DefaultRetryPolicy(10000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                            queue.add(postRequest);
+
+                        } catch (Exception e) {
+                            finish();
+                            startActivity(getIntent());
+                            Log.e(" JSONException ", e.getMessage());
+
+                            //e.printStackTrace();
+                        }
+
 
                     } catch (Exception e) {
-                        finish();
-                        startActivity(getIntent());
-                        Log.e( " JSONException ", e.getMessage());
-
-                        //e.printStackTrace();
+                        Log.e("TAG", "sdasdasd" + e.getMessage());
                     }
+                    updateButton.setEnabled(true);
 
-
-                } catch (Exception e) {
-                    Log.e("TAG","sdasdasd"+e.getMessage());
                 }
-                updateButton.setEnabled(true);
-
-            }
-        });
+            });
 
 
-        new GetPreferences().execute();
+            new GetPreferences().execute();
 
 
-
+        }
     }
 
     @Override

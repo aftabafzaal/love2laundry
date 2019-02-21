@@ -158,18 +158,20 @@ public class DatesActivity extends Config {
                 @Override
                 public View getView(final int position, View convertView, ViewGroup parent) {
                     final View v = super.getView(position, convertView, parent);
-                    Log.e(TAG,""+dateList.get(position));
+                    //Log.e(TAG,""+dateList.get(position));
+                    TextView disable = v.findViewById(R.id.disable);
+                    TextView date = v.findViewById(R.id.date);
                     if (dateList.get(position).get("dateClass").equals("Available")) {
 
-                        TextView tv = v.findViewById(R.id.date);
-                        tv.setVisibility(View.VISIBLE);
+
+                        date.setVisibility(View.VISIBLE);
+                        disable.setVisibility(View.GONE);
                     }else{
-
-
-                        TextView tv = v.findViewById(R.id.disable);
-                        tv.setEnabled(false);
-                        tv.setClickable(false);
-                        tv.setVisibility(View.VISIBLE);
+                        Log.e(TAG,""+dateList.get(position));
+                        disable.setEnabled(false);
+                        disable.setClickable(false);
+                        disable.setVisibility(View.VISIBLE);
+                        date.setVisibility(View.GONE);
                     }
                     return v;
                 }
@@ -179,8 +181,11 @@ public class DatesActivity extends Config {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                    pickUpDate = dateList.get(i).get("dateNumber");
-                    dateSelected = dateList.get(i).get("dateSelected");
+                    //if (dateList.get(i).get("status").equals("Available")) {
+                        pickUpDate = dateList.get(i).get("dateNumber");
+                        dateSelected = dateList.get(i).get("dateSelected");
+                   // }
+
                     finish();
 
                 }

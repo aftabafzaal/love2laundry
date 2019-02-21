@@ -291,7 +291,7 @@ public class CheckoutActivity extends Navigation
                         intent.putExtra("franchise_id", franchise_id);
                         intent.putExtra("type", "delivery");
                         intent.putExtra("title", "Delivery Date");
-                        intent.putExtra("action", sharedPreferencesCountry.getString("apiPickUpDate", null) + "/" + franchise_id);
+                        intent.putExtra("action", sharedPreferencesCountry.getString("apiDeliveryDate", null) + "/" + franchise_id);
                         startActivityForResult(intent, 10);
                     }
                 }
@@ -446,7 +446,6 @@ public class CheckoutActivity extends Navigation
                         String notes = accountNotes.getText().toString();
                         String additional = additionalInstruction.getText().toString();
 
-
                         loading.setVisibility(View.VISIBLE);
                         checkoutButton.setVisibility(View.GONE);
                         checkoutButton.setEnabled(false);
@@ -559,8 +558,6 @@ public class CheckoutActivity extends Navigation
                             Log.e(TAG + " JSONException ", e.getMessage());
                         }
                     }
-                    //loading.setVisibility(View.GONE);
-                    //checkoutButton.setVisibility(View.VISIBLE);
                 }
             });
 

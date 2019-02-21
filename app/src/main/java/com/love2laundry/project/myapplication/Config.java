@@ -110,8 +110,8 @@ public class Config extends AppCompatActivity {
             editor.putString("apiPostDiscount", UK.API_POST_DISCOUNT);
             editor.putString("apiPostReferral", UK.API_POST_REFERRAL);
             editor.putString("apiForgotPassword", UK.API_FORGOT_PASSWORD);
-
             editor.putString("apiCancelInvoice", UK.API_CANCEL_INVOICE);
+            editor.putString("apiEditInvoice", UK.API_EDIT_INVOICE);
 
 
         } else if (country.equals("uae")) {
@@ -140,6 +140,8 @@ public class Config extends AppCompatActivity {
             editor.putString("apiPostReferral", UAE.API_POST_REFERRAL);
             editor.putString("apiForgotPassword", UAE.API_FORGOT_PASSWORD);
             editor.putString("apiCancelInvoice", UAE.API_CANCEL_INVOICE);
+            editor.putString("apiEditInvoice", UAE.API_EDIT_INVOICE);
+
 
         } else if (country == null) {
             Log.e("Pick Country", "Error in country");
