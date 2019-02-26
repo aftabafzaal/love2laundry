@@ -9,6 +9,8 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_enter_postcode">Enter Your Postcode</string>
+    <string name="prompt_enter_area">Enter Your Area</string>
+
     <string name="prompt_check_price">Check Price</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
@@ -20,6 +22,7 @@
     <string name="phone">Phone</string>
     <string name="phone_number">Phone Number</string>
     <string name="post_code">Post Code</string>
+    <string name="area_name">Area Name</string>
     <string name="building_name_number">Building Name or Number</string>
     <string name="street_name">Street Name</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -43,7 +46,7 @@
     <string name="checkout_button">Checkout</string>
     <string name="action_check_out">Checkout</string>
     <string name="town">Town</string>
-    <string name="pick_up_date">Pick up date</string>
+    <string name="pick_up_date">Pick up Date</string>
     <string name="pick_up_time">Pick up Time</string>
     <string name="delivery_date">Delivery Date</string>
     <string name="delivery_time">Delivery Time</string>

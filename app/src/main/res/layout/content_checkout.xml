@@ -42,22 +42,29 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="15sp" />
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/post_code_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                style="@style/FieldCustomLabelBlue"
-                app:hintTextAppearance="@style/hintText">
+                android:layout_marginTop="0dp"
+                >
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/post_code"
                     android:drawableStart="@drawable/ic_post_code"
                     android:drawablePadding="5dp"
-                    android:hint="@string/post_code"
                     android:inputType="text"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

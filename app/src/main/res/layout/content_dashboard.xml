@@ -75,7 +75,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 android:textSize="30sp"
-                android:text="0" />
+                android:text="" />
         </LinearLayout>
 
     </LinearLayout>
@@ -132,7 +132,7 @@
                     android:layout_marginTop="-16dp"
                     android:layout_marginLeft="-17dp"
                     android:gravity="center"
-                    android:text="100"
+                    android:text=""
                     android:textColor="#FFF"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -193,7 +193,7 @@
                     android:layout_marginTop="-16dp"
                     android:layout_marginLeft="-17dp"
                     android:gravity="center"
-                    android:text="100"
+                    android:text=""
                     android:textColor="#FFF"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -254,7 +254,7 @@
                     android:layout_marginTop="-16dp"
                     android:layout_marginLeft="-17dp"
                     android:gravity="center"
-                    android:text="100"
+                    android:text=""
                     android:textColor="#FFF"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -314,7 +314,7 @@
                     android:layout_marginTop="-16dp"
                     android:layout_marginLeft="-17dp"
                     android:gravity="center"
-                    android:text="100"
+                    android:text=""
                     android:textColor="#FFF"
                     android:textSize="14sp"
                     android:textStyle="bold"

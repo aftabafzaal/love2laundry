@@ -11,12 +11,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".UKActivity">
-
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
@@ -26,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:text="Are we in your area?" />
         <TextView
             style="@style/SubTitleHeadingSmall"
@@ -34,8 +37,8 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="80dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="20dp"
             android:layout_below="@+id/Heading"
             android:text="Enter your postcode to see if we deliver in your area" />
         <EditText
@@ -46,7 +49,7 @@
             android:layout_height="60dp"
             android:drawableEnd="@drawable/ic_location_arrow"
             android:drawablePadding="8dp"
-            android:text="e12pe"
+            android:text=""
             android:maxLines="1"
             android:singleLine="true"
             android:inputType="text"/>
@@ -60,5 +63,6 @@
             android:text="@string/prompt_check_price" />
 
     </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

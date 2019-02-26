@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.love2laundry.project.myapplication"
+        applicationId "com.love2laundry.project.love2laundry"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1

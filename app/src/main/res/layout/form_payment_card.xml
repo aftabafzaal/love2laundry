@@ -55,10 +55,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/number"
+                android:maxLength="16"
                 android:drawableStart="@drawable/payment_icon"
                 android:drawablePadding="5dp"
                 android:hint="@string/number"
-                android:text="1234567890123456"
+                android:text="4242424242424242"
                 android:inputType="text"
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
@@ -122,6 +123,7 @@
                 android:id="@+id/ccv"
                 android:drawableStart="@drawable/payment_icon"
                 android:drawablePadding="5dp"
+                android:text="123"
                 android:hint="@string/cvv_code"
                 android:inputType="text"
                 android:singleLine="true" />

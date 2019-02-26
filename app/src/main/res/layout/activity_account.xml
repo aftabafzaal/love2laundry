@@ -167,7 +167,6 @@ tools:openDrawer="start">
                         android:id="@+id/post_code"
                         android:drawableStart="@drawable/ic_post_code"
                         android:drawablePadding="5dp"
-                        android:hint="@string/post_code"
                         android:inputType="text"
                         android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>

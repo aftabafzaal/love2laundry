@@ -47,7 +47,7 @@
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:text="testingg37@gmail.com"
+            android:text=""
             android:singleLine="true"/>
         <EditText
             style="@style/TextInputEditText"
@@ -61,7 +61,7 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
-            android:text="passpass"
+            android:text=""
             android:maxLines="1"
             android:singleLine="true" />
         <Button

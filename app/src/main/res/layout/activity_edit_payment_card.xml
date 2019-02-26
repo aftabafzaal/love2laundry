@@ -44,7 +44,7 @@ tools:openDrawer="start">
                     android:text="@string/delete"/>
             </android.support.v7.widget.Toolbar>
 
-        </android.support.design.widget.AppBarLayout>>
+        </android.support.design.widget.AppBarLayout>
 
 
         <ScrollView
