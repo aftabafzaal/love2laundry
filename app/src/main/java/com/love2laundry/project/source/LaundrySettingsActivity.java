@@ -219,7 +219,6 @@ public class LaundrySettingsActivity extends Navigation implements MyPreferences
                 String priceForPackage = json.getString("PriceForPackage");
                 Double price = 0.00;
                 if (priceForPackage.equals("Yes")) {
-                    Log.e("json.toString --> ",json.toString());
                     price = Double.parseDouble(json.getString("Price"));
 
                 }

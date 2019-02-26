@@ -49,7 +49,7 @@ public class ServicesFragment extends Fragment implements MyServicesAdapter.Upda
         category=bundle.getString("category");
         try {
             JSONArray service_records= new JSONArray(bundle.getString("services"));
-            Log.e("service_records ",country+" "+androidId);
+            //Log.e("service_records ",country+" "+androidId);
             myServicesAdapter = new MyServicesAdapter(getActivity(),number,service_records,category,currencySymbol,country,androidId);
             ((MyServicesAdapter) myServicesAdapter).setUpdateServices(this);
 

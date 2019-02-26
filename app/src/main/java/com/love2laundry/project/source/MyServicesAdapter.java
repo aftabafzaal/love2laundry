@@ -116,7 +116,7 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
 
 
             HashMap<String, String> item = new HashMap<>();
-            Log.e("aaa ",deviceId+" "+serviceId+" "+country);
+            //Log.e("aaa ",deviceId+" "+serviceId+" "+country);
             item = cartDb.getService(deviceId, serviceId, country);
 
 
@@ -142,8 +142,6 @@ class MyServicesAdapter extends RecyclerView.Adapter<MyServicesAdapter.MyViewHol
                     quantity++;
                     try {
 
-
-                        Log.e("--",json.toString());
                         totalServices.put(Integer.parseInt(json.getString("ID")), quantity);
                         set.add(json.getString("Title"));
                         set.add(quantity.toString());

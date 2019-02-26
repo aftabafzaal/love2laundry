@@ -162,11 +162,9 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
                                 tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager) {
                                     @Override
                                     public void onTabSelected(TabLayout.Tab tab) {
-                                        //super.onTabSelected(tab);
                                         int numTab = tab.getPosition();
 
                                         ListingActivity.this.setTitle(cats[numTab]);
-                                        //prefs.edit().putInt("numTab", numTab).apply();
                                     }
                                 });
 
@@ -201,7 +199,6 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // mTextView.setText("That didn't work!");
 
                         Log.e(TAG, "VolleyError " + error.getMessage());
                     }
@@ -225,7 +222,6 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
 
         Double servicesTotal=cartDb.getServicesTotal(androidId,country);
 
-        //Log.e("servicesTotal",servicesTotal.toString());
 
         TextView itemMessage = findViewById(R.id.item_message);
         TextView servicesTotalView = findViewById(R.id.services_total);
@@ -243,7 +239,7 @@ public class ListingActivity extends Navigation implements ServicesFragment.Upda
     public void onBackPressed() {
        // finishAffinity();
         Intent intent=null;
-        if(country=="uk") {
+        if(country.equals("uk")) {
             intent = new Intent(this, UKActivity.class);
         }else{
             intent = new Intent(this, UAEActivity.class);

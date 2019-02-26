@@ -148,7 +148,7 @@ public class Config extends AppCompatActivity {
             editor.putString("apiPreferencesUpdate", UAE.API_POST_PREFERENCES);
 
         } else if (country == null) {
-            Log.e("Pick Country", "Error in country");
+            //Log.e("Pick Country", "Error in country");
         }
         editor.commit();
         // return location;

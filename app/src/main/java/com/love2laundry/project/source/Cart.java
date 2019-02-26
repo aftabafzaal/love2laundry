@@ -184,7 +184,7 @@ public class Cart extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select sum(unitPrice * quantity) as total  from cart where isPackage='No' and discount=0.0 and androidId=? and country=?;", new String[]{androidId, country});
         Double count = 0.00;
         if (res.getCount() == 0) {
-            Log.e("res ","-- ");
+
             return 0.00;
         } else {
 
@@ -192,7 +192,7 @@ public class Cart extends SQLiteOpenHelper {
             count = res.getDouble(0);
             res.close();
 
-            Log.e("count ",""+count);
+
             return count;
         }
 
